@@ -25,14 +25,13 @@
             @csrf
 
             <div>
-                <x-label class=" absolute mt-4 ml-3 z-10 " value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <x-input id="email" placeholder="Email" class="block mt-1 w-full placeholder-gray-400 " type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">
-                <x-label class=" absolute mt-4 ml-3 z-10  " for="password" value="{{ __('Senha') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                <x-input id="password" placeholder="Senha" class="block mt-1 w-full placeholder-gray-400" type="password" name="password" required autocomplete="current-password" />
             </div>
+
 
             <div class="flex mt-4 space-x-32">
                 <label for="remember_me" class="flex items-center">
@@ -55,7 +54,7 @@
             </div>
 
             <div class="flex justify-center mt-8">
-                <p class=" text-white">Não possui uma conta? <a class=" text-redMain" href="register">Cadastre-se</a> </p>
+                <p class=" text-white">Não possui uma conta? <a class="text-sm text-white font-bold hover:text-red-500 rounded-md focus:outline-none" href="register">Cadastre-se</a> </p>
 
             </div>
 
