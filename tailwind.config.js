@@ -29,7 +29,17 @@ module.exports = {
             },
 
             colors: {
-                redMain: "#FF3273",
+                'main-50': "#FFF0F3",
+                'main-100': "#FFE2E9",
+                'main-200': "#FFCAD9",
+                'main-300': "#FF9FB9",
+                'main-400': "#FF6995",
+                'main-500': "#FF3273",
+                'main-600': "#ED1161",
+                'main-700': "#C80853",
+                'main-800': "#A8094C",
+                'main-900': "#8F0C47",
+                'main-950': "#500123",
             },
         },
     },

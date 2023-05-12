@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
                     <h1 class="font-heading text-white text-xl uppercase mb-10">Admin - Categoria de Jogos</h1>
-                    <x-button class="w-40 mb-10"><a href="{{ route('game.genre.create') }}" class="">Nova
+                    <x-button class="w-40 mb-10"><a href="{{ route('game.genre.create') }}" class="">Criar
                             Categoria</a>
                     </x-button>
                 </div>
