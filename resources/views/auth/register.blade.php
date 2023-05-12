@@ -41,7 +41,7 @@
 
             <div class="mt-4">
                 <x-label for="cellphone" value="{{ __('Celular') }}" />
-                <x-input id="cellphone" class="block mt-1 w-full" type="text" name="cellphone" :value="old('cellphone')" required autofocus autocomplete="cellphone"/>
+                <x-input id="cellphone" class="block mt-1 w-full phone" type="text" name="cellphone" :value="old('cellphone')" required autofocus autocomplete="cellphone"  placeholder="+55 (11) 90235-9078" />/>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -71,5 +71,11 @@
                 </x-button>
             </div>
         </form>
+
+        <script type="text/javascript">
+            $(document).ready(() => {
+                $('.phone').inputmask('+55 (99) 99999-9999');
+            });
+        </script>
     </x-authentication-card>
 </x-guest-layout>
