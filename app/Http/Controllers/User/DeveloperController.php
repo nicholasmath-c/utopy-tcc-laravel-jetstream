@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Models\Developer;
 use App\Http\Requests\StoreDeveloperRequest;
@@ -15,7 +15,7 @@ class DeveloperController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**

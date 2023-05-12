@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-        return view('admin.games.admin-home');
+        return view('admin.index');
     }
 }
