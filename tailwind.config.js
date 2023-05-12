@@ -41,8 +41,22 @@ module.exports = {
                 'main-900': "#8F0C47",
                 'main-950': "#500123",
             },
+
+            keyframes: {
+                updown: {
+                  '0%': { transform: 'translateY(0px)' },
+                  '50%': { transform: 'translateY(50px)' },
+                  '100%': { transform: 'translateY(0px)' },
+                }
+              },
+
+              animation: {
+                'updown': 'updown 4s linear infinite',
+              }
+
         },
     },
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
+
