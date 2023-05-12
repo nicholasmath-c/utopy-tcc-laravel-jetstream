@@ -16,9 +16,9 @@ class GenreGameController extends Controller
      */
     public function index()
     {
-        $categoriaGame = GenreGame::all();
+        $categoriasGame = GenreGame::all();
 
-        return view('admin.games.genre_game', $categoriaGame);
+        return view('admin.genre-game.index', [ 'categoriasGame' => $categoriasGame]);
     }
 
     /**
@@ -28,7 +28,7 @@ class GenreGameController extends Controller
      */
     public function create()
     {
-        return view('admin.games.form_genre_game');
+        return view('admin.genre-game.create');
     }
 
     /**
@@ -39,11 +39,14 @@ class GenreGameController extends Controller
      */
     public function store(StoreGenreGameRequest $request)
     {
+        // -- Salvar categoria
         $categoria = new GenreGame();
         $categoria->name = $request->nome;
         $categoria->save();
 
-        return view('admin.games.genre_game');
+        // -- Obter todas as categorias e redirecionar
+        $categoriasGame = GenreGame::all();
+        return view('admin.genre-game.index', [ 'categoriasGame' => $categoriasGame]);
     }
 
     /**
@@ -54,7 +57,6 @@ class GenreGameController extends Controller
      */
     public function show(GenreGame $genreGame)
     {
-        //
     }
 
     /**
@@ -63,9 +65,11 @@ class GenreGameController extends Controller
      * @param  \App\Models\GenreGame  $genreGame
      * @return \Illuminate\Http\Response
      */
-    public function edit(GenreGame $genreGame)
+    public function edit($id)
     {
-        //
+        $categoria = GenreGame::findOrFail($id);
+
+        return view('admin.genre-game.edit', [ 'categoria' => $categoria ]);
     }
 
     /**
@@ -77,7 +81,15 @@ class GenreGameController extends Controller
      */
     public function update(UpdateGenreGameRequest $request, GenreGame $genreGame)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        $genre = GenreGame::findOrFail($id);
+        $genre->name = $validatedData['name'];
+        $genre->save();
+
+        return redirect()->route('game.genre.edit', $genre->id)->with('success', 'Categoria atualizada com sucesso!');
     }
 
     /**

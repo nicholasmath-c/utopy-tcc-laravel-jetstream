@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Models\CardList;
 use App\Http\Requests\StoreCardListRequest;
