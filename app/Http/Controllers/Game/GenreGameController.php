@@ -82,14 +82,14 @@ class GenreGameController extends Controller
     public function update(UpdateGenreGameRequest $request, GenreGame $genreGame)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255'
+            'nome' => 'required|max:255'
         ]);
 
-        $genre = GenreGame::findOrFail($id);
-        $genre->name = $validatedData['name'];
-        $genre->save();
+        $genreGame::where(['id'=>$request->id])->update([
+            'name' => $request->nome
+        ]);
 
-        return redirect()->route('game.genre.edit', $genre->id)->with('success', 'Categoria atualizada com sucesso!');
+        return redirect()->route('genre-game.index')->with('success', 'Categoria atualizada com sucesso!');
     }
 
     /**

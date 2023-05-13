@@ -32,19 +32,9 @@ Route::middleware([
 
 
 // ************ Admin Routes
-Route::get(
-    '/admin',
-    [AdminController::class, 'index']
-)->name('admin');
-Route::get(
-    '/admin/genre-game',
-    [GenreGameController::class, 'index']
-)->name('game.genre.index');
-Route::get(
-    '/admin/genre-game/create',
-    [GenreGameController::class, 'create']
-)->name('game.genre.create');
-Route::post(
-    '/admin/genre-game/store',
-    [GenreGameController::class, 'store']
-)->name('game.genre.store');
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::resource('genre-game', GenreGameController::class);
+});

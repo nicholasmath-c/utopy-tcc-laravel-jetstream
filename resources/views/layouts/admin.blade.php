@@ -45,7 +45,7 @@
                                 <x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                                     {{ __('Home') }}
                                 </x-nav-link>
-                                <x-nav-link href="{{ route('game.genre.index') }}" :active="request()->routeIs('game.genre.index')">
+                                <x-nav-link href="{{ url('/admin/genre-game') }}" :active="request()->routeIs('game.genre.index')">
                                     {{ __('Categorias') }}
                                 </x-nav-link>
                             </div>
@@ -75,7 +75,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="">
                 {{ $slot }}
             </main>
         </div>

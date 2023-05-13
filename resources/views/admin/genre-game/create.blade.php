@@ -11,10 +11,10 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
                     Cadastro de Categorias
-                    <a href="{{route('game.genre.index')}}" class="btn btn-success btn-sm float-end">Consulta Categorias</a>
+                    <a href="{{url('/admin/genre-game')}}" class="btn btn-success btn-sm float-end">Consulta Categorias</a>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('game.genre.store') }}" >
+                    <form method="post" action="{{ url('admin/genre-game') }}" >
                         @csrf
 
                         <div class="mb-2">

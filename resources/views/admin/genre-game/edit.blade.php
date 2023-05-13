@@ -1,4 +1,3 @@
-
 <x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -11,26 +10,28 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
                     Cadastro de Categorias
-                    <a href="{{route('game.genre.index')}}" class="btn btn-success btn-sm float-end" style="color: rgb(214, 31, 175)">
+                    <a href="{{ url('/admin/genre-game/') }}" class="btn btn-success btn-sm float-end"
+                        style="color: rgb(214, 31, 175)">
                         Consulta Categorias
                     </a>
                     <br>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('game.genre.update') }}" >
+                    <form method="POST" action="{{ url("admin/genre-game/$categoria->id") }}">
+                        {{ method_field('PATCH') }}
                         @csrf
+
 
                         <div class="mb-2">
                             <label for="nome">Nome da categoria</label>
-                            <input
-                                type="text"
-                                name="nome"
-                                id="nome_categoria"
-                                class="form-control"
-                                required
+                            <input type="text" name="id" id="nome_categoria" class="form-control hidden" required
+                                value="{{ $categoria->id }}" />
+                            <input type="text" name="nome" id="nome_categoria" class="form-control" required
                                 value="{{ $categoria->name }}" />
+
                         </div>
-                        <button type="submit" class="btn btn-success" style="padding: 12px; background: #444; color: #fff;">
+                        <button type="submit" class="btn btn-success"
+                            style="padding: 12px; background: #444; color: #fff;">
                             Gravar
                         </button>
                     </form>
