@@ -10,10 +10,16 @@
             <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
                     <h1 class="font-heading text-white text-xl uppercase mb-10">Categoria dos Jogos</h1>
-                    <x-button class="w-auto mb-10 align-center"><a href="{{ url('/admin/genre-game/create') }}" class="">Criar
+                    <x-button class="w-auto mb-10 align-center"><a href="{{ route('genre-game.create') }}" class="">Criar
                             Categoria</a>
                     </x-button>
                 </div>
+
+                @if (session()->has('success'))
+                    <div class="text-xs text-white">
+                        {{session()->get('success')}}
+                    </div>
+                @endif
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -35,7 +41,7 @@
                                     {{ $categoria->name }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    <a href="{{ url("/admin/genre-game/{$categoria->id}/edit") }}" class="font-medium text-white hover:underline">
+                                    <a href="{{ route('genre-game.edit', $categoria->id) }}" class="font-medium text-white hover:underline">
                                         Edit
                                     </a>
                                 </td>
@@ -52,3 +58,4 @@
     </div>
 
 </x-admin-layout>
+

@@ -22,7 +22,7 @@
 
         <div class="mt-3 max-w-xl text-sm text-gray-500">
             <p>
-                {{ __('Quando a autenticação de dois fatores estiver habilitada, você será solicitado a fornecer um token aleatório seguro durante a autenticação. Você pode recuperar este token do seu telefone no aplicativo "Google Authenticator" .') }}
+                {{ __('Quando a autenticação de dois fatores estiver habilitada, você será solicitado a fornecer um token aleatório seguro durante a autenticação. Você pode recuperar este token do seu telefone no aplicativo "Google Authenticator".') }}
             </p>
         </div>
 
@@ -80,14 +80,14 @@
             @if (! $this->enabled)
                 <x-confirms-password wire:then="enableTwoFactorAuthentication">
                     <x-button type="button" wire:loading.attr="disabled">
-                        {{ __('Ativado') }}
+                        {{ __('Ativar') }}
                     </x-button>
                 </x-confirms-password>
             @else
                 @if ($showingRecoveryCodes)
                     <x-confirms-password wire:then="regenerateRecoveryCodes">
                         <x-secondary-button class="mr-3">
-                            {{ __('Regenerar códigos de recuperação') }}
+                            {{ __('Regerar códigos de recuperação') }}
                         </x-secondary-button>
                     </x-confirms-password>
                 @elseif ($showingConfirmation)
@@ -99,7 +99,7 @@
                 @else
                     <x-confirms-password wire:then="showRecoveryCodes">
                         <x-secondary-button class="mr-3">
-                            {{ __('Mostrar códigos de recuperação') }}
+                            {{ __('Mostrar Códigos de Recuperação') }}
                         </x-secondary-button>
                     </x-confirms-password>
                 @endif
@@ -113,7 +113,7 @@
                 @else
                     <x-confirms-password wire:then="disableTwoFactorAuthentication">
                         <x-danger-button wire:loading.attr="disabled">
-                            {{ __('Disabilitar') }}
+                            {{ __('Desabilitar') }}
                         </x-danger-button>
                     </x-confirms-password>
                 @endif
