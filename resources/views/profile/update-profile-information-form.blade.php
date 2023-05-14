@@ -10,7 +10,7 @@
     <x-slot name="form">
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
+            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4 bg-slate-800">
                 <!-- Profile Photo File Input -->
                 <input type="file" class="hidden"
                             wire:model="photo"
@@ -38,7 +38,7 @@
                     </span>
                 </div>
 
-                <x-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
+                <x-secondary-button class="mt-5 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
                     {{ __('Selecionar Uma Nova Foto') }}
                 </x-secondary-button>
 
@@ -83,7 +83,7 @@
                 <p class="text-sm mt-2">
                     {{ __('Seu endereço de email não está verificado.') }}
 
-                    <button type="button" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-main-400" wire:click.prevent="sendEmailVerification">
+                    <button type="button" class="underline text-sm text-gray-600 hover:text-main-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-main-400" wire:click.prevent="sendEmailVerification">
                         {{ __('Clique aqui para enviar novamente a verificação de email.') }}
                     </button>
                 </p>
