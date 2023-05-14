@@ -9,12 +9,16 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <div class=" text-white mb-16">
+                <h1 class="font-heading text-6xl"> <span class=" font-bold "> Crie Sua </span> própria Utopia </h1>
+            </div>
+
             <div class="flex space-x-3">
                 <x-input id="firstname" placeholder="Nome" class="block mt-1 w-full placeholder-gray-400" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="firstname" />
                 <x-input id="lastname" placeholder="Sobrenome" class="block mt-1 w-full placeholder-gray-400" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
             </div>
 
-            <div class="mt-4">
+            <div class="mt-4 ">
                 <x-input id="nickname" placeholder="Apelido" class="block mt-1 w-full placeholder-gray-400" type="text" name="nickname" :value="old('nickname')" required autofocus autocomplete="nickname" />
             </div>
 
@@ -22,11 +26,8 @@
                 <x-input id="email" placeholder="Email" class="block mt-1 w-full placeholder-gray-400" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
 
-            <div class="mt-4">
+            <div class="flex space-x-3 mt-4">
                 <x-input id="password" placeholder="Senha" class="block mt-1 w-full placeholder-gray-400" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
                 <x-input id="password_confirmation" placeholder="Repetir Senha" class="block mt-1 w-full placeholder-gray-400" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 

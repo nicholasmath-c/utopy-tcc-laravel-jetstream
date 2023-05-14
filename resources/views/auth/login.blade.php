@@ -16,7 +16,7 @@
             <h1 class="font-heading text-6xl"> <span class=" font-bold "> Boas-Vindas </span> à sua Utopia </h1>
         </div>
 
-        <div class=" mt-8 mb-16 text-white">
+        <div class=" mt-4 mb-16 text-white">
             <h2> <span class="text-slate-400 "> Descubra mundos incríveis num </span>  universo
                 de projetos independentes! </h2>
         </div>
@@ -54,8 +54,7 @@
             </div>
 
             <div class="flex justify-center mt-8">
-                <p class=" text-white">Não possui uma conta? <a class="text-sm text-white font-bold hover:text-red-500 rounded-md focus:outline-none" href="register">Cadastre-se</a> </p>
-
+                <p class=" text-white">Não possui uma conta? <a class="text-white font-bold hover:text-red-500 rounded-md focus:outline-none" href="register">Cadastre-se</a> </p>
             </div>
 
         </form>
