@@ -93,7 +93,7 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Seu Perfil') }}
+                                {{ __('E') }}
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
@@ -114,7 +114,7 @@
 
                                 <x-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Sair') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
