@@ -30,21 +30,6 @@ return new class extends Migration
                 ->on('genre_games')
                 ->onDelete('cascade');
 
-            $table->unsignedBigInteger('requeriment_minimum_id');
-            $table
-                ->foreign('requeriment_minimum_id')
-                ->references('id')
-                ->on('requeriments_minimum')
-                ->onDelete('cascade');
-
-            $table->unsignedBigInteger('requeriment_recommended_id');
-            $table
-                ->foreign('requeriment_recommended_id')
-                ->references('id')
-                ->on('requeriments_recommended')
-                ->onDelete('cascade');
-
-
             //------- Comuns
             $table->string('platform', 50);
             $table->string('title');

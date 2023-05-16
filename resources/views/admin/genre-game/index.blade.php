@@ -42,7 +42,10 @@
                                 </th>
                                 <td class="px-6 py-4">
                                     <a href="{{ route('genre-game.edit', $categoria->id) }}" class="font-medium text-white hover:underline">
-                                        Edit
+                                        Editar
+                                    </a>
+                                    <a href="{{ route('genre-game.destroy', $categoria->id) }}" class="font-medium text-white hover:underline">
+                                        Excluir
                                     </a>
                                 </td>
                             </tr>

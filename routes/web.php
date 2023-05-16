@@ -29,7 +29,6 @@ Route::middleware([
 
 // ************ Admin Routes
 
-
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::resource('genre-game', GenreGameController::class);

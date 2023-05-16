@@ -13,11 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        // TODO: Criar a migration
-        Schema::create('requeriments_recommended', function (Blueprint $table) {
+        /*
+        TODO:
+        1. Criar a migration
+        */
+        Schema::create('requeriments_minimum', function (Blueprint $table) {
             //------- PK & FK
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('game_id');
+            $table
+                ->foreign('game_id')
+                ->references('id')
+                ->on('games')
+                ->onDelete('cascade');
 
 
             //------- Comuns
@@ -36,6 +45,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requeriments_recommended');
+        Schema::dropIfExists('requeriments_minimum');
     }
 };
