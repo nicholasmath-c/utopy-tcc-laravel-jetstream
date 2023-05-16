@@ -7,13 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
-                    Cadastro de Categorias
-                    <a href="{{ url('/admin/genre-game/') }}" class="btn btn-success btn-sm float-end"
-                        style="color: rgb(214, 31, 175)">
-                        Consulta Categorias
-                    </a>
+                    <h1 class="font-heading text-white text-xl uppercase ">Editar Categorias</h1>
                     <br>
                 </div>
                 <div class="card-body">
@@ -23,17 +19,18 @@
 
 
                         <div class="mb-2">
-                            <label for="nome">Nome da categoria</label>
-                            <input type="text" name="id" id="nome_categoria" class="form-control hidden" required
+                            <input type="text" name="id" id="nome_categoria" class=" form-control hidden" required
                                 value="{{ $categoria->id }}" />
-                            <input type="text" name="nome" id="nome_categoria" class="form-control" required
-                                value="{{ $categoria->name }}" />
 
+                            <input type="text" name="nome" id="nome_categoria" class="flex flex-row justify-between items-center p-3 gap-4 w-52 h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg text-slate-200 focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out form-control form-control" required
+                                value="{{ $categoria->name }}" />
                         </div>
-                        <button type="submit" class="btn btn-success"
-                            style="padding: 12px; background: #444; color: #fff;">
-                            Gravar
-                        </button>
+
+                        <x-button type="submit" class="mt-4">
+                            {{ __('Editar') }}
+                        </x-button>
+
+
                     </form>
                 </div>
             </div>
