@@ -38,7 +38,7 @@ class GenreGameController extends Controller
         ]);
 
         if($categoria)
-            return redirect()->route('genre-game.index');
+            return redirect()->route('genre-game.index')->with('success', 'Categoria criada com sucesso!');
     }
 
     /**

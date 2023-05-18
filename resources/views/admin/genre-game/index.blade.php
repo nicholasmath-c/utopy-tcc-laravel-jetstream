@@ -1,15 +1,9 @@
 <x-admin-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Início') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
-                    <h1 class="font-heading text-white text-xl uppercase mb-10">Categoria dos Jogos</h1>
+                    <h1 class="font-heading text-white text-xl uppercase mb-10">Categoria de Jogos</h1>
                     <x-button class="w-auto mb-10 align-center"><a href="{{ route('genre-game.create') }}"
                             class="">Criar
                             Categoria</a>
@@ -17,7 +11,7 @@
                 </div>
 
                 @if (session()->has('success'))
-                    <div class="text-xs text-white">
+                    <div class="text-sm text-white mb-2">
                         {{ session()->get('success') }}
                     </div>
                 @endif
@@ -47,11 +41,11 @@
                                             class="font-medium text-white hover:underline">
                                             Editar
                                         </a>
-                                        <form action="{{ route('genre-game.destroy', $categoria->id) }}" method="POST" class="delete">
+                                        <form action="{{ route('genre-game.destroy', $categoria->id) }}" method="POST"
+                                            class="delete inline-block ml-2">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit"
-                                                class="font-medium text-rose-500 hover:underline">
+                                            <button type="submit" class="font-medium text-rose-500 hover:underline">
                                                 Excluir
                                             </button>
                                         </form>
