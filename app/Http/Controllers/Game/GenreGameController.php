@@ -4,27 +4,23 @@ namespace App\Http\Controllers\Game;
 
 use App\Http\Controllers\Controller;
 use App\Models\GenreGame;
-use App\Http\Requests\StoreGenreGameRequest;
-use App\Http\Requests\UpdateGenreGameRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\GenreGameRequest;
 
 class GenreGameController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $categoriasGame = GenreGame::all();
+        $categoriasGame = GenreGame::paginate(5);
 
-        return view('admin.genre-game.index', [ 'categoriasGame' => $categoriasGame]);
+        return view('admin.genre-game.index', compact('categoriasGame'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -33,39 +29,30 @@ class GenreGameController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreGenreGameRequest  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(StoreGenreGameRequest $request)
+    public function store(Request $request)
     {
         // -- Salvar categoria
-        $categoria = new GenreGame();
-        $categoria->name = $request->nome;
-        $categoria->save();
+        $categoria = GenreGame::create([
+            'name' => $request->nome
+        ]);
 
-        // -- Obter todas as categorias e redirecionar
-        $categoriasGame = GenreGame::all();
-        return view('admin.genre-game.index', [ 'categoriasGame' => $categoriasGame]);
+        if($categoria)
+            return redirect()->route('genre-game.index');
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Models\GenreGame  $genreGame
-     * @return \Illuminate\Http\Response
      */
-    public function show(GenreGame $genreGame)
+    public function show(string $id)
     {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\GenreGame  $genreGame
-     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(string $id)
     {
         $categoria = GenreGame::findOrFail($id);
 
@@ -74,18 +61,10 @@ class GenreGameController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateGenreGameRequest  $request
-     * @param  \App\Models\GenreGame  $genreGame
-     * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGenreGameRequest $request, GenreGame $genreGame)
+    public function update(Request $request, string $id)
     {
-        $validatedData = $request->validate([
-            'nome' => 'required|max:255'
-        ]);
-
-        $genreGame::where(['id'=>$request->id])->update([
+        GenreGame::where(['id'=>$id])->update([
             'name' => $request->nome
         ]);
 
@@ -94,12 +73,11 @@ class GenreGameController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\GenreGame  $genreGame
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(GenreGame $genreGame)
+    public function destroy(string $id)
     {
-        //
+        GenreGame::destroy($id);
+
+        return redirect()->route('genre-game.index')->with('success', 'Categoria excluída com sucesso!');
     }
 }

@@ -13,10 +13,9 @@
                     <br>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ url("admin/genre-game/$categoria->id") }}">
-                        {{ method_field('PATCH') }}
+                    <form method="POST" action="{{ route("genre-game.update", $categoria->id) }}">
                         @csrf
-
+                        @method('PUT')
 
                         <div class="mb-2">
                             <input type="text" name="id" id="nome_categoria" class=" form-control hidden" required

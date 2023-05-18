@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class GenreGame extends Model
 {
-    use HasFactory;
+    protected $table='genre_games';
+    protected $fillable=['name'];
 }

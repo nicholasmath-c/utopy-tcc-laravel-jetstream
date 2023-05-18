@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Developer;
-use App\Http\Requests\StoreDeveloperRequest;
-use App\Http\Requests\UpdateDeveloperRequest;
+use App\Http\Requests\DeveloperRequest;
 
 class DeveloperController extends Controller
 {

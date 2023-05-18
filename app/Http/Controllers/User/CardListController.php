@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\CardList;
-use App\Http\Requests\StoreCardListRequest;
-use App\Http\Requests\UpdateCardListRequest;
+use App\Http\Requests\CardListRequest;
 
 class CardListController extends Controller
 {

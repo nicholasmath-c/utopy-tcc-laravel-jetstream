@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seal;
-use App\Http\Requests\StoreSealRequest;
-use App\Http\Requests\UpdateSealRequest;
+use App\Http\Requests\SealRequest;
 
 class SealController extends Controller
 {

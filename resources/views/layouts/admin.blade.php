@@ -80,8 +80,13 @@
             </main>
         </div>
 
+        <script src="{{url("assets/js/jquery.js")}}"></script>
+        <script src="{{url("assets/js/script.js")}}"></script>
+
         @stack('modals')
 
         @livewireScripts
+
+
     </body>
 </html>

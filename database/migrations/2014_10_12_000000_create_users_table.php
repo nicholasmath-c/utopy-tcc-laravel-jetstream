@@ -26,7 +26,8 @@ return new class extends Migration
             $table->char('cellphone', 11)->unique();
             $table->string('password');
             $table->string('origin_country', 150)->nullable();
-            $table->text('biography')->nullable()->default('text');
+            $table->text('biography')->nullable();
+            $table->boolean('is_dev')->nullable()->default(false);
             $table->string('profile_photo_path', 248)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

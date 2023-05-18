@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Donation;
-use App\Http\Requests\StoreDonationRequest;
-use App\Http\Requests\UpdateDonationRequest;
+use App\Http\Requests\DonationRequest;
 
 class DonationController extends Controller
 {

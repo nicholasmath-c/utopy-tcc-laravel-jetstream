@@ -22,6 +22,7 @@
                 @endif
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    @csrf
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-white uppercase bg-main-500">
                             <tr>
@@ -40,11 +41,11 @@
                                 <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
                                     {{ $categoria->name }}
                                 </th>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 gap-10">
                                     <a href="{{ route('genre-game.edit', $categoria->id) }}" class="font-medium text-white hover:underline">
                                         Editar
                                     </a>
-                                    <a href="{{ route('genre-game.destroy', $categoria->id) }}" class="font-medium text-white hover:underline">
+                                    <a href="{{ route('genre-game.destroy', $categoria->id) }}" class="delete-button font-medium text-rose-500 hover:underline">
                                         Excluir
                                     </a>
                                 </td>
@@ -52,6 +53,12 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <div class="my-4">
+                        <nav class="text-white">
+                            {{ $categoriasGame->links('pagination::tailwind') }}
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
