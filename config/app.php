@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        'LivePixel\MercadoPago\Providers\MercadoPagoServiceProvider',
     ])->toArray(),
 
     /*
@@ -184,7 +185,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'MP' => 'LivePixel\MercadoPago\Facades\MP',
     ])->toArray(),
 
 ];

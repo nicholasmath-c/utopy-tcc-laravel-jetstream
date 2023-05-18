@@ -11,6 +11,7 @@
         "laravel/jetstream": "^3.1",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "livepixel/mercado-pago": "^1.0",
         "livewire/livewire": "^2.11"
     },
     "require-dev": {

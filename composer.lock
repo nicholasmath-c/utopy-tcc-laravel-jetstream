@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1046f8b2ee0cbecad32d848821e3ca92",
+    "content-hash": "9a4d81fff570016f19fee0de79aee6cc",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -2134,6 +2134,50 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "livepixel/mercado-pago",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livepixel/mercado-pago.git",
+                "reference": "d0be19295beec4a8fb48eff9f21d7fa8da9bc115"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livepixel/mercado-pago/zipball/d0be19295beec4a8fb48eff9f21d7fa8da9bc115",
+                "reference": "d0be19295beec4a8fb48eff9f21d7fa8da9bc115",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LivePixel\\MercadoPago\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rodrigo Maia",
+                    "email": "rodurma@gmail.com"
+                }
+            ],
+            "description": "Mercado Pago API SDK for Laravel",
+            "keywords": [
+                "mercadopago",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/livepixel/mercado-pago/issues",
+                "source": "https://github.com/livepixel/mercado-pago/tree/1.0.1"
+            },
+            "time": "2015-06-24T00:49:19+00:00"
         },
         {
             "name": "livewire/livewire",
