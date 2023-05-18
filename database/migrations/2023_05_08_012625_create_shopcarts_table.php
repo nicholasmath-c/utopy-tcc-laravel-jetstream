@@ -17,12 +17,12 @@ return new class extends Migration
         Schema::create('card_lists', function (Blueprint $table) {
             //------- PK & FK
             $table->id();
-            $table->timestamps();
-
-
 
             //------- Comuns
-            $table->json('games');
+            $table->integer('user_id');
+            $table->integer('game_id');
+            $table->integer('quantity');
+            $table->timestamps();
         });
     }
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\HomeController as AdminController;
 use App\Http\Controllers\Game\GenreGameController;
+use App\Http\Controllers\User\ShopcartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,9 @@ Route::middleware([
 
 
 // ************ Admin Routes
-
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::resource('genre-game', GenreGameController::class);
 });
+
+Route::resource('shopcarts', ShopcartController::class);
