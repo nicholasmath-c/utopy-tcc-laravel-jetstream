@@ -50,24 +50,17 @@
                             <x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                                 {{ __('Home') }}
                             </x-nav-link>
-                            <x-nav-link href="{{ url('/admin/genre-game') }}" :active="request()->routeIs('game.genre.index')">
+                            <x-nav-link href="{{ route('genre-game.index') }}" :active="request()->routeIs('genre-game.index')">
                                 {{ __('Categorias') }}
+                            </x-nav-link>
+                            <x-nav-link href="{{ route('game.index') }}" :active="request()->routeIs('game.index')">
+                                {{ __('Jogos') }}
                             </x-nav-link>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-
-
-        <!-- Page Heading -->
-        @if (isset($header))
-            <header class="bg-slate-800 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
 
         <!-- Page Content -->
         <main class="">

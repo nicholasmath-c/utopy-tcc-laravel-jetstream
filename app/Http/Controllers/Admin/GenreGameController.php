@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Game;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\GenreGame;
@@ -14,9 +14,9 @@ class GenreGameController extends Controller
      */
     public function index()
     {
-        $categoriasGame = GenreGame::paginate(5);
+        $genreGame = GenreGame::paginate(5);
 
-        return view('admin.genre-game.index', compact('categoriasGame'));
+        return view('admin.genre-game.index', compact('genreGame'));
     }
 
     /**
@@ -33,12 +33,12 @@ class GenreGameController extends Controller
     public function store(Request $request)
     {
         // -- Salvar categoria
-        $categoria = GenreGame::create([
+        $genreGame = GenreGame::create([
             'name' => $request->nome
         ]);
 
-        if($categoria)
-            return redirect()->route('genre-game.index')->with('success', 'Categoria criada com sucesso!');
+        if($genreGame)
+            return redirect()->route('genre-game.index')->with('success', 'Gênero criado com sucesso!');
     }
 
     /**
@@ -54,9 +54,9 @@ class GenreGameController extends Controller
      */
     public function edit(string $id)
     {
-        $categoria = GenreGame::findOrFail($id);
+        $genreGame = GenreGame::findOrFail($id);
 
-        return view('admin.genre-game.edit', [ 'categoria' => $categoria ]);
+        return view('admin.genre-game.edit', compact('genreGame'));
     }
 
     /**
@@ -65,10 +65,10 @@ class GenreGameController extends Controller
     public function update(Request $request, string $id)
     {
         GenreGame::where(['id'=>$id])->update([
-            'name' => $request->nome
+            'name' => $request->name
         ]);
 
-        return redirect()->route('genre-game.index')->with('success', 'Categoria atualizada com sucesso!');
+        return redirect()->route('genre-game.index')->with('success', 'Gênero atualizado com sucesso!');
     }
 
     /**
@@ -78,6 +78,6 @@ class GenreGameController extends Controller
     {
         GenreGame::destroy($id);
 
-        return redirect()->route('genre-game.index')->with('success', 'Categoria excluída com sucesso!');
+        return redirect()->route('genre-game.index')->with('success', 'Gênero excluído com sucesso!');
     }
 }
