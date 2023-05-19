@@ -27,9 +27,9 @@
                         </div>
                         <div class="mb-2">
                             <label for="nome">Gênero</label>
-                            <select name="genre_game_id" id="genre_game" class=" text-black bg-slate-600" required>
-                                <option value="">
-                                    -- Selecione uma Opção --
+                            <select name="genre_game_id" id="genre_game" class=" flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white " required>
+                                <option value="" >
+                                    Selecione uma Opção
                                 </option>
                                 @foreach ($genreGame as $genreGames)
                                 <option value="{{$genreGames->id}}">
@@ -47,9 +47,9 @@
                             <input type="file" name="image" id="nome_game" class="form-control" required />
                         </div>
                         <div class="mb-2">
-                            <label for="price">R$</label>
+                            <label for="price">Valor</label>
                             <x-input type="text" name="nome" id="price" data-thousands="." data-decimal=","
-                                data-prefix="R$ " class="form-control" required placeholder="00,00" />
+                                data-prefix="R$" class="form-control" required placeholder="R$00,00"/>
                         </div>
                         <div class="mb-2">
                             <label for="nome">Data de Lançamento</label>
@@ -57,9 +57,9 @@
                         </div>
                         <div class="mb-2">
                             <label for="age_rating">Classificação Etária</label>
-                            <select class="form-control text-black bg-slate-600" id="age_rating" name="age_rating">
+                            <select class="flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white " id="age_rating" name="age_rating">
                                 <option value="">
-                                    -- Selecione uma opção --
+                                     Selecione uma opção
                                 </option>
                                 <option value="L">Livre</option>
                                 <option value="10+">10+</option>
@@ -126,3 +126,4 @@
         });
     </script>
 </x-admin-layout>
+
