@@ -50,14 +50,14 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{-- TODO: CRIAR A RODA DE MOSTRAR O PRODUTO --}}">
+                                                <a href="{{-- TODO: CRIAR A ROTA DE MOSTRAR O PRODUTO --}}">
                                                     {{ $item->product->title }}
                                                 </a>
                                             </td>
                                             <td>R$ {{ $item->product->price }}</td>
                                             <td>
                                                 <form
-                                                    action="{{ route('user.shopcart.update', ['id' => $item->id]) }}"
+                                                    action="{{ route('user.shopcart.update', $item->id, $item->quantity) }}"
                                                     method="POST"
                                                 >
                                                     @csrf

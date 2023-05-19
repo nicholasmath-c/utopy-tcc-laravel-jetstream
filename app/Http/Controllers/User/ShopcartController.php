@@ -60,7 +60,7 @@ class ShopcartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Shopcart $shopcart)
+    public function show($id)
     {
         //
     }
