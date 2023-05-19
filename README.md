@@ -7,14 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Configuração do banco no .env
+## Configuração do .env
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=utopy
 DB_USERNAME=root
-DB_PASSWORD
+DB_PASSWORD=
+
+MP_APP_ID=
+MP_APP_SECRET=
 ```
 
 ## Learning Laravel
