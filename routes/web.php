@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminController;
 use App\Http\Controllers\Admin\GenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
+use App\Http\Controllers\User\ShopCartController;
 
 /*
 |--------------------------------------------------------------------------
