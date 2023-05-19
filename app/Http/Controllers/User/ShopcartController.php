@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopcartController extends Controller
 {
+    public function countShopcart() {
+        return Shopcart::where('user_id', Auth::id())->count();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -31,9 +35,11 @@ class ShopcartController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $data = Shopcart::where('game_id',$id)->where('user_id',  Auth::id())->first();
+        $id = $request->id;
+        // checkar o produto por usuario
+        $data = Shopcart::where('game_id', $id)->where('user_id',  Auth::id())->first();
 
         if ($data)
         {
@@ -45,6 +51,7 @@ class ShopcartController extends Controller
                 'user_id' => Auth::id(),
                 'quantity' => $request->input('quantity')
             ]);
+
             if($categoria) {
                 return redirect()
                     ->route('home.client.shopcart')
