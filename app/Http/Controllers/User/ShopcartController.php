@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Shopcart;
 use Illuminate\Http\Request;
-use App\Http\Requests\ShopcartRequest;
+use App\Models\Shopcart;
+use Illuminate\Support\Facades\Auth;
 
 class ShopcartController extends Controller
 {
@@ -14,7 +14,11 @@ class ShopcartController extends Controller
      */
     public function index()
     {
-        return view('home.client.shopcart');
+        $data = Shopcart::where('user_id', Auth::id())->get();
+
+        return view('home.client.shopcart',[
+            'data' => $data
+        ]);
     }
 
     /**
@@ -22,15 +26,35 @@ class ShopcartController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ShopcartRequest $request)
+    public function store(Request $request, $id)
     {
-        //
+        $data = Shopcart::where('game_id',$id)->where('user_id',  Auth::id())->first();
+
+        if ($data)
+        {
+            $data->quantity = $data->quantity + $request->input('quantity');
+        } else
+        {
+            $data = Shopcart::create([
+                'game_id' => $id,
+                'user_id' => Auth::id(),
+                'quantity' => $request->input('quantity')
+            ]);
+            if($categoria) {
+                return redirect()
+                    ->route('home.client.shopcart')
+                    ->with('success', 'Produto adicionado com sucesso!');
+            }
+        }
+
+        return redirect()
+            ->back()
+            ->with('success', 'Product Added to Shopcart');
     }
 
     /**
@@ -52,16 +76,26 @@ class ShopcartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateShopcartRequest $request, Shopcart $shopcart)
+    public function update(Request $request, Shopcart $shopcart, $id)
     {
-        //
+        Shopcart::where([ 'id' => $id ])->update([
+            'quantity' => $request->input('quantity')
+        ]);
+
+        return redirect()
+            ->route('home.client.shopcart')
+            ->with('success', 'Carrinho atualizado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Shopcart $shopcart)
+    public function destroy(string $id)
     {
-        //
+        GenreGame::destroy($id);
+
+        return redirect()
+            ->route('genre-game.index')
+            ->with('success', 'Produto retirado do carrinho! 😥');
     }
 }

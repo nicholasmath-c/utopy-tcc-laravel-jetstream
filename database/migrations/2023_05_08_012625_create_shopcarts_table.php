@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         // TODO: CRIAR MIGRATION
-        Schema::create('card_lists', function (Blueprint $table) {
+        Schema::create('shopcarts', function (Blueprint $table) {
             //------- PK & FK
             $table->id();
 
             //------- Comuns
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->integer('game_id');
             $table->integer('quantity');
             $table->timestamps();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('card_lists');
+        Schema::dropIfExists('shopcarts');
     }
 };
