@@ -7,8 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="card-header">
+            <div class="bg-slate-800 text-white px-4 py-4 overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="card-header mb-5">
                     Cadastro de Games |
                     <a href="{{ route('game.index') }}" class="btn btn-success btn-sm float-end"
                         style="color: rgb(214, 31, 175)">
@@ -22,12 +22,12 @@
 
                         <div class="mb-2">
                             <label for="nome">Titulo</label>
-                            <input type="text" name="nome" id="titulo_jogo" class="form-control" required
-                                placeholder="CS 1.6" />
+                            <x-input type="text" name="nome" id="titulo_jogo" class="form-control" required />
+
                         </div>
                         <div class="mb-2">
                             <label for="nome">Gênero</label>
-                            <select name="genre_game_id" id="genre_game" required>
+                            <select name="genre_game_id" id="genre_game" class=" text-black bg-slate-600" required>
                                 <option value="">
                                     -- Selecione uma Opção --
                                 </option>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="mb-2">
                             <label for="nome">Descrição</label>
-                            <input type="text" name="description" id="">
+                            <x-input type="text" name="description" id=""/>
                         </div>
                         <div class="mb-2">
                             <label for="image">Imagem</label>
@@ -48,16 +48,16 @@
                         </div>
                         <div class="mb-2">
                             <label for="price">R$</label>
-                            <input type="text" name="nome" id="price" data-thousands="." data-decimal=","
-                                data-prefix="R$ " class="form-control" required placeholder="CS 1.6" />
+                            <x-input type="text" name="nome" id="price" data-thousands="." data-decimal=","
+                                data-prefix="R$ " class="form-control" required placeholder="00,00" />
                         </div>
                         <div class="mb-2">
                             <label for="nome">Data de Lançamento</label>
-                            <input type="date" name="release_date" id="release_date" class="form-control" required />
+                            <input type="date" name="release_date" id="release_date" class="form-control text-black" required />
                         </div>
                         <div class="mb-2">
                             <label for="age_rating">Classificação Etária</label>
-                            <select class="form-control" id="age_rating" name="age_rating">
+                            <select class="form-control text-black bg-slate-600" id="age_rating" name="age_rating">
                                 <option value="">
                                     -- Selecione uma opção --
                                 </option>
@@ -71,47 +71,46 @@
                         </div>
 
                         <div class="mb-2">
-                            <div class="mb-2">
+                            <div class="mb-4">
                                 <h4>Requisitos Minimos</h4>
                                 <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <label for="age_rating">CPU:</label>
+                                <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <label for="age_rating">RAM:</label>
+                                <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <label for="age_rating">Armazenamento Mínimo:</label>
+                                <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <label for="age_rating">Sistema Operacional:</label>
+                                <x-input type="text" class="form-control" name="" id="" />
                             </div>
-                            <hr>
-                            <div class="mb-2">
+                            <hr class="">
+                            <div class=" mt-4 mb-2">
                                 <h4>Requisitos Recomendados</h4>
                                 <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <label for="age_rating">CPU:</label>
+                                <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <label for="age_rating">RAM:</label>
+                                <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <label for="age_rating">Armazenamento Mínimo:</label>
+                                <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">GPU:</label>
-                                <input type="text" class="form-control" name="" id="" />
+                                <label for="age_rating">Sistema Operacional:</label>
+                                <x-input type="text" class="form-control" name="" id="" />
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success"
-                            style="padding: 12px; background: #444; color: #fff;">
-                            Gravar
-                        </button>
+                        <x-button type="submit" class="btn btn-success"> Gravar </x-button>
+
+
                     </form>
                 </div>
             </div>

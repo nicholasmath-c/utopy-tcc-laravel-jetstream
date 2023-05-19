@@ -8,7 +8,7 @@
     </x-slot>
 
     <x-slot name="content">
-        <div class="max-w-xl text-sm text-gray-500">
+        <div class="max-w-xl text-sm text-gray-200">
             {{ __('Se necessário, você pode sair de todas as suas outras sessões do navegador em todos os seus dispositivos. Algumas de suas sessões recentes estão listadas abaixo; no entanto, esta lista pode não ser exaustiva. Se você achar que sua conta foi comprometida, você também deve atualizar sua senha.') }}
         </div>
 

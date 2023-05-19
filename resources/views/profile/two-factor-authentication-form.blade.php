@@ -20,7 +20,7 @@
             @endif
         </h3>
 
-        <div class="mt-3 max-w-xl text-sm text-gray-500">
+        <div class="mt-3 max-w-xl text-sm text-gray-200">
             <p>
                 {{ __('Quando a autenticação de dois fatores estiver habilitada, você será solicitado a fornecer um token aleatório seguro durante a autenticação. Você pode recuperar este token do seu telefone no aplicativo "Google Authenticator".') }}
             </p>
