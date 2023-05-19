@@ -36,3 +36,7 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::resource('user/shopcarts', ShopcartController::class);
+
+Route::get('/shop', function (){
+    return view('product.shop');
+});

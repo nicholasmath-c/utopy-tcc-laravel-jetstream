@@ -7,6 +7,7 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './node_modules/tw-elements/dist/js/**/*.js'
     ],
 
     theme: {
@@ -57,6 +58,7 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('@tailwindcss/aspect-ratio'), require("tw-elements/dist/plugin.cjs")],
+    darkMode: "class"
 };
 
