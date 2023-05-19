@@ -34,4 +34,4 @@ Route::prefix('admin')->group(function () {
     Route::resource('genre-game', GenreGameController::class);
 });
 
-Route::resource('shopcarts', ShopcartController::class);
+Route::resource('user/shopcarts', ShopcartController::class);
