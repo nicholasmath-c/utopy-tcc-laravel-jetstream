@@ -27,39 +27,46 @@
                         </div>
                         <div class="mb-2">
                             <label for="nome">Gênero</label>
-                            <select name="genre_game_id" id="genre_game" class=" flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white " required>
-                                <option value="" >
+                            <select name="genre_game_id" id="genre_game"
+                                class=" flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
+                                required>
+                                <option value="">
                                     Selecione uma Opção
                                 </option>
                                 @foreach ($genreGame as $genreGames)
-                                <option value="{{$genreGames->id}}">
-                                    {{$genreGames->name}}
-                                </option>
+                                    <option value="{{ $genreGames->id }}">
+                                        {{ $genreGames->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="mb-2">
                             <label for="nome">Descrição</label>
-                            <x-input type="text" name="description" id=""/>
+                            <x-input type="text" name="description" id="" />
                         </div>
                         <div class="mb-2">
                             <label for="image">Imagem</label>
-                            <input type="file" name="image" id="nome_game" class="form-control" required />
+                            <input type="file" name="image" id="nome_game" class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
+                                required />
                         </div>
                         <div class="mb-2">
                             <label for="price">Valor</label>
-                            <x-input type="text" name="nome" id="price" data-thousands="." data-decimal=","
-                                data-prefix="R$" class="form-control" required placeholder="R$00,00"/>
+                            <x-input type="text" name="price" id="price" class="form-control" required
+                                placeholder="R$0,00" onkeyup="formatarValor()" maxlength="12" />
                         </div>
                         <div class="mb-2">
                             <label for="nome">Data de Lançamento</label>
-                            <input type="date" name="release_date" id="release_date" class="form-control text-black" required />
+                            <input type="date" name="release_date" id="release_date"
+                                class="flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white"
+                                required />
                         </div>
                         <div class="mb-2">
                             <label for="age_rating">Classificação Etária</label>
-                            <select class="flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white " id="age_rating" name="age_rating">
+                            <select
+                                class="flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
+                                id="age_rating" name="age_rating">
                                 <option value="">
-                                     Selecione uma opção
+                                    Selecione uma opção
                                 </option>
                                 <option value="L">Livre</option>
                                 <option value="10+">10+</option>
@@ -108,8 +115,7 @@
                             </div>
                         </div>
 
-                        <x-button type="submit" class="btn btn-success"> Gravar </x-button>
-
+                        <x-button type="submit" class="btn btn-success" onkeydown="desformatarValor()" > Gravar </x-button>
 
                     </form>
                 </div>
@@ -120,10 +126,32 @@
     </div>
     </div>
 
-    <script type="text/javascript">
-        $("#price").mask('#.##0,00', {
-            reverse: true
-        });
-    </script>
 </x-admin-layout>
 
+<script>
+    function formatarValor() {
+        var input = document.getElementById("price");
+        var valor = input.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+        var valorFormatado = "";
+
+        if (valor.length > 2) {
+            valorFormatado = "R$ " + Number(valor.substr(0, valor.length - 2)).toLocaleString("pt-BR") + "," + valor
+                .substr(-2);
+        } else if (valor.length === 2) {
+            valorFormatado = "R$ 0," + valor;
+        } else if (valor.length === 1) {
+            valorFormatado = "R$ 0,0" + valor;
+        } else {
+            valorFormatado = "R$ 0,00";
+        }
+
+        input.value = valorFormatado;
+    }
+
+    function desformatarValor (){
+        var input = document.getElementById("price");
+        var valor = input.value.replace(/[^\d,]/g, "").replace(",", ".") // Remove todos os caracteres não numéricos
+
+        input.value = valor;
+    }
+</script>

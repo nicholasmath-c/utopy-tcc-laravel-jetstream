@@ -32,7 +32,7 @@
             </div>
 
             <div class="mt-4">
-                <x-input id="cellphone" placeholder="Celular" class="block mt-1 w-full placeholder-gray-400" type="text" name="cellphone" :value="old('cellphone')" required autofocus autocomplete="cellphone"/>
+                <x-input id="cellphone" placeholder="Celular" onkeyup="formatarTelefone()" class="block mt-1 w-full placeholder-gray-400" type="text" name="cellphone" :value="old('cellphone')" required autofocus autocomplete="cellphone" maxlength="15" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -64,3 +64,22 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+
+<script>
+
+function formatarTelefone() {
+  var input = document.getElementById("cellphone");
+  var telefone = input.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+
+  if (telefone.length > 2 && telefone.length <= 7) {
+    telefone = telefone.replace(/^(\d{2})(\d+)/, "($1) $2");
+  } else if (telefone.length > 7) {
+    telefone = telefone.replace(/^(\d{2})(\d{4,5})(\d+)/, "($1) $2-$3");
+  }
+
+  input.value = telefone;
+}
+
+
+
+</script>
