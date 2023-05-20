@@ -32,7 +32,7 @@
     <x-banner />
 
     <div class="min-h-screen bg-slate-900">
-        <nav x-data="{ open: false }" class="bg-slate-900 border-b border-rose-500">
+        <nav x-data="{ open: false }" class="bg-slate-900 border-b border-main-500">
             <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
@@ -54,11 +54,11 @@
                             <x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                                 {{ __('Home') }}
                             </x-nav-link>
-                            <x-nav-link href="{{ route('genre-game.index') }}" :active="request()->routeIs('genre-game.index')">
-                                {{ __('Categorias') }}
-                            </x-nav-link>
                             <x-nav-link href="{{ route('game.index') }}" :active="request()->routeIs('game.index')">
                                 {{ __('Jogos') }}
+                            </x-nav-link>
+                            <x-nav-link href="{{ route('genre-game.index') }}" :active="request()->routeIs('genre-game.index')">
+                                {{ __('Gêneros de Jogos') }}
                             </x-nav-link>
                         </div>
                     </div>

@@ -17,13 +17,25 @@
                     <br>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('game.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('game.store') }}" enctype="multipart/form-data" onsubmit="desformatarValor()">
                         @csrf
 
                         <div class="mb-2">
                             <label for="nome">Titulo</label>
-                            <x-input type="text" name="nome" id="titulo_jogo" class="form-control" required />
-
+                            <x-input type="text" name="title" id="title" class="form-control" required />
+                        </div>
+                        <div class="mb-2">
+                            <label for="nome">Desenvolvedor</label>
+                            <select name="developer_id" id="developer" class=" flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white " required>
+                                <option value="" >
+                                    Selecione uma Opção
+                                </option>
+                                @foreach ($dev as $devs)
+                                <option value="{{$devs->id}}">
+                                    {{$devs->firstname}} {{$devs->lastname}} ({{$devs->nickname}})
+                                </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-2">
                             <label for="nome">Gênero</label>
@@ -42,11 +54,11 @@
                         </div>
                         <div class="mb-2">
                             <label for="nome">Descrição</label>
-                            <x-input type="text" name="description" id="" />
+                            <x-input type="text" name="description" id="description"/>
                         </div>
                         <div class="mb-2">
                             <label for="image">Imagem</label>
-                            <input type="file" name="image" id="nome_game" class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
+                            <input type="file" name="image" id="image" class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
                                 required />
                         </div>
                         <div class="mb-2">
@@ -89,7 +101,7 @@
                                 <label for="age_rating">RAM:</label>
                                 <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">Armazenamento Mínimo:</label>
+                                <label for="age_rating">Armazenamento:</label>
                                 <x-input type="text" class="form-control" name="" id="" />
 
                                 <label for="age_rating">Sistema Operacional:</label>
@@ -107,7 +119,7 @@
                                 <label for="age_rating">RAM:</label>
                                 <x-input type="text" class="form-control" name="" id="" />
 
-                                <label for="age_rating">Armazenamento Mínimo:</label>
+                                <label for="age_rating">Armazenamento:</label>
                                 <x-input type="text" class="form-control" name="" id="" />
 
                                 <label for="age_rating">Sistema Operacional:</label>
@@ -115,7 +127,7 @@
                             </div>
                         </div>
 
-                        <x-button type="submit" class="btn btn-success" onkeydown="desformatarValor()" > Gravar </x-button>
+                        <x-button type="submit" class="btn btn-success"> Gravar </x-button>
 
                     </form>
                 </div>

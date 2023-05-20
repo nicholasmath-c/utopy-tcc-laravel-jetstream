@@ -61,4 +61,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function game(){
+        return $this->hasMany(Game::class, 'id');
+    }
 }
