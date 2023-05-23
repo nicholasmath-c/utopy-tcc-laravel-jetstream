@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class RequerimentsRecommended extends Model
 {
-    protected $table = 'requeriments_minimum';
+    protected $table = 'requeriments_recommended';
     protected $fillable = ['game_id', 'os', 'cpu', 'ram', 'gpu', 'storage'];
 
     public function game()

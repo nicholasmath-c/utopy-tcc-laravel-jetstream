@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'nicholasmatheus.costa@hotmail.com',
             'cellphone' => '11956523233',
             'password' => '12345678',
-            'is_dev' => true
+            'user_type' => 1
         ]);
     }
 }

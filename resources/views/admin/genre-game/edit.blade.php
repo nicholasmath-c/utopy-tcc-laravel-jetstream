@@ -15,8 +15,8 @@
                             <input type="text" name="id" class=" form-control hidden"
                                 required value="{{ $genreGame->id }}" />
 
-                            <input type="text" name="name"
-                                class="flex flex-row justify-between items-center p-3 gap-4 w-52 h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg text-slate-200 focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out form-control form-control"
+                            <x-input type="text" name="name"
+                                class=""
                                 required value="{{ $genreGame->name }}" />
                         </div>
 

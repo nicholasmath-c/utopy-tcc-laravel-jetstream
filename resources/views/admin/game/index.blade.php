@@ -85,7 +85,7 @@
                                         {{$games->age_rating}}
                                     </th>
                                     <td class="px-6 py-4 gap-10">
-                                        <a href=""
+                                        <a href="{{route('game.edit', $games->id)}}"
                                             class="font-medium text-white hover:underline">
                                             Editar
                                         </a>
