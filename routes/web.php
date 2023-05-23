@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminController;
 use App\Http\Controllers\Admin\GenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
-use App\Http\Controllers\User\ShopCartController;
+use App\Http\Controllers\User\ShopcartController;
+use App\Http\Controllers\Shop\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,14 @@ Route::prefix('admin')->group(function () {
     Route::resource('game', AdminGameController::class);
 });
 
-Route::resource('user/shopcarts', ShopcartController::class);
+Route::prefix('user')->group(function () {
+    Route::resource('/shopcarts', ShopcartController::class);
+});
+
+Route::prefix('shop')->group(function () {
+    Route::resource('/', ShopController::class);
+    Route::get('/game-page', function () {
+        return view('shop.game-page');
+    });
+});
+
