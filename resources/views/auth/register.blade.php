@@ -6,7 +6,7 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" onsubmit="desformatarValor()">
             @csrf
 
             <div class=" text-white mb-16">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="mt-4">
-                <x-input id="cellphone" placeholder="Celular" onkeyup="formatarTelefone()" class="block mt-1 w-full placeholder-gray-400" type="text" name="cellphone" :value="old('cellphone')" required autofocus autocomplete="cellphone" maxlength="15" />
+                <x-input id="cellphone" placeholder="Celular" onkeyup="formatarTelefone()" class="block mt-1 w-full placeholder-gray-400" type="text" name="cellphone" :value="old('cellphone')" required autofocus autocomplete="cellphone" maxlength="11" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
