@@ -97,21 +97,26 @@
                                                 Excluir
                                             </button>
                                         </form>
-                                        <button
-                                            class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                                            type="button" data-te-collapse-init data-te-ripple-init
-                                            data-te-ripple-color="light" data-te-target="#collapseExample"
-                                            aria-expanded="false" aria-controls="collapseExample">
-                                            Button with data-te-target
-                                        </button>
-                                        <div class="!visible hidden" id="collapseExample" data-te-collapse-item>
-                                            <div
-                                                class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 dark:text-neutral-50">
-                                                Some placeholder content for the collapse component. This panel is
-                                                hidden by default but revealed when the user activates the relevant
-                                                trigger.
+                                        <button id='btnRm' data-game='{{ $games->id }}'
+                                            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Abrir
+                                            Popup</button>
+
+                                        <div id="popup"
+                                            class="game{{ $games->id }} fixed inset-0 flex items-center justify-center z-10 hidden">
+                                            <!-- Overlay -->
+                                            <div class="fixed inset-0 bg-gray-900 opacity-75"></div>
+
+                                            <!-- Conteúdo do Popup -->
+                                            <div class="relative bg-white rounded-lg p-8">
+                                                <h2 class="text-2xl font-bold mb-4">Título do Popup</h2>
+                                                <p>Conteúdo do Popup vai aqui...</p>
+                                                <div class="mt-6 flex justify-end">
+                                                    <button onclick="closePopup()"
+                                                        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Fechar</button>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -136,14 +141,18 @@
         return confirm('Deseja realmente excluir esse jogo?');
     });
 
-    import {
-        Collapse,
-        Ripple,
-        initTE,
-    } from "tw-elements";
-
-    initTE({
-        Collapse,
-        Ripple
+    $('#btnRm').click(function(e) {
+        var gameClass = e.currentTarget.dataset.game;
+        $(`.game${gameClass}`).removeClass('hidden');
     });
+
+    /*function openPopup() {
+        var popup = document.getElementById("popup");
+        popup.classList.remove("hidden");
+    }*/
+
+    function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.classList.add("hidden");
+    };
 </script>
