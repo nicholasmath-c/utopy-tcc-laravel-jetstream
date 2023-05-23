@@ -106,17 +106,20 @@ class AdminGameController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $game = Game::where(['id'=>$id])->first();
+
         if($request->hasFile('image'))
         {
             $destination_path = 'public/img/games_img';
             $image = $request->file('image');
             $image_name = $image->getClientOriginalName();
             $path = $request->file('image')->storeAs($destination_path, $image_name);
-
-            $game->image = $image_name;
+        }
+        else{
+            $image_name = $game->image;
         }
 
-        $game = Game::where(['id'=>$id])->update([
+        $game->update([
             'developer_id' => $request->developer_id,
             'genre_game_id' => $request->genre_game_id,
             'title' => $request->title,

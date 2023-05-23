@@ -80,6 +80,13 @@ function formatarTelefone() {
   input.value = telefone;
 }
 
+function desformatarValor() {
+    var input = document.getElementById("cellphone");
+    var valor = input.value.replace(/[^\d]/g, ""); // Remove all non-numeric characters
+
+    input.value = valor;
+}
+
 
 
 </script>

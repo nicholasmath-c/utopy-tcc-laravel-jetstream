@@ -24,7 +24,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/', function () {
-        return view('home');
+        return view('home.home');
     })->name('home');
 });
 
@@ -37,7 +37,3 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::resource('user/shopcarts', ShopcartController::class);
-
-Route::get('/shop', function (){
-    return view('product.shop');
-});
