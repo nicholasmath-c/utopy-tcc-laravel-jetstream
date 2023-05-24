@@ -107,7 +107,7 @@
                 </a>
                 <a href="#" class="group">
                   <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="{{url("img/games_img/CelesteCape.png")}}">
+                    <img src="{{url("img/games_img/CelesteCape.png")}}" class="h-full w-full object-cover object-center group-hover:opacity-75">
                   </div>
                   <h2 class="mt-2 text-base text-gray-400"> Jogo Base </h2>
                   <h3 class="mt-3 text-lg text-white">Celeste</h3>
@@ -115,7 +115,7 @@
                 </a>
                 <a href="#" class="group">
                   <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="{{url("img/games_img/DredgeCape.webp")}}">
+                    <img src="{{url("img/games_img/DredgeCape.webp")}}" class="h-full w-full object-cover object-center group-hover:opacity-75">
                   </div>
                   <h2 class="mt-2 text-base text-gray-400"> Jogo base </h2>
                   <h3 class="mt-3 text-lg text-white">Dredge</h3>
