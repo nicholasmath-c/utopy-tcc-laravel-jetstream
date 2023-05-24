@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -16,6 +18,8 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -28,7 +32,7 @@
     <x-banner />
 
     <div class="min-h-screen bg-slate-900">
-        <nav x-data="{ open: false }" class="bg-slate-900 border-b border-rose-500">
+        <nav x-data="{ open: false }" class="bg-slate-900 border-b border-main-500">
             <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
@@ -50,11 +54,11 @@
                             <x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                                 {{ __('Home') }}
                             </x-nav-link>
-                            <x-nav-link href="{{ route('genre-game.index') }}" :active="request()->routeIs('genre-game.index')">
-                                {{ __('Categorias') }}
-                            </x-nav-link>
                             <x-nav-link href="{{ route('game.index') }}" :active="request()->routeIs('game.index')">
                                 {{ __('Jogos') }}
+                            </x-nav-link>
+                            <x-nav-link href="{{ route('genre-game.index') }}" :active="request()->routeIs('genre-game.index')">
+                                {{ __('Gêneros de Jogos') }}
                             </x-nav-link>
                         </div>
                     </div>

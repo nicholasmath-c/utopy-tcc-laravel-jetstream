@@ -24,7 +24,7 @@
                         <!--First item-->
                         <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="https://assets.xboxservices.com/assets/c3/ba/c3badfea-655f-4ddb-a037-704e5cf27930.jpg?n=488123_GLP-Page-Hero-1084_1920x1080.jpg"
+                            <img src="{{url("img/games_img/SilkSongBanner.jpg")}}"
                                 class="block w-full" alt="..." />
                             <div class="absolute left-[35%] bottom-5 hidden py-5 text-center text-white md:block ">
                                 <h5 class="text-xl w-96 align-center">Hornet, princesa protetora de Hallownest, encontra-se sozinha em um
@@ -35,7 +35,7 @@
                         <!--Second item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="https://1upinfinite.com/wp-content/uploads/2021/10/ori-and-the-blind-forest-definitive-edition-switch.jpg"
+                            <img src="{{url("img/games_img/OriBanner.jpg")}}"
                                 class="block w-full" alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
                                 <h5 class="text-xl">Ori and the Blind Forest conta a história de um jovem órfão
@@ -45,10 +45,10 @@
                         <!--Third item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="https://mobimg.b-cdn.net/v3/fetch/ca/cafbe6f7db1439b61bb0af9286e61a68.jpeg"
+                            <img src="{{url("img/games_img/CelesteBanner.jpeg")}}"
                                 class="block w-full" alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                                <h5 class="text-xl">Celeste description</h5>
+                                <h5 class="text-xl">Ajude Madeline a sobreviver à sua jornada para o topo da Montanha Celeste</h5>
                             </div>
                         </div>
                     </div>
@@ -93,33 +93,33 @@
                   <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                     <img src="{{url("img/games_img/silksong.webp")}}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
                   </div>
-                  <h2 class="mt-2 text-sm text-gray-400"> Jogo base </h2>
-                  <h3 class="mt-3 text-sm text-white">Earthen Bottle</h3>
-                  <p class="mt-1 text-lg font-medium text-white">$48</p>
+                  <h2 class="mt-2 text-base text-gray-400">Jogo base</h2>
+                  <h3 class="mt-3 text-lg text-white">SilkSong</h3>
+                  <p class="mt-1 text-lg font-medium text-white">$20</p>
                 </a>
                 <a href="#" class="group">
                   <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                     <img src="{{url("img/games_img/OriAndTheBlindForest.jpg")}}" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
                   </div>
-                  <h2 class="mt-2 text-sm text-gray-400"> Jogo base </h2>
-                  <h3 class="mt-3 text-sm text-white">Nomad Tumbler</h3>
-                  <p class="mt-1 text-lg font-medium text-white">$35</p>
+                  <h2 class="mt-2 text-base text-gray-400"> Jogo base </h2>
+                  <h3 class="mt-3 text-lg text-white">Ori and the Blind Forest</h3>
+                  <p class="mt-1 text-lg font-medium text-white">$30</p>
                 </a>
                 <a href="#" class="group">
                   <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    <img src="{{url("img/games_img/CelesteCape.png")}}" class="h-full w-full object-cover object-center group-hover:opacity-75">
                   </div>
-                  <h2 class="mt-2 text-sm text-gray-400"> Jogo base </h2>
-                  <h3 class="mt-3 text-sm text-white">Focus Paper Refill</h3>
+                  <h2 class="mt-2 text-base text-gray-400"> Jogo Base </h2>
+                  <h3 class="mt-3 text-lg text-white">Celeste</h3>
                   <p class="mt-1 text-lg font-medium text-white">$89</p>
                 </a>
                 <a href="#" class="group">
                   <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    <img src="{{url("img/games_img/DredgeCape.webp")}}" class="h-full w-full object-cover object-center group-hover:opacity-75">
                   </div>
-                  <h2 class="mt-2 text-sm text-gray-400"> Jogo base </h2>
-                  <h3 class="mt-3 text-sm text-white">Machined Mechanical Pencil</h3>
-                  <p class="mt-1 text-lg font-medium text-white">$35</p>
+                  <h2 class="mt-2 text-base text-gray-400"> Jogo base </h2>
+                  <h3 class="mt-3 text-lg text-white">Dredge</h3>
+                  <p class="mt-1 text-lg font-medium text-white">$25</p>
                 </a>
 
                 <!-- More products... -->

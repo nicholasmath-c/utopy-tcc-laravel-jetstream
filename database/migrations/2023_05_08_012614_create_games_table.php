@@ -20,7 +20,7 @@ return new class extends Migration
             $table
                 ->foreign('developer_id')
                 ->references('id')
-                ->on('developers')
+                ->on('users')
                 ->onDelete('cascade');
 
             $table->unsignedBigInteger('genre_game_id');

@@ -10,15 +10,23 @@ class Game extends Model
     protected $table = 'games';
     protected $fillable = ['developer_id', 'genre_game_id', 'title', 'description', 'image', 'price', 'release_date', 'age_rating'];
 
-    public function relGenreGame(){
-        return $this->hasOne('App\Models\GenreGame', 'id', 'genre_game_id');
+    public function developer()
+    {
+        return $this->hasOne(User::class, 'id', 'developer_id');
     }
 
-    public function relRequerimentsMinimum(){
-        return $this->hasOne('App\Models\RequerimentsMinimum', 'id', 'requeriments_minimum_id');
+    public function genreGame()
+    {
+        return $this->hasOne(GenreGame::class, 'id', 'genre_game_id');
     }
 
-    public function relRequerimentsRecommended(){
-        return $this->hasOne('App\Models\RequerimentsRecommended', 'id', 'requeriments_recommended_id');
+    public function requerimentsMinimum(): HasOne
+    {
+        return $this->hasOne(RequerimentsMinimum::class, 'id', 'requeriments_minimum_id');
+    }
+
+    public function requerimentsRecommended(): HasOne
+    {
+        return $this->hasOne(RequerimentsRecommended::class, 'id', 'recommended');
     }
 }

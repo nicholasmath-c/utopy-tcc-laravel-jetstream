@@ -15,6 +15,13 @@
                     </div>
                 @endif
 
+                @if (isset($errors) && count($errors) > 0)
+                    <div class="text-sm text-main-500 mb-2">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}<br>
+                        @endforeach
+                    </div>
+                @endif
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     @csrf
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -44,7 +51,7 @@
                                             class="delete inline-block ml-2">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="font-medium text-rose-500 hover:underline">
+                                            <button type="submit" class="font-medium text-main-500 hover:underline">
                                                 Excluir
                                             </button>
                                         </form>
