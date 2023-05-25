@@ -45,7 +45,7 @@
                         <!--Third item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{url("img/games_img/Capa_Jogos_indies.jpg")}}"
+                            <img src="{{url("img/games_img/CelesteBanner.jpeg")}}"
                                 class="block w-full" alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
                                 <h5 class="text-xl">Ajude Madeline a sobreviver à sua jornada para o topo da Montanha Celeste</h5>
@@ -99,7 +99,7 @@
                 </a>
                 <a href="#" class="group">
                   <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="{{url("img/games_img/OriAndTheBlindForest.jpg")}}" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    <img src="{{url("img/games_img/OriAndTheBlindForest2.jpeg")}}" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
                   </div>
                   <h2 class="mt-2 text-base text-gray-400"> Jogo base </h2>
                   <h3 class="mt-3 text-lg text-white">Ori and the Blind Forest</h3>
