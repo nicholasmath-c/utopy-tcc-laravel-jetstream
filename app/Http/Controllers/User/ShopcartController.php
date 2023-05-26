@@ -20,7 +20,7 @@ class ShopcartController extends Controller
     {
         $data = Shopcart::where('user_id', Auth::id())->get();
 
-        return view('home.client.shopcart',[
+        return view('client.shopcart',[
             'data' => $data
         ]);
     }
