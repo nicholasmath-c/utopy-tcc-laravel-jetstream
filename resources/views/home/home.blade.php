@@ -24,7 +24,7 @@
                         <!--First item-->
                         <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{url("img/games_img/SilkSongBanner.jpg")}}"
+                            <img src="{{url("storage/img/games_img/SilkSongBanner.jpg")}}"
                                 class="block w-full" alt="..." />
                             <div class="absolute left-[35%] bottom-5 hidden py-5 text-center text-white md:block ">
                                 <h5 class="text-xl w-96 align-center">Hornet, princesa protetora de Hallownest, encontra-se sozinha em um
@@ -35,7 +35,7 @@
                         <!--Second item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{url("img/games_img/OriBanner.jpg")}}"
+                            <img src="{{url("storage/img/games_img/OriBanner.jpg")}}"
                                 class="block w-full" alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
                                 <h5 class="text-xl">Ori and the Blind Forest conta a história de um jovem órfão
@@ -45,7 +45,7 @@
                         <!--Third item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{url("img/games_img/CelesteBanner.jpeg")}}"
+                            <img src="{{url("storage/img/games_img/CelesteBanner.jpeg")}}"
                                 class="block w-full" alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
                                 <h5 class="text-xl">Ajude Madeline a sobreviver à sua jornada para o topo da Montanha Celeste</h5>
@@ -89,38 +89,16 @@
                 <h2 class=" mb-4 text-2xl font-bold tracking-tight text-white">Ultimos lançamentos</h2>
 
               <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                <a href="#" class="group">
-                  <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="{{url("img/games_img/silksong.webp")}}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
-                  </div>
-                  <h2 class="mt-2 text-base text-gray-400">Jogo base</h2>
-                  <h3 class="mt-3 text-lg text-white">SilkSong</h3>
-                  <p class="mt-1 text-lg font-medium text-white">$20</p>
-                </a>
-                <a href="#" class="group">
-                  <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="{{url("img/games_img/OriAndTheBlindForest2.jpeg")}}" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-                  </div>
-                  <h2 class="mt-2 text-base text-gray-400"> Jogo base </h2>
-                  <h3 class="mt-3 text-lg text-white">Ori and the Blind Forest</h3>
-                  <p class="mt-1 text-lg font-medium text-white">$30</p>
-                </a>
-                <a href="#" class="group">
-                  <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="{{url("img/games_img/CelesteCape.png")}}" class="h-full w-full object-cover object-center group-hover:opacity-75">
-                  </div>
-                  <h2 class="mt-2 text-base text-gray-400"> Jogo Base </h2>
-                  <h3 class="mt-3 text-lg text-white">Celeste</h3>
-                  <p class="mt-1 text-lg font-medium text-white">$89</p>
-                </a>
-                <a href="#" class="group">
-                  <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="{{url("img/games_img/DredgeCape.webp")}}" class="h-full w-full object-cover object-center group-hover:opacity-75">
-                  </div>
-                  <h2 class="mt-2 text-base text-gray-400"> Jogo base </h2>
-                  <h3 class="mt-3 text-lg text-white">Dredge</h3>
-                  <p class="mt-1 text-lg font-medium text-white">$25</p>
-                </a>
+                @foreach ($game as $games)
+                <a href="{{route('product', ['id' => $games->id])}}" class="group">
+                    <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                      <img src="{{ asset("storage/img/games_img/$games->image") }}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                    </div>
+                    <h2 class="mt-2 text-base text-gray-400">{{ $games->genreGame->name }}</h2>
+                    <h3 class="mt-3 text-lg text-white">{{ $games->title }}</h3>
+                    <p class="mt-1 text-lg font-medium text-white">$20</p>
+                  </a>
+                @endforeach
 
                 <!-- More products... -->
               </div>

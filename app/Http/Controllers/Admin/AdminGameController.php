@@ -9,6 +9,7 @@ use App\Models\GenreGame;
 use App\Models\RequerimentsMinimum;
 use App\Models\RequerimentsRecommended;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminGameController extends Controller
 {
@@ -19,7 +20,14 @@ class AdminGameController extends Controller
     {
         $game = Game::paginate(5);
 
-        return view('admin.game.index', compact('game'));
+        $user = Auth::user();
+
+        if($user->user_type == 2){
+            return "<h1>Você não possui permissão para acessa a área administrativa do sistema.</h1>";
+        }
+        else{
+            return view('admin.game.index', compact('game'));
+        }
     }
 
     /**
@@ -27,7 +35,7 @@ class AdminGameController extends Controller
      */
     public function create()
     {
-        $dev = User::where('user_type', '=', 1)->get();
+        $dev = User::where('user_type', '>=', 1)->get();
         $genreGame = GenreGame::all();
 
         return view('admin.game.create')->with(compact('genreGame', 'dev'));

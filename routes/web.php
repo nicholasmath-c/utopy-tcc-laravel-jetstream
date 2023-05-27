@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\GenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
 use App\Http\Controllers\User\ShopcartController;
 use App\Http\Controllers\Shop\ShopController;
+use App\Models\Game;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/', function () {
-        return view('home.home');
-    })->name('home');
+    Route::get('/', [ShopController::class, 'index'])->name('home');
+    Route::get('/produto/{id}', [ShopController::class, 'product'])->name('product');
 });
 
 
@@ -42,7 +42,7 @@ Route::prefix('user')->group(function () {
 });
 
 Route::prefix('shop')->group(function () {
-    Route::resource('/', ShopController::class);
+
     Route::get('/game-page', function () {
         return view('shop.game-page');
     });

@@ -32,7 +32,7 @@
             </div>
 
             <div class="mt-4">
-                <x-input id="cellphone" placeholder="Celular" onkeyup="formatarTelefone()" class="block mt-1 w-full placeholder-gray-400" type="text" name="cellphone" :value="old('cellphone')" required autofocus autocomplete="cellphone" maxlength="11" />
+                <x-input id="cellphone" placeholder="Celular" onkeyup="formatarTelefone()" class="block mt-1 w-full placeholder-gray-400" type="text" name="cellphone" :value="old('cellphone')" required autofocus autocomplete="cellphone" maxlength="15" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
