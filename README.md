@@ -68,7 +68,7 @@ VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 ## Xampp 
 
-Drive: [Xampp](https://drive.google.com/file/d/1VBWAd3MPDc37WFMm5_574Vh_HxjZ-LEl/view?usp=sharing)
+Drive: [Xampp](https://drive.google.com/file/d/1xDn8tZ2KweVN0ktenYLoBPPm1r3DZqXi/view?usp=share_link)
 
 ## Contributing
 
