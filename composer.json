@@ -53,8 +53,7 @@
         "setup": [
             "composer install",
             "npm i",
-            "php artisan storage:link",
-            "php artisan key:generate --ansi"
+            "php artisan storage:link"
         ],
         "db:seed": [
             "php artisan db:seed"
