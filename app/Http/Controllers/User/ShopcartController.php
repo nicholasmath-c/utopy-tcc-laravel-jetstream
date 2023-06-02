@@ -37,31 +37,24 @@ class ShopcartController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->id;
-        // checkar o produto por usuario
-        $data = Shopcart::where('game_id', $id)->where('user_id',  Auth::id())->first();
+        $data = Shopcart::where('game_id', $request->input('game_id'))
+            ->where('user_id', Auth::id())
+            ->first();
 
-        if ($data)
-        {
-            $data->quantity = $data->quantity + $request->input('quantity');
-        } else
-        {
-            $data = Shopcart::create([
-                'game_id' => $id,
-                'user_id' => Auth::id(),
-                'quantity' => $request->input('quantity')
-            ]);
+        if ($data) {
+            $data->quantity += $request->input('quantity');
+        } else {
+            $data = new Shopcart();
 
-            if($categoria) {
-                return redirect()
-                    ->route('home.client.shopcart')
-                    ->with('success', 'Produto adicionado com sucesso!');
-            }
+            $data->game_id = $request->input('game_id');
+            $data->user_id    = Auth::id();
+            $data->quantity   = $request->input('quantity');
         }
 
+        $data->save();
         return redirect()
             ->back()
-            ->with('success', 'Product Added to Shopcart');
+            ->with('success','Produto adicionado ao Carrinho');
     }
 
     /**

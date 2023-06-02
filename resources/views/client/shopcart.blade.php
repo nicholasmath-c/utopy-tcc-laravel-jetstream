@@ -45,15 +45,7 @@
                     <div class=" mb-2 pl-10 pb-3 pr-28">
                         <div class=" rounded-md border-2 border-slate-900 hover:border-red-500 ease-in-out duration-150 pl-2 flex flex-row pt-2">
 
-                            <img class=" max-h-20 rounded-sm mb-2 " src="{{ url('img/games_img/DredgeCape.webp') }}" alt="">
-                                <div class="self-center w-96">
-                                    <h1 class=" ml-2" > R$ 20,00</h1>
-                                    <h1> <span class=" ml-2 text-gray-400" >Jogo base - </span>  Dredge</h1>
-                                </div>
 
-                                <div class="flex flex-col self-end pb-2 pr-9 ">
-                                   <a class=" text-sm underline text-gray-500 hover:text-red-500" href="">Remover</a>
-                                </div>
                         </div>
 
                         <hr class=" mt-2">

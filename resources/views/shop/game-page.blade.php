@@ -1,5 +1,7 @@
 <x-app-layout>
 
+    @include('components.messages')
+
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
         <div class=" mt-16 ">
             <div class="flex flex-row">
@@ -15,13 +17,30 @@
                         <p class="flex flex-row text-white text-lg"> <span class=" text-gray-500">Desenvolvedor -</span>
                             <span class=" pl-6"> {{$game->developer->firstname}} {{$game->developer->lastname}} - {{$game->developer->nickname}} </span>
                         </p>
-                        <hr class=" rounded-md" >
+                        <hr class="rounded-md" >
                         <p class="text-white text-lg"> <span class=" text-gray-500">Categoria -</span> <span
                                 class=" pl-6"> {{$game->genreGame->name}} </span> </p>
                         <hr class=" rounded-md" >
 
                         <div class=" mt-10 ml-9">
-                            <x-button class=" w-64 h-16"> Adcionar ao Carrinho </x-button>
+                           <form action="{{ route('shopcarts.store') }}" method="post">
+                                @csrf
+
+                                <x-input
+                                    type="hidden"
+                                    name="game_id"
+                                    value="{{ $game->id }}" />
+
+                                <x-label class="text-white text-lg">
+                                    Quantidade:
+                                </x-label>
+                                <x-input
+                                    type="integer"
+                                    name="quantity"
+                                    required />
+
+                                <x-button class=" w-64 h-16"> Adcionar ao Carrinho </x-button>
+                            </form>
                             <x-button class=" mt-4 w-64 h-16"> Comprar Jogo </x-button>
                         </div>
                     </div>

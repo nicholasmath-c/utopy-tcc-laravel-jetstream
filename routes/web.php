@@ -38,7 +38,15 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('user')->group(function () {
-    Route::resource('/shopcarts', ShopcartController::class);
+    #---- Routes Shopcarts
+    Route::prefix('/shopcart')
+        ->name('shopcart.')
+        ->controller(ShopcartController::class)->group(function (){
+            Route::get('/','index')->name('index');
+            Route::post('/store/{id}','store')->name('store');
+            Route::post('/update/{id}','update')->name('update');
+            Route::get('/destroy/{id}','destroy')->name('destroy');
+        });
 });
 
 Route::prefix('shop')->group(function () {
