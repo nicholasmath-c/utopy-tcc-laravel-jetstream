@@ -18,10 +18,12 @@ class ShopcartController extends Controller
      */
     public function index()
     {
-        $data = Shopcart::where('user_id', Auth::id())->get();
+        $data = Shopcart::join('games', 'games.id', '=', 'shopcarts.game_id')
+            ->select('shopcarts.*', 'games.*')
+            ->get();
 
         return view('client.shopcart',[
-            'data' => $data
+            'shopcart' => $data
         ]);
     }
 
@@ -37,7 +39,11 @@ class ShopcartController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Shopcart::where('game_id', $request->input('game_id'))
+        $validatedData = $request->validate([
+            'game_id'
+        ]);
+
+        $data = Shopcart::where('game_id', $validatedData['game_id'])
             ->where('user_id', Auth::id())
             ->first();
 
@@ -46,9 +52,9 @@ class ShopcartController extends Controller
         } else {
             $data = new Shopcart();
 
-            $data->game_id = $request->input('game_id');
-            $data->user_id    = Auth::id();
-            $data->quantity   = $request->input('quantity');
+            $data->game_id  = $request->input('game_id');
+            $data->user_id  = Auth::id();
+            $data->quantity = $request->input('quantity');
         }
 
         $data->save();
@@ -76,26 +82,25 @@ class ShopcartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Shopcart $shopcart, $id)
+    public function update(Request $request,Shopcart $shopcart,$id)
     {
-        Shopcart::where([ 'id' => $id ])->update([
-            'quantity' => $request->input('quantity')
-        ]);
+        $data = Shopcart::find($id);
 
-        return redirect()
-            ->route('home.client.shopcart')
-            ->with('success', 'Carrinho atualizado com sucesso!');
+        $data->quantity = $request->input('quantity');
+        $data->save();
+
+        return  redirect()->route('shopcart.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        GenreGame::destroy($id);
+        Shopcart::destroy($id);
 
         return redirect()
-            ->route('genre-game.index')
+            ->route('shopcart.index')
             ->with('success', 'Produto retirado do carrinho! 😥');
     }
 }

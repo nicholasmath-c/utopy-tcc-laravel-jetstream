@@ -5,73 +5,51 @@
         <div class="flex flex-col w-7/12 text-white">
 
             <div class=" flex h-96 items-end ">
+                <div class=" flex flex-col h-72 w-full overflow-auto scrollbar-hide">
 
-                <div class=" flex flex-col h-72 w-full overflow-auto scrollbar-hide   ">
-
-                    <div class=" mb-2 pl-10 pb-3 pr-28">
-                        <div class=" rounded-md border-2 border-slate-900 hover:border-red-500 ease-in-out duration-150   pl-2 flex flex-row pt-2">
-
-                            <img class=" max-h-20 rounded-sm mb-2 " src="{{ url('img/games_img/CelesteCape.png') }}" alt="">
-                                <div class="self-center w-96">
-                                    <h1 class=" ml-2" > R$ 20,00</h1>
-                                    <h1> <span class=" ml-2 text-gray-400" >Jogo base - </span>  Celeste</h1>
-                                </div>
-
-                                <div class="flex flex-col self-end pb-2 ">
-                                   <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="">Remover</a>
-                                </div>
-                        </div>
-
-                        <hr class=" mt-2">
-                    </div>
-
+                    @php
+                        $total = 0;
+                    @endphp
+                    {{-- {{ $shopcart }} --}}
+                    @foreach ($shopcart as $item)
                     <div class=" mb-2 pl-10 pb-3 pr-28">
                         <div class=" rounded-md border-2 border-slate-900 hover:border-red-500 ease-in-out duration-150 pl-2 flex flex-row pt-2">
+                            <img class=" max-h-20 rounded-sm mb-2 " src="{{ url('img/games_img/' . $item->image) }}" alt="">
 
-                            <img class=" max-h-20 rounded-sm mb-2 " src="{{ url('img/games_img/silksong.webp') }}" alt="">
-                                <div class="self-center w-96">
-                                    <h1 class=" ml-2" > R$ 20,00</h1>
-                                    <h1> <span class=" ml-2 text-gray-400" >Jogo base - </span>  SilkSong</h1>
-                                </div>
+                            <div class="self-center w-96">
+                                <form action="{{ route('shopcart.update', $item->id) }}" method="post">
+                                    @csrf
 
-                                <div class="flex flex-col self-end pb-2 ">
-                                   <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="">Remover</a>
-                                </div>
+                                    <x-input
+                                        type="hidden"
+                                        name="id"
+                                        value="{{ $item->id }}" />
+
+                                    <x-input
+                                        type="number"
+                                        name="quantity"
+                                        value="{{ $item->quantity }}"
+                                        min="1"
+                                        {{-- max="{{ $item->quantity }}" --}}
+                                        onchange="this.form.submit()" />
+                                </form>
+                            </div>
+
+                            <div class="self-center w-96">
+                                <h1 class=" ml-2" >R$ 20,00</h1>
+                                <h1> <span class=" ml-2 text-gray-400" >{{ $item->title }}</h1>
+                            </div>
+
+                            <div class="flex flex-col self-end pb-2 ">
+                               <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="{{route('shopcart.destroy', ['id', $item->id])}}">Remover</a>
+                            </div>
                         </div>
 
                         <hr class=" mt-2">
                     </div>
-
-                    <div class=" mb-2 pl-10 pb-3 pr-28">
-                        <div class=" rounded-md border-2 border-slate-900 hover:border-red-500 ease-in-out duration-150 pl-2 flex flex-row pt-2">
-
-
-                        </div>
-
-                        <hr class=" mt-2">
-                    </div>
-
-                    <div class=" mb-2 pl-10 pb-3 pr-28">
-                        <div class=" rounded-md border-2 border-slate-900 hover:border-red-500 ease-in-out duration-150 pl-2 flex flex-row pt-2">
-
-                            <img class=" max-h-20 max-w-20 rounded-sm mb-2 " src="{{ url('img/games_img/CelesteCape.png') }}" alt="">
-                                <div class="self-center w-96">
-                                    <h1 class=" ml-2" > R$ 20,00</h1>
-                                    <h1> <span class=" ml-2 text-gray-400" >Jogo base - </span>  Celeste</h1>
-                                </div>
-
-                                <div class="flex flex-col self-end pb-2 ">
-                                   <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="">Remover</a>
-                                </div>
-                        </div>
-
-                        <hr class=" mt-2">
-                    </div>
+                    @endforeach
                 </div>
-
             </div>
-
-
 
             <div class=" flex flex-row h-60 ">
 
@@ -89,12 +67,7 @@
         </div>
 
 
-
-
-
         <div class=" flex flex-col w-96 border-l-2 border-main-500 pl-2 mt-20  text-white">
-
-
             <div class=" flex flex-col h-full p-10">
                 <h1 class=" self-center text-xl">Recomendado para você</h1>
                 <div>
