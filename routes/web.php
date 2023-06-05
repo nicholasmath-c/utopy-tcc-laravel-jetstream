@@ -39,6 +39,10 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::resource('/shopcarts', ShopcartController::class);
+
+    Route::get('/library', function () {
+        return view('client.library');
+    });
 });
 
 Route::prefix('shop')->group(function () {
@@ -46,5 +50,7 @@ Route::prefix('shop')->group(function () {
     Route::get('/game-page', function () {
         return view('shop.game-page');
     });
+
 });
+
 

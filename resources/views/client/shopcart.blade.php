@@ -3,11 +3,11 @@
 
     <div class="flex justify-between mt-10">
         <h1 class=" pl-10 pt-5 font-heading text-4xl text-white ">Meu Carrinho</h1>
-        <h1 class="pl-10 pr-8 pt-5 font-heading text-3xl text-white mt-0">Resumo de Jogos e Aplicativos</h1> 
-        
+        <h1 class="pl-10 pr-8 pt-5 font-heading text-3xl text-white mt-0">Resumo de Jogos e Aplicativos</h1>
+
       </div>
 
-    
+
 
     <div class=" mb-12 flex flex-col md:flex-row max-w-7xl mx-auto  ">
 
@@ -91,20 +91,20 @@
 
 
 
-            
+
 
         </div>
 
 <div class="md:border-l-2 md:mt-10 flex flex-col w-full md:w-5/12 border-0 border-main-500 pl-2 mt-5 text-white mt-0">
     <div class="flex flex-col h-full p-5 mt-0">
         <div class="flex flex-col h-70">
-            <div class="flex flex-col items-left mt-20 mt-0">
+            <div class="flex flex-col items-left mt-20 ">
                     <h1 class="pl-10 pt-5 font-heading text-4xl text-white mt-0 ">Resumo de Jogos e Aplicativos</h1>
-                <div class="flex justify-between mt-10 mt-0">
+                <div class="flex justify-between mt-10 ">
                     <h1 class="text-lg mt-3">Preço</h1>
                     <h1 class="text-lg mt-3"><span class="text-lg text-red-300">R$ 80,00</span></h1>
                 </div>
-                <div class="flex justify-between mt-0">
+                <div class="flex justify-between ">
                     <h1 class="text-lg mt-3">Desconto</h1>
                     <h1 class="text-lg mt-3"><span class="text-lg text-red-300">R$ 30,00</span></h1>
                 </div>
@@ -113,7 +113,7 @@
                     <h1 class="text-lg mt-4"><span class="text-lg text-red-300">R$ 80,00</span></h1>
                 </div>
             </div>
-            <div class="flex flex-row mt-8 justify-center mt-0">
+            <div class="flex flex-row mt-8 justify-center ">
                 <div>
                     <x-button class="h-12 w-60">Finalizar Compra</x-button>
                 </div>
@@ -137,7 +137,7 @@
 
 
         </div>
-            
+
     </div>
 
 
