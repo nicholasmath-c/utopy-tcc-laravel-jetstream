@@ -17,31 +17,14 @@
                             <img class=" max-h-20 rounded-sm mb-2 " src="{{ url('img/games_img/' . $item->image) }}" alt="">
 
                             <div class="self-center w-96">
-                                <form action="{{ route('shopcart.update', $item->id) }}" method="post">
-                                    @csrf
-
-                                    <x-input
-                                        type="hidden"
-                                        name="id"
-                                        value="{{ $item->id }}" />
-
-                                    <x-input
-                                        type="number"
-                                        name="quantity"
-                                        value="{{ $item->quantity }}"
-                                        min="1"
-                                        {{-- max="{{ $item->quantity }}" --}}
-                                        onchange="this.form.submit()" />
-                                </form>
-                            </div>
-
-                            <div class="self-center w-96">
                                 <h1 class=" ml-2" >R$ 20,00</h1>
                                 <h1> <span class=" ml-2 text-gray-400" >{{ $item->title }}</h1>
                             </div>
 
                             <div class="flex flex-col self-end pb-2 ">
-                               <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="{{route('shopcart.destroy', ['id', $item->id])}}">Remover</a>
+                               <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="{{ route('shopcart.destroy', $item->id) }}">
+                                    Remover
+                                </a>
                             </div>
                         </div>
 

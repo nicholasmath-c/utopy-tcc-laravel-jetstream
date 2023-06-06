@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
+// TODO: FAZER COM QUE APENAS UM JOGO ENTRE PARA O CARRINHO
+// https://packagist.org/packages/santigraviano/laravel-mercadopago
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shopcart;
@@ -39,11 +40,7 @@ class ShopcartController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'game_id'
-        ]);
-
-        $data = Shopcart::where('game_id', $validatedData['game_id'])
+        $data = Shopcart::where('id', $request->id)
             ->where('user_id', Auth::id())
             ->first();
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a4d81fff570016f19fee0de79aee6cc",
+    "content-hash": "47c4b2e12326a2cb95f03bcb4fc70826",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3657,6 +3657,51 @@
                 }
             ],
             "time": "2023-04-15T23:01:58+00:00"
+        },
+        {
+            "name": "santigraviano/laravel-mercadopago",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/santigraviano/laravel-mercadopago.git",
+                "reference": "42e25efcd85d7d576ac5f8cd56046a1a76dbdd67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/santigraviano/laravel-mercadopago/zipball/42e25efcd85d7d576ac5f8cd56046a1a76dbdd67",
+                "reference": "42e25efcd85d7d576ac5f8cd56046a1a76dbdd67",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SantiGraviano\\LaravelMercadoPago\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Santiago Graviano",
+                    "email": "santiago.graviano@gmail.com"
+                }
+            ],
+            "description": "Mercado Pago SDK v0.5.2 for Laravel",
+            "keywords": [
+                "laravel",
+                "mercadopago",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/santigraviano/laravel-mercadopago/issues",
+                "source": "https://github.com/santigraviano/laravel-mercadopago/tree/master"
+            },
+            "time": "2016-03-22T09:44:27+00:00"
         },
         {
             "name": "symfony/console",

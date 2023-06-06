@@ -23,7 +23,7 @@
                         <hr class=" rounded-md" >
 
                         <div class=" mt-10 ml-9">
-                           <form action="{{ route('shopcarts.store') }}" method="post">
+                           <form action="{{ route('shopcart.store', $game->id) }}" method="post">
                                 @csrf
 
                                 <x-input
