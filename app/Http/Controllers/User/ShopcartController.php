@@ -84,12 +84,13 @@ class ShopcartController extends Controller
      */
     public function update(Request $request,Shopcart $shopcart,$id)
     {
-        $data = Shopcart::find($id);
+        Shopcart::where([ 'id' => $id ])->update([
+            'quantity' => $request->input('quantity')
+        ]);
 
-        $data->quantity = $request->input('quantity');
-        $data->save();
-
-        return  redirect()->route('shopcart.index');
+        return redirect()
+            ->route('shopcart.index')
+            ->with('success', 'Carrinho atualizado com sucesso!');
     }
 
     /**
