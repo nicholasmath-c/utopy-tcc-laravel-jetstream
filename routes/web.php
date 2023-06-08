@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\GenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
 use App\Http\Controllers\User\ShopcartController;
 use App\Http\Controllers\Shop\ShopController;
+use App\Http\Controllers\PagseguroController;
 use App\Models\Game;
 
 /*
@@ -46,6 +47,7 @@ Route::prefix('user')->group(function () {
             Route::post('/store/{id}','store')->name('store');
             Route::post('/update/{id}','update')->name('update');
             Route::get('/destroy/{id}','destroy')->name('destroy');
+            Route::post('/checkout', 'checkout')->name('checkout');
     });
 });
 
@@ -55,4 +57,10 @@ Route::prefix('shop')->group(function () {
         return view('shop.game-page');
     });
 });
+
+#---- Route Payment
+Route::get(
+    '/checkout',
+    [PagseguroController::class, 'index']
+)->name('checkout');
 

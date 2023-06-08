@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\User;
 // TODO: FAZER COM QUE APENAS UM JOGO ENTRE PARA O CARRINHO
-// https://packagist.org/packages/santigraviano/laravel-mercadopago
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shopcart;
+use App\Service\VendaService;
 use Illuminate\Support\Facades\Auth;
 
 class ShopcartController extends Controller
@@ -88,6 +88,15 @@ class ShopcartController extends Controller
         return redirect()
             ->route('shopcart.index')
             ->with('success', 'Carrinho atualizado com sucesso!');
+    }
+
+    public function checkout(Request $request) {
+        $produtos = Shopcart::all();
+
+        $vendaService = new VendaService();
+        $vendaService->finalizarVenda($produtos, Auth::user());
+
+        //return redirect()->route('shopcart.index');
     }
 
     /**

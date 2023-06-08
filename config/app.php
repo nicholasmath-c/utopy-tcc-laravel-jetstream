@@ -169,8 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
-        App\Providers\JetstreamServiceProvider::class,
-        'LivePixel\MercadoPago\Providers\MercadoPagoServiceProvider',
+        App\Providers\JetstreamServiceProvider::class
     ])->toArray(),
 
     /*
@@ -183,9 +182,4 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-
-    'aliases' => Facade::defaultAliases()->merge([
-        'MP' => 'LivePixel\MercadoPago\Facades\MP',
-    ])->toArray(),
-
 ];

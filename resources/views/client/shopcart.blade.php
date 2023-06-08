@@ -10,14 +10,13 @@
                     @php
                         $total = 0;
                     @endphp
-                    {{-- {{ $shopcart }} --}}
                     @foreach ($shopcart as $item)
                     <div class=" mb-2 pl-10 pb-3 pr-28">
                         <div class=" rounded-md border-2 border-slate-900 hover:border-red-500 ease-in-out duration-150 pl-2 flex flex-row pt-2">
                             <img class=" max-h-20 rounded-sm mb-2 " src="{{ url('img/games_img/' . $item->image) }}" alt="">
 
                             <div class="self-center w-96">
-                                <h1 class=" ml-2" >R$ 20,00</h1>
+                                <h1 class=" ml-2" >R$ {{ $item->price }}</h1>
                                 <h1> <span class=" ml-2 text-gray-400" >{{ $item->title }}</h1>
                             </div>
 
@@ -30,6 +29,9 @@
 
                         <hr class=" mt-2">
                     </div>
+                    @php
+                        $total += $item->price;
+                    @endphp
                     @endforeach
                 </div>
             </div>
@@ -37,11 +39,19 @@
             <div class=" flex flex-row h-60 ">
 
                 <div>
-                    <h1 class="underline text-lg ml-10 mt-10"> Valor Total: <span class=" text-lg text-red-300 "> R$80,00 </span>  </h1>
+                    <h1 class="underline text-lg ml-10 mt-10">
+                        Valor Total: <span class=" text-lg text-red-300 ">R${{ $total }}</span>
+                    </h1>
                 </div>
 
                 <div class=" mt-6 ml-72">
-                    <x-button class=" h-14 w-32 mb-3 mt-2" > Comprar </x-button>
+                    <form class="form-horizontal" method="POST" action="{{ route('shopcart.checkout') }}">
+                        @csrf
+
+                        <button class="h-14 w-32 mb-3 mt-2">
+                            Comprar
+                        </button>
+                    </form>
                     <x-button class=" h-14 w-32" > Presentear </x-button>
                 </div>
 
