@@ -27,8 +27,11 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/loja', [ShopController::class, 'index'])->name('shop');
-    Route::get('/produto/{id}', [ShopController::class, 'product'])->name('product');
+    Route::prefix('shop')->group(function () {
+        Route::get('/', [ShopController::class, 'index'])->name('shop');
+        Route::get('/game/{id}/{title}', [ShopController::class, 'product'])->name('game-page');
+    });
+
 });
 
 
@@ -47,12 +50,6 @@ Route::prefix('user')->group(function () {
     });
 });
 
-Route::prefix('shop')->group(function () {
 
-    Route::get('/game-page', function () {
-        return view('shop.game-page');
-    });
-
-});
 
 
