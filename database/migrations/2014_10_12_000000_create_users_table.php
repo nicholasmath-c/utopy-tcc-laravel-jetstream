@@ -21,17 +21,17 @@ return new class extends Migration
             //------- Comuns
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('nickname');
+            $table->string('nickname')->unique();
             $table->string('email')->unique();
             $table->char('cellphone', 11)->unique();
             $table->string('password');
-            $table->string('origin_country', 150)->nullable();
-            $table->text('biography')->nullable();
-            $table->integer('user_type')->default(0);
+            $table->boolean('is_adm')->default(false);
             $table->string('profile_photo_path', 248)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            //$table->text('biography')->nullable();
+            //$table->string('origin_country', 150)->nullable();
         });
     }
 

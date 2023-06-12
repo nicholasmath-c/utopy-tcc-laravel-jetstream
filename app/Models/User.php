@@ -62,7 +62,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function game(){
-        return $this->hasMany(Game::class, 'id');
+    public function developer(){
+        return $this->hasOne(Developer::class, 'id', 'user_id');
     }
 }

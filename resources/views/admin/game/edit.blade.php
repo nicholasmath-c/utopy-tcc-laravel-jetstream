@@ -6,7 +6,7 @@
                     <h1 class="font-heading text-white text-xl uppercase mb-7">Adicionar Jogo</h1>
                     <div class="card-body">
                         <form method="POST" action="{{ route('game.update', $game->id) }}" enctype="multipart/form-data"
-                            onsubmit="desformatarValor()" class="text-white">
+                            onsubmit="desformatarPreco()" class="text-white">
                             @csrf
                             @method('PUT')
 
@@ -43,8 +43,12 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="nome">Descrição</label>
-                                <x-input type="text" name="description" id="description" value="{{$game->description}}"/>
+                                <label for="nome">Descrição Curta</label>
+                                <x-input type="text" name="short_description" id="short_description" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="nome">Descrição Longa</label>
+                                <x-input type="text" name="long_description" id="long_description" />
                             </div>
                             <div class="mb-4">
                                 <label for="image">Imagem</label>
@@ -53,9 +57,14 @@
                                     class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
                             </div>
                             <div class="mb-4">
-                                <label for="price">Valor</label>
+                                <label for="price">Preço</label>
                                 <x-input type="text" name="price" id="price" class="form-control" required
-                                    placeholder="R$0,00" onkeyup="formatarValor()" maxlength="12" value="{{$game->price}}" />
+                                    placeholder="R$0,00" onkeyup="formatarPreco()" maxlength="12" value="{{$game->price}}" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="price">Desconto (Opcional)</label>
+                                <x-input type="text" name="discount" id="price" class="form-control" required
+                                    placeholder="R$0,00" onkeyup="formatarPreco()" maxlength="12" />
                             </div>
                             <div class="mb-4">
                                 <label for="nome">Data de Lançamento</label>
@@ -132,7 +141,7 @@
 </x-admin-layout>
 
 <script>
-    function formatarValor() {
+    function formatarPreco() {
         var input = document.getElementById("price");
         var valor = input.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
         var valorFormatado = "";
@@ -151,7 +160,7 @@
         input.value = valorFormatado;
     }
 
-    function desformatarValor() {
+    function desformatarPreco() {
         var input = document.getElementById("price");
         var valor = input.value.replace(/[^\d,]/g, "").replace(",", ".") // Remove todos os caracteres não numéricos
 

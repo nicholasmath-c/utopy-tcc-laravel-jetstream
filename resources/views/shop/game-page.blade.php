@@ -4,7 +4,7 @@
         <div class=" mt-16 ">
             <div class="flex flex-row">
 
-                <div class=" max-w-4xl pr-4">
+                <div class="max-w-4xl pr-4">
                     <h1 class=" text-white text-4xl">{{ $game->title }}</h1>
                     <img class=" rounded-md mr-64" width=630 src="{{ url("storage/img/games_img/{$game->image}") }}">
                 </div>
@@ -13,7 +13,7 @@
                     <img class="max-w-xs rounded-md " src="{{ url("storage/img/games_img/{$game->image}") }}">
                     <div class="pt-4">
                         <p class="flex flex-row text-white text-lg"> <span class=" text-gray-500">Desenvolvedor -</span>
-                            <span class=" pl-6"> {{$game->developer->firstname}} {{$game->developer->lastname}} - {{$game->developer->nickname}} </span>
+                            <span class=" pl-6"> {{$developer->user->firstname}} {{$developer->user->lastname}} - {{$developer->user->nickname}} </span>
                         </p>
                         <hr class=" rounded-md" >
                         <p class="text-white text-lg"> <span class=" text-gray-500">Categoria -</span> <span
@@ -33,7 +33,7 @@
                 <div class="flex flex-row w-full">
                     <div class=" max-w-3xl " >
                         <p class=" text-lg ">
-                            {{ $game->description }}
+                            {{ $game->long_description }}
                         </p>
                     </div>
                     <div class=" w-full border-l-4 border-main-500 rounded-sm pl-4 ml-4 ">
@@ -61,3 +61,8 @@
 
 
 </x-app-layout>
+
+
+<script>
+    var developer = @json($developer);
+</script>
