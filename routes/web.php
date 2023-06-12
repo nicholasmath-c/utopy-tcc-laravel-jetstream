@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\HomeController as AdminController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\GenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
 use App\Http\Controllers\User\ShopcartController;
@@ -25,14 +26,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/', [ShopController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/loja', [ShopController::class, 'index'])->name('shop');
     Route::get('/produto/{id}', [ShopController::class, 'product'])->name('product');
 });
 
 
 // ************ Admin Routes
 Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
     Route::resource('genre-game', GenreGameController::class);
     Route::resource('game', AdminGameController::class);
 });
