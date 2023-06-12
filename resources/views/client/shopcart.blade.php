@@ -95,7 +95,7 @@
 
         </div>
 
-<div class="md:border-l-2 md:mt-10 flex flex-col w-full md:w-5/12 border-0 border-main-500 pl-2 mt-5 text-white mt-0">
+<div class="md:border-l-2 md:mt-10 flex flex-col w-full md:w-5/12 border-0 border-main-500 pl-2 text-white mt-0">
     <div class="flex flex-col h-full p-5 mt-0">
         <div class="flex flex-col h-70">
             <div class="flex flex-col items-left mt-20 ">
