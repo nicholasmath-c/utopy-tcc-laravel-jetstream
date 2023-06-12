@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Developer;
 
 class DeveloperSeeder extends Seeder
 {
@@ -14,6 +15,9 @@ class DeveloperSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Developer::create([
+            'user_id' => '1',
+            'cpf' => '536.284.680-94'
+        ]);
     }
 }

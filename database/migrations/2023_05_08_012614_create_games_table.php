@@ -32,9 +32,11 @@ return new class extends Migration
 
             //------- Comuns
             $table->string('title');
-            $table->text('description');
+            $table->string('short_description', 255);
+            $table->text('long_description');
             $table->string('image', 100);
             $table->double('price', 5, 2);
+            $table->double('discount', 5, 2)->nullable()->default(0.00);
             $table->date('release_date');
             $table->string('age_rating', 3);
             $table->boolean('status_game')->default(true);

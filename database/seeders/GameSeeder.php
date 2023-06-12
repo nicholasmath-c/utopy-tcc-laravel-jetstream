@@ -19,7 +19,9 @@ class GameSeeder extends Seeder
             'developer_id' => 1,
             'genre_game_id' => '1',
             'title' => 'Hollow Knight - SilkSong',
-            'description' => '
+            'short_description' => '
+            "Hollow Knight: Silksong" é a aguardada sequência do aclamado jogo de ação e aventura. Assuma o papel de Hornet em um reino assombrado, enfrentando inimigos desafiadores e desvendando segredos em paisagens deslumbrantes.',
+            'long_description' => '
             Hollow Knight: Silksong é a tão aguardada sequência do aclamado jogo de ação e aventura Hollow Knight. Nesta jornada épica, você será levado a um reino vasto e assombrado, mergulhado em segredos e mistérios profundos.
 
             Assumindo o papel de Hornet, uma heroína determinada e ágil, você enfrentará um mundo deslumbrante e perigoso repleto de inimigos desafiadores e paisagens deslumbrantes. Explore uma variedade de cenários ricamente detalhados, desde cidades em ruínas até florestas enigmáticas e cavernas sombrias, enquanto desvenda a história envolvente por trás do reino de seda e canção.
@@ -41,7 +43,8 @@ class GameSeeder extends Seeder
             'developer_id' => 1,
             'genre_game_id' => '1',
             'title' => 'Ori and the Blind Forest',
-            'description' => '
+            'short_description' => '"Ori and the Blind Forest" é um aclamado jogo de plataforma disponível na Steam. Nesta emocionante aventura, você assume o papel de Ori, uma pequena criatura guardiã da floresta, em uma jornada para salvar a terra mágica e encantadora em que vive.',
+            'long_description' => '
             Ori and the Blind Forest é um aclamado jogo de plataforma disponível na plataforma Steam. Neste belo conto de aventura e emoção, você assume o papel de Ori, uma pequena criatura guardiã da floresta, em sua jornada para salvar a terra mágica e encantadora que habita.
 
             Com uma jogabilidade fluida e desafiadora, Ori and the Blind Forest apresenta uma mistura envolvente de plataformas precisas, habilidades especiais e quebra-cabeças inteligentes. À medida que você explora o vasto mundo do jogo, encontrará uma variedade de desafios e inimigos únicos, que exigirão agilidade e habilidade para superar.
@@ -63,7 +66,8 @@ class GameSeeder extends Seeder
             'developer_id' => 1,
             'genre_game_id' => '1',
             'title' => 'Celeste',
-            'description' => 'Celeste é um premiado jogo de plataforma disponível na plataforma Steam. Nele, você acompanha a jornada de Madeline, uma jovem determinada a escalar a montanha Celeste, enfrentando desafios físicos e emocionais ao longo do caminho.
+            'short_description' => '"Celeste" é um premiado jogo de plataforma disponível na plataforma Steam. Acompanhe a jornada de Madeline enquanto ela enfrenta desafios físicos e emocionais ao escalar a montanha Celeste.',
+            'long_description' => 'Celeste é um premiado jogo de plataforma disponível na plataforma Steam. Nele, você acompanha a jornada de Madeline, uma jovem determinada a escalar a montanha Celeste, enfrentando desafios físicos e emocionais ao longo do caminho.
 
             Com uma jogabilidade precisa e fluida, Celeste oferece uma experiência de plataforma de alta qualidade. Você terá que dominar saltos precisos, realizar manobras acrobáticas e usar habilidades especiais para superar obstáculos traiçoeiros e desafios de plataforma criativos.
 
@@ -84,7 +88,8 @@ class GameSeeder extends Seeder
             'developer_id' => 1,
             'genre_game_id' => '2',
             'title' => 'Dredge',
-            'description' => '
+            'short_description' => '"Dredge" é um jogo de estratégia e sobrevivência disponível na plataforma Steam. Assuma o papel de um capitão de um submarino em um mundo pós-apocalíptico submerso, enfrentando perigos submarinos e criaturas mortais.',
+            'long_description' => '
             Dredge é um jogo de estratégia e sobrevivência disponível na plataforma Steam. Neste jogo envolvente e desafiador, você assume o papel de um capitão de um submarino em um mundo pós-apocalíptico submerso.
 
             Em Dredge, você enfrentará um ambiente hostil, cheio de perigos submarinos e criaturas mortais. Sua missão é explorar as profundezas desconhecidas, coletar recursos valiosos e tomar decisões estratégicas para garantir a sobrevivência da sua tripulação.

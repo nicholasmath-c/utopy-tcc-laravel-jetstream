@@ -21,17 +21,16 @@ class UserSeeder extends Seeder
             'email' => 'utopydeveloper@utopy.com',
             'cellphone' => '11999999999',
             'password' => Hash::make('12345678'),
-            'user_type' => 1
         ]);
 
         User::create([
             'firstname' => 'Utopy',
-            'lastname' => 'Manager',
-            'nickname' => 'UtopyManager',
-            'email' => 'utopymanager@utopy.com',
+            'lastname' => 'Administrator',
+            'nickname' => 'UtopyAdm',
+            'email' => 'utopyadm@utopy.com',
             'cellphone' => '11999999998',
             'password' => Hash::make('12345678'),
-            'user_type' => 2
+            'is_adm' => true
         ]);
     }
 }

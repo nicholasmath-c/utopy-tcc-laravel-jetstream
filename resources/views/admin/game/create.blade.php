@@ -6,7 +6,7 @@
                     <h1 class="font-heading text-white text-xl uppercase mb-7">Adicionar Jogo</h1>
                     <div class="card-body">
                         <form method="POST" action="{{ route('game.store') }}" enctype="multipart/form-data"
-                            onsubmit="desformatarValor()" class="text-white">
+                            onsubmit="desformatarPreco()" class="text-white">
                             @csrf
 
                             <div class="mb-4">
@@ -44,8 +44,12 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="nome">Descrição</label>
-                                <x-input type="text" name="description" id="description" />
+                                <label for="nome">Descrição Curta</label>
+                                <x-input type="text" name="short_description" id="short_description" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="nome">Descrição Longa</label>
+                                <x-input type="text" name="long_description" id="long_description" />
                             </div>
                             <div class="mb-4">
                                 <label for="image">Imagem</label>
@@ -54,9 +58,14 @@
                                     required />
                             </div>
                             <div class="mb-4">
-                                <label for="price">Valor</label>
+                                <label for="price">Preço</label>
                                 <x-input type="text" name="price" id="price" class="form-control" required
-                                    placeholder="R$0,00" onkeyup="formatarValor()" maxlength="12" />
+                                    placeholder="R$0,00" onkeyup="formatarPreco()" maxlength="12" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="price">Desconto (Opcional)</label>
+                                <x-input type="text" name="discount" id="price" class="form-control" required
+                                    placeholder="R$0,00" onkeyup="formatarPreco()" maxlength="12" />
                             </div>
                             <div class="mb-4">
                                 <label for="nome">Data de Lançamento</label>
