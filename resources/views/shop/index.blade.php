@@ -7,38 +7,31 @@
 
         <div class=" sticky top-0 flex flex-row justify-center p-3">
             <div class=" p-2 px-[25px] flex flex-row bg-slate-700 bg-opacity-20 rounded-full shadow-md ">
-                <div
-                    class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-opacity-60 hover:cursor-pointer duration-200">
+                <div class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
                     Ação
                 </div>
 
-                <div
-                    class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-opacity-60 hover:cursor-pointer duration-200">
+                <div class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
                     Gratuitos
                 </div>
 
-                <div
-                    class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-opacity-60 hover:cursor-pointer duration-200">
+                <div class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
                     FPS
                 </div>
 
-                <div
-                    class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
+                <div class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
                     Aventura
                 </div>
 
-                <div
-                    class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-opacity-60 hover:cursor-pointer duration-200">
+                <div class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
                     8-Bits
                 </div>
 
-                <div
-                    class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-opacity-60 hover:cursor-pointer duration-200">
+                <div class=" p-1 border-2 border-slate-600 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
                     8-Bits
                 </div>
 
-                <div
-                    class=" p-1 border-2 border-slate-600 rounded-xl mx-1  my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-opacity-60 hover:cursor-pointer duration-200">
+                <div class=" p-1 border-2 border-slate-600 rounded-xl mx-1  my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
                     8-Bits
                 </div>
             </div>
