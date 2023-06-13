@@ -56,6 +56,12 @@ Route::prefix('shop')->group(function () {
     Route::get('/game-page', function () {
         return view('shop.game-page');
     });
+
+    Route::match(
+        ['get', 'post'],
+        'compras/historico',
+        [ShopController::class, 'historic']
+    );
 });
 
 #---- Route Payment
