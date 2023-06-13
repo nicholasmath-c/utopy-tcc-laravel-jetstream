@@ -94,9 +94,14 @@ class ShopcartController extends Controller
         $produtos = Shopcart::all();
 
         $vendaService = new VendaService();
-        $vendaService->finalizarVenda($produtos, Auth::user());
+        $result = $vendaService->finalizarVenda($produtos, Auth::user());
 
-        //return redirect()->route('shopcart.index');
+        if ($result['status'] === 'success') {
+            Shopcart::where('user_id', Auth::id())->delete();
+        }
+
+        $request->session()->flash($result['status'], $result['message']);
+        return redirect()->route('shopcart.index');
     }
 
     /**
