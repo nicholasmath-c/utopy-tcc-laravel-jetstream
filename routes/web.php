@@ -27,32 +27,32 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/loja', [ShopController::class, 'index'])->name('shop');
-    Route::get('/produto/{id}', [ShopController::class, 'product'])->name('product');
-});
 
+    Route::prefix('shop')->group(function () {
+        Route::get('/', [ShopController::class, 'index'])->name('shop');
+        Route::get('/game/{id}/{title}', [ShopController::class, 'product'])->name('game-page');
+    });
 
-// ************ Admin Routes
-Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
-    Route::resource('genre-game', GenreGameController::class);
-    Route::resource('game', AdminGameController::class);
-});
+    Route::prefix('user')->group(function () {
+        Route::resource('/shopcarts', ShopcartController::class);
 
-Route::prefix('user')->group(function () {
-    Route::resource('/shopcarts', ShopcartController::class);
+        Route::get('/library', function () {
+            return view('client.library');
+        });
+    });
 
-    Route::get('/library', function () {
-        return view('client.library');
+    // ************ Admin Routes
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
+        Route::resource('genre-game', GenreGameController::class);
+        Route::resource('game', AdminGameController::class);
     });
 });
 
-Route::prefix('shop')->group(function () {
 
-    Route::get('/game-page', function () {
-        return view('shop.game-page');
-    });
 
-});
+
+
+
 
 
