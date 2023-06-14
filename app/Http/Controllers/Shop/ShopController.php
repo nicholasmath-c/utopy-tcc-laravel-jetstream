@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Game;
-use App\Models\Ordem;
+use App\Models\Order;
+use App\Models\OrderItem;
 
 class ShopController extends Controller
 {
@@ -30,15 +31,28 @@ class ShopController extends Controller
     }
 
     public function historic() {
-        $data          = [];
         $lista_pedidos = [];
         $user_id       = \Auth::user()->id;
 
         $lista_pedidos = Order::
             where('user_id', $user_id)
                 ->orderBy("data_pedido", "desc")
-                -get();
+                ->get();
 
         return view("shop.historic", [ 'lista_pedidos' => $lista_pedidos ]);
+    }
+
+    public function details(Request $request) {
+        $pedido_id = $request->input('pedido_id');
+
+        $listaItens = OrderItem::
+            join('game', 'game', '=', 'order_itens.game_id')
+                ->where('order_id', $pedido_id)
+                ->get([ 'order_itens.*', 'order_itens.valor as valorItem' ]);
+
+        return view(
+            "shop.compras.details",
+            [ 'lista_itens' => $listaItens ]
+        );
     }
 }
