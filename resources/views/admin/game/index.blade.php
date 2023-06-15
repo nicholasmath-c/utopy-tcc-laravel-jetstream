@@ -1,18 +1,25 @@
-
 <x-admin-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
-                    <h1 class="font-heading text-white text-xl uppercase mb-10">Jogos</h1>
-                    <x-button class="w-auto mb-10 align-center"><a href="{{ route('game.create') }}"
-                            class="">Adicionar</a>
-                    </x-button>
+                    <h1 class="font-heading text-white text-xl mb-10">Todos os Jogos</h1>
                 </div>
-
-                <div class="h-96">mim de</div>
-                <div class="h-96">mim de</div>
-                <div class="h-96">mim de</div>
+                <div class="flex flex-row justify-center">
+                    <x-button class="w-auto mb-10 align-center"><a href="{{ route('game.create') }}"
+                        class="">Adicionar</a>
+                    </x-button>
+                    <form action="" class="relative mx-auto w-max align-items-center">
+                        <input type="search"
+                            class="peer cursor-pointer relative z-10 h-12 rounded-full border bg-transparent pl-12 ring-main-500 outline-none w-full focus:cursor-text focus:border-main-500 focus:pl-16 focus:pr-4 transition-all ease-linear focus:ring-0" />
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="absolute inset-y-2 h-8 w-12 border-r border-transparent stroke-slate-500 px-3.5 peer-focus:border-main-500 peer-focus:stroke-main-500"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </form>
+                </div>
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     @csrf
