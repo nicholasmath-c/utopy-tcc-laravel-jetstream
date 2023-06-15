@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Shop;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class ShopController extends Controller
 
     public function historic() {
         $lista_pedidos = [];
-        $user_id       = \Auth::user()->id;
+        $user_id       = Auth::user()->id;
 
         $lista_pedidos = Order::
             where('user_id', $user_id)
@@ -46,9 +47,9 @@ class ShopController extends Controller
         $pedido_id = $request->input('pedido_id');
 
         $listaItens = OrderItem::
-            join('game', 'game', '=', 'order_itens.game_id')
+            join('game', 'game.id', '=', 'order_items.game_id')
                 ->where('order_id', $pedido_id)
-                ->get([ 'order_itens.*', 'order_itens.valor as valorItem' ]);
+                ->get([ 'order_items.*', 'order_items.valor as valorItem' ]);
 
         return view(
             "shop.compras.details",

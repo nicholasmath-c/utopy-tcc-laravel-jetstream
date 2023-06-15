@@ -1,5 +1,7 @@
 <x-app-layout>
 
+
+
     <div class=" flex flex-col-2 max-w-7xl mx-auto sm:px-6 lg:px-8 ">
 
         <div class="flex flex-col w-7/12 text-white">
@@ -63,6 +65,12 @@
         <div class=" flex flex-col w-96 border-l-2 border-main-500 pl-2 mt-20  text-white">
             <div class=" flex flex-col h-full p-10">
                 <h1 class=" self-center text-xl">Recomendado para você</h1>
+
+                @if(session()->has('status'))
+                    <div class="alert alert-{{ session('status') }}">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <div>
                     <img class="rounded-sm" src="{{ url('img/games_img/OriBanner.jpg') }}" alt="">
                     <div class=" rounded-sm bg-slate-800" >

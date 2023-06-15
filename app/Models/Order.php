@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ordem extends Model
+class Order extends Model
 {
     use HasFactory;
 
-    protected $dates = [ "data_pedido" ];
     protected $fillable = [
         'data_pedido',
         'user_id',
         'status'
     ];
+
+    public function getDataPedidoFormatada() {
+        return date_create($this->data_pedido)->format('d/m/Y H:i');
+    }
 
     public function statusDescricao() {
         $descricao = "";

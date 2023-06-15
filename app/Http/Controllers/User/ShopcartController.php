@@ -91,7 +91,10 @@ class ShopcartController extends Controller
     }
 
     public function checkout(Request $request) {
-        $produtos = Shopcart::all();
+        $produtos = Shopcart::
+            join('games', 'games.id', '=', 'shopcarts.game_id')
+                ->select('shopcarts.*', 'games.*')
+                ->get();
 
         $vendaService = new VendaService();
         $result = $vendaService->finalizarVenda($produtos, Auth::user());
