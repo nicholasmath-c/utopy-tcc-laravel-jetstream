@@ -33,15 +33,14 @@
     <x-banner />
 
     <div class=" flex flex-col-2 min-h-screen bg-slate-900">
-        <aside
-            class="flex flex-col w-60 h-screen px-5 py-8 overflow-y-auto bg-slate-800 border-r border-main-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 sticky top-0 ">
-            <a href="{{ route('admin') }}">
+        <aside class="flex flex-col w-60 h-screen px-5 py-8 overflow-y-auto bg-slate-800 border-r border-main-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 sticky top-0 ">
+            <a href="{{ route('admin') }}" class="mx-auto">
                 <x-application-mark class="block h-9 w-auto" />
             </a>
 
             <div class="flex flex-col justify-between flex-1 mt-6">
                 <nav class="-mx-3 space-y-6 ">
-                    <div class="space-y-3 font-heading px-3 text-slate-400">
+                    <div class="space-y-3 font-heading px-3 text-slate-400 text-center">
                         Painel Administrativo
                     </div>
 

@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use App\Http\Controllers\Admin\GenreGameController;
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AdminGenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
 use App\Http\Controllers\User\ShopcartController;
 use App\Http\Controllers\Shop\ShopController;
@@ -41,10 +41,9 @@ Route::middleware([
         });
     });
 
-    // ************ Admin Routes
-    Route::prefix('admin')->group(function () {
+    Route::middleware('admin')->prefix('admin')->group(function () {
         Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
-        Route::resource('genre-game', GenreGameController::class);
+        Route::resource('genre-game', AdminGenreGameController::class);
         Route::resource('game', AdminGameController::class);
     });
 });
