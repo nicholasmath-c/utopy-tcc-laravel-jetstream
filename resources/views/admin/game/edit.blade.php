@@ -51,9 +51,15 @@
                                 <x-input type="text" name="long_description" id="long_description" />
                             </div>
                             <div class="mb-4">
-                                <label for="image">Imagem</label>
-                                <img src="{{asset("storage/img/games_img/$game->image")}}" alt="" width=200>
-                                <input type="file" name="image" id="image"
+                                <label for="thumb">Capa</label>
+                                <img src="{{asset("storage/img/games_img/$game->thumb")}}" alt="" width=200>
+                                <input type="file" name="thumb" id="thumb"
+                                    class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
+                            </div>
+                            <div class="mb-4">
+                                <label for="banner">Banner</label>
+                                <img src="{{asset("storage/img/games_img/$game->banner")}}" alt="" width=200>
+                                <input type="file" name="banner" id="banner"
                                     class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
                             </div>
                             <div class="mb-4">
@@ -84,6 +90,12 @@
                                     <option value="16+" {{$game->age_rating == '16+' ? 'selected' : ''}}>16+</option>
                                     <option value="18+" {{$game->age_rating == '18+' ? 'selected' : ''}}>18+</option>
                                 </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="game_file_path">Arquivo do Jogo</label>
+                                <img src="{{asset("storage/img/games_img/$game->image")}}" alt="" width=200>
+                                <input type="file" name="game_file_path" id="game_file_path"
+                                    class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
                             </div>
 
                             <hr>

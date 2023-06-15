@@ -9,19 +9,7 @@
                     </x-button>
                 </div>
 
-                @if (session()->has('success'))
-                    <div class="text-sm text-white mb-2">
-                        {{ session()->get('success') }}
-                    </div>
-                @endif
-
-                @if (isset($errors) && count($errors) > 0)
-                    <div class="text-sm text-main-500 mb-2">
-                        @foreach ($errors->all() as $error)
-                            {{ $error }}<br>
-                        @endforeach
-                    </div>
-                @endif
+                <div class="h-96">mim de</div>
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     @csrf
@@ -29,7 +17,7 @@
                         <thead class="text-xs text-white uppercase bg-main-500">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Imagem
+                                    Capa
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Título
@@ -61,7 +49,7 @@
                             @foreach ($game as $games)
                                 <tr>
                                     <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                        <img src="{{ asset("storage/img/games_img/$games->image") }}" alt=""
+                                        <img src="{{ asset("storage/img/games_img/$games->thumb") }}" alt=""
                                             width=150>
                                     </th>
                                     <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">

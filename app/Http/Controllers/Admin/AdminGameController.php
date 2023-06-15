@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Developer;
 use App\Models\Game;
 use App\Models\GenreGame;
 use App\Models\RequerimentsMinimum;
@@ -23,7 +24,7 @@ class AdminGameController extends Controller
         $user = Auth::user();
 
         if($user->user_type == 2){
-            return "<h1>Você não possui permissão para acessa a área administrativa do sistema.</h1>";
+            return "<h1>Você não possui permissão para acessar a área administrativa do sistema.</h1>";
         }
         else{
             return view('admin.game.index', compact('game'));
@@ -35,7 +36,7 @@ class AdminGameController extends Controller
      */
     public function create()
     {
-        $dev = User::where('user_type', '>=', 1)->get();
+        $dev = Developer::where('is_admitted', true)->get();
         $genreGame = GenreGame::all();
 
         return view('admin.game.create')->with(compact('genreGame', 'dev'));
@@ -46,23 +47,43 @@ class AdminGameController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('image'))
+        if($request->hasFile('thumb'))
         {
-            $destination_path = 'public/img/games_img';
-            $image = $request->file('image');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($destination_path, $image_name);
+            $destination_path = "public/games/$request->title";
+            $thumb = $request->file('thumb');
+            $thumb_name = $thumb->getClientOriginalName();
+            $path = $request->file('thumb')->storeAs($destination_path, $thumb_name);
+        }
+
+        if($request->hasFile('banner'))
+        {
+            $destination_path = "public/games/$request->title";
+            $banner = $request->file('banner');
+            $banner_name = $banner->getClientOriginalName();
+            $path = $request->file('banner')->storeAs($destination_path, $banner_name);
+        }
+
+        if($request->hasFile('game_file_path'))
+        {
+            $destination_path = "public/games/$request->title";
+            $game_file_path = $request->file('game_file_path');
+            $game_file_path_name = $game_file_path->getClientOriginalName();
+            $path = $request->file('game_file_path')->storeAs($destination_path, $game_file_path_name);
         }
 
         $game = Game::create([
             'developer_id' => $request->developer_id,
             'genre_game_id' => $request->genre_game_id,
             'title' => $request->title,
-            'description' => $request->description,
-            'image' => $image_name,
+            'short_description' => $request->short_description,
+            'long_description' => $request->long_description,
+            'thumb' => $thumb_name,
+            'banner' => $banner_name,
             'price' => $request->price,
+            'discount' => $request->discount,
             'release_date' => $request->release_date,
-            'age_rating' => $request->age_rating
+            'age_rating' => $request->age_rating,
+            'game_file_path' => $game_file_path_name
         ]);
 
         $rm = RequerimentsMinimum::create([

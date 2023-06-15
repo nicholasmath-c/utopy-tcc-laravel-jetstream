@@ -20,10 +20,7 @@ class ShopController extends Controller
     public function product($id)
     {
         $game = Game::findOrFail($id);
-        $gameDeveloper = Developer::find($game->developer_id);
-
-        $developerController = new DeveloperController();
-        $developer = $developerController->getDeveloper($gameDeveloper);
+        $developer = Developer::find($game->developer_id);
 
         return view('shop.game-page', compact(['game', 'developer']));
     }

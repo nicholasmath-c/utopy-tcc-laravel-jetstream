@@ -8,7 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     protected $table = 'games';
-    protected $fillable = ['developer_id', 'genre_game_id', 'title', 'short_description', 'long_description', 'image', 'price', 'discount', 'release_date', 'age_rating'];
+    protected $fillable = ['developer_id', 'genre_game_id', 'title', 'short_description', 'long_description', 'thumb', 'banner', 'price', 'discount', 'final_price','release_date', 'age_rating', 'game_file_path'];
+
+    //Aplicação do desconto no atributo final_price
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model){
+            $model->final_price = $model->price - $model->discount;
+        });
+    }
 
     public function developer()
     {
@@ -20,12 +30,12 @@ class Game extends Model
         return $this->hasOne(GenreGame::class, 'id', 'genre_game_id');
     }
 
-    public function requerimentsMinimum(): HasOne
+    public function requerimentsMinimum()
     {
         return $this->hasOne(RequerimentsMinimum::class, 'id');
     }
 
-    public function requerimentsRecommended(): HasOne
+    public function requerimentsRecommended()
     {
         return $this->hasOne(RequerimentsRecommended::class, 'id');
     }

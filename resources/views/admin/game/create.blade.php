@@ -52,8 +52,14 @@
                                 <x-input type="text" name="long_description" id="long_description" />
                             </div>
                             <div class="mb-4">
-                                <label for="image">Imagem</label>
-                                <input type="file" name="image" id="image"
+                                <label for="thumb">Capa</label>
+                                <input type="file" name="thumb" id="thumb"
+                                    class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
+                                    required />
+                            </div>
+                            <div class="mb-4">
+                                <label for="banner">Banner</label>
+                                <input type="file" name="banner" id="banner"
                                     class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
                                     required />
                             </div>
@@ -64,7 +70,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="price">Desconto (Opcional)</label>
-                                <x-input type="text" name="discount" id="price" class="form-control" required
+                                <x-input type="text" name="discount" id="discount" class="form-control" required
                                     placeholder="R$0,00" onkeyup="formatarPreco()" maxlength="12" />
                             </div>
                             <div class="mb-4">
@@ -88,6 +94,12 @@
                                     <option value="16+">16+</option>
                                     <option value="18+">18+</option>
                                 </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="game_file_path">Arquivo do Jogo</label>
+                                <input type="file" name="game_file_path" id="game_file_path"
+                                    class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
+                                    required />
                             </div>
 
                             <hr>

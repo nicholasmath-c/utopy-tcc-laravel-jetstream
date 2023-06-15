@@ -9,11 +9,6 @@ use App\Http\Requests\DeveloperRequest;
 
 class DeveloperController extends Controller
 {
-    public function getDeveloper(Developer $gameDeveloper){
-        $developer = $gameDeveloper->load('user');
-        return $developer;
-    }
-
     /**
      * Display a listing of the resource.
      *
