@@ -106,7 +106,7 @@
     <div class="flex flex-col h-full p-5 mt-0">
         <div class="flex flex-col h-70">
             <div class="flex flex-col items-left mt-1 ">
-                    <h1 class="pl-10 pt-1 font-heading text-4xl text-white mt-0 ">Resumo de Jogos e Aplicativos</h1>
+                    <h1 class="pl-10 pt-0 font-heading text-2xl text-white mt-0 ">Resumo de Jogos e Aplicativos</h1>
                 <div class="flex justify-between mt-10 ">
                     <h1 class="text-lg mt-3">Preço</h1>
                     <h1 class="text-lg mt-3"><span class="text-lg text-red-300">R$ 80,00</span></h1>
