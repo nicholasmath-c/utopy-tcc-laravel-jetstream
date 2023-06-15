@@ -31,8 +31,8 @@
 <body class="font-sans antialiased">
     <x-banner />
 
-    <div class="min-h-screen bg-slate-900">
-        <aside class="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-slate-800 border-r border-main-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 absolute">
+    <div class=" flex flex-col-2 min-h-screen bg-slate-900">
+        <aside class="flex flex-col w-60 h-screen px-5 py-8 overflow-y-auto bg-slate-800 border-r border-main-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 sticky top-0 ">
             <a href="{{ route('admin') }}">
                 <x-application-mark class="block h-9 w-auto" />
             </a>
@@ -110,13 +110,12 @@
                 </nav>
             </div>
         </aside>
+        <!-- <nav x-data="{ open: false }" class="bg-slate-900 border-b border-main-500">
 
-        <nav x-data="{ open: false }" class="bg-slate-900 border-b border-main-500">
-            <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex">
-                        <!-- Logo -->
+
                         <div class="shrink-0 flex items-center">
                             <a href="{{ route('home') }}">
                                 <x-application-mark class="block h-9 w-auto" />
@@ -128,7 +127,7 @@
                             ADMIN AREA
                         </div>
 
-                        <!-- Navigation Links -->
+
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <x-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                                 {{ __('Home') }}
@@ -143,12 +142,13 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> -->
+
 
 
 
         <!-- Page Content -->
-        <main class="">
+        <main class="flex flex-col justify-center items-center w-full ">
             {{ $slot }}
         </main>
     </div>

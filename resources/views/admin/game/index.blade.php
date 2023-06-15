@@ -1,3 +1,4 @@
+
 <x-admin-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -9,6 +10,8 @@
                     </x-button>
                 </div>
 
+                <div class="h-96">mim de</div>
+                <div class="h-96">mim de</div>
                 <div class="h-96">mim de</div>
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
