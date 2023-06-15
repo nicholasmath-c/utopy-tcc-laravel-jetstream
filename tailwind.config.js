@@ -58,6 +58,7 @@ module.exports = {
         },
     },
 
+
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('@tailwindcss/aspect-ratio'), require("tw-elements/dist/plugin.cjs"), require("tailwind-scrollbar-hide")],
     darkMode: "class"
 };
