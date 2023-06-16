@@ -79,7 +79,7 @@ class ShopController extends Controller
         );
     }
 
-    public function checkout(Request $request) { 
+    public function processCheckout(Request $request) { 
         $data = [];
 
         $sessionCode = \Pagseguro\Services\Servico::create(

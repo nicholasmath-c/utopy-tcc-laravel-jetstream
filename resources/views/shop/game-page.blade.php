@@ -35,11 +35,15 @@
                                     Quantidade:
                                 </x-label>
                                 <x-input
-                                    type="integer"
+                                    type="hidden"
                                     name="quantity"
-                                    required />
+                                    value="1"
+                                    required 
+                                />
 
-                                <x-button class=" w-64 h-16"> Adcionar ao Carrinho </x-button>
+                                <x-button class=" w-64 h-16">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                </x-button>
                             </form>
                             <x-button class=" mt-4 w-64 h-16"> Comprar Jogo </x-button>
                         </div>

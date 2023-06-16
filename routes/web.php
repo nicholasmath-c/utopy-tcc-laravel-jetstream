@@ -68,6 +68,6 @@ Route::prefix('shop')->group(function () {
     Route::match(
         ['get', 'post'],
         'compras/checkout',
-        [ShopController::class, 'checkout']
+        [ShopController::class, 'processCheckout']
     )->name('shop.checkout');
 });
