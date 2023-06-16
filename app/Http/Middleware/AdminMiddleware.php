@@ -19,7 +19,7 @@ class AdminMiddleware
         if(Auth::check() && Auth::user()->is_adm == 1){
             return $next($request);
         }else{
-           abort(401);
+            return response()->view('auth.401', [], 401);
         }
     }
 }
