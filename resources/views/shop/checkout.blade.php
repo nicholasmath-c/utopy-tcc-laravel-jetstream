@@ -3,10 +3,8 @@
         type="text/javascript" 
         src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
     </script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js">
-    </script>
     function carregar() {
-        
+
     }
 
     <form action="" method="">
