@@ -33,7 +33,8 @@
     <x-banner />
 
     <div class=" flex flex-col-2 min-h-screen bg-slate-900">
-        <aside class="flex flex-col w-60 h-screen px-5 py-8 overflow-y-auto bg-slate-800 border-r border-main-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 sticky top-0 ">
+        <aside
+            class="flex flex-col w-60 h-screen px-5 py-8 overflow-y-auto bg-slate-800 border-r border-main-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 sticky top-0 ">
             <a href="{{ route('admin') }}" class="mx-auto">
                 <x-application-mark class="block h-9 w-auto" />
             </a>
@@ -147,6 +148,23 @@
                             </svg>
 
                             <span class="mx-2 text-sm font-medium">Setting</span>
+                        </a>
+                    </div>
+
+                    <div class="space-y-16">
+                        <a class="flex items-center px-3 py-2 text-slate-200 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 hover:bg-main-500"
+                            href="{{ route('home') }}">
+                            <svg class="fill-slate-200 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                                data-name="Layer 1" viewBox="0 0 100 100" x="0px" y="0px">
+                                <title>UI_Essentials</title>
+                                <polygon
+                                    points="67.36 93.98 23.42 49.99 67.39 6.02 76.58 15.21 41.8 50 76.56 84.79 67.36 93.98" />
+                                <text x="0" y="115" fill="#000000" font-size="5px"
+                                    font-weight="bold"
+                                    font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">
+                            </svg>
+
+                            <span class="mx-2 text-sm font-medium">Voltar</span>
                         </a>
                     </div>
                 </nav>

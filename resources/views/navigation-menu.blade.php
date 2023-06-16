@@ -109,6 +109,12 @@
                                 {{ __('Perfil') }}
                             </x-dropdown-link>
 
+                            @if ( Auth::user()->is_adm )
+                                <x-dropdown-link href="{{ route('admin') }}">
+                                    {{ __('Painel Administrativo') }}
+                                </x-dropdown-link>
+                            @endif
+
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
                                     {{ __('API Tokens') }}

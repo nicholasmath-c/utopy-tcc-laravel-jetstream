@@ -122,7 +122,7 @@ class AdminGameController extends Controller
     public function edit(string $id)
     {
         $game = Game::findOrFail($id);
-        $dev = User::where('user_type', '=', 1)->get();
+        $dev = Developer::where('is_admitted', true)->get();
         $genreGame = GenreGame::all();;
         $rm = RequerimentsMinimum::where('game_id', $game->id)->first();
         $rr = RequerimentsRecommended::where('game_id', $game->id)->first();
