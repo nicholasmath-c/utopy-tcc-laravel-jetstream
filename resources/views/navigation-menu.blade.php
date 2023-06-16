@@ -17,7 +17,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                        {{ __('Loja') }}
+                        {{ __('Loja') }} &nbsp; <i class="fa-solid fa-shop"></i>
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('shopcart.index') }}">
+                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('shop.historic') }}">
+                        <i class="fas fa-history"></i>
                     </x-nav-link>
                 </div>
             </div>
