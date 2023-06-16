@@ -185,6 +185,8 @@ class AdminGameController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Game::destroy($id);
+
+        return redirect()->route('game.index')->with('success', 'Jogo excluído com sucesso!');
     }
 }
