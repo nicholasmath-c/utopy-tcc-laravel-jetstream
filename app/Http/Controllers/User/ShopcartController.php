@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 // TODO: FAZER COM QUE APENAS UM JOGO ENTRE PARA O CARRINHO
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\Shopcart;
 use App\Service\VendaService;
@@ -40,9 +41,10 @@ class ShopcartController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Shopcart::where('id', $request->id)
-            ->where('user_id', Auth::id())
-            ->first();
+        $data = Shopcart::
+            where('id', $request->id)
+                ->where('user_id', Auth::id())
+                ->first();
 
         if ($data) {
             $data->quantity += $request->input('quantity');
@@ -104,7 +106,7 @@ class ShopcartController extends Controller
         }
 
         $request->session()->flash($result['status'], $result['message']);
-        return redirect()->route('shopcart.index');
+        return redirect()->route('shop.historic');
     }
 
     /**

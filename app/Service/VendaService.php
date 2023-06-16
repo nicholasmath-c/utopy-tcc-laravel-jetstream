@@ -22,7 +22,7 @@ class VendaService {
 
             foreach($produtos as $produto) {
                 $itens = new OrderItem();
-                $itens->quantidade = 1;
+                $itens->quantidade = $produto->quantity;
                 $itens->valor      = $produto->price;
                 $itens->data_item  = now();
                 $itens->game_id    = $produto->game_id;
@@ -30,6 +30,7 @@ class VendaService {
                 $itens->save();
             }
 
+            DB::commit();
             return [ 'status' => 'success', 'message' => 'Venda finalizada'];
         } catch (\Exception  $e) {
             DB::rollback();

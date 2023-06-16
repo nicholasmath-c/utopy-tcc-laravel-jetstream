@@ -10,8 +10,30 @@ use App\Models\Game;
 use App\Models\Order;
 use App\Models\OrderItem;
 
+use PagSeguro\Configuration\Configure;
+
 class ShopController extends Controller
 {
+    private $_configs;
+     
+    public function _construct() {
+        # --- Configurações do PagSeguro
+        $this->_configs = new Configure();
+        
+        $this->_configs->setCharset('UTF-8');
+        $this->_configs->setAccountCredentials(
+            env('PAGSEGURO_EMAIL'),
+            env('PAGSEGURO_TOKEN')
+        );
+        $this->_configs->setEnvironment(env('PAGSEGURO_ENV'));
+        $path_log = 'logs/pagseguro_' . date('Ymd') . '.log';
+        $this->_configs->setLog(true, storage_path($path_log));
+    }
+
+    public function getCredential() {
+        return $this->_configs->getAccountCredentials();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -55,5 +77,17 @@ class ShopController extends Controller
             "shop.compras.details",
             [ 'lista_itens' => $listaItens ]
         );
+    }
+
+    public function checkout(Request $request) { 
+        $data = [];
+
+        $sessionCode = \Pagseguro\Services\Servico::create(
+            $this->getCredential()
+        );
+        $IDSession = $sessionCode->getResult();
+        $data['sessionID'] = $IDSession;
+
+        return view('shop.checkout', $data);
     }
 }

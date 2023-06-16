@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\GenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
 use App\Http\Controllers\User\ShopcartController;
 use App\Http\Controllers\Shop\ShopController;
-use App\Http\Controllers\PagseguroController;
 use App\Models\Game;
 
 /*
@@ -66,11 +65,9 @@ Route::prefix('shop')->group(function () {
         'compras/detalhes',
         [ShopController::class, 'details']
     )->name('shop.details');
+    Route::match(
+        ['get', 'post'],
+        'compras/checkout',
+        [ShopController::class, 'checkout']
+    )->name('shop.checkout');
 });
-
-#---- Route Payment
-Route::get(
-    '/checkout',
-    [PagseguroController::class, 'index']
-)->name('checkout');
-
