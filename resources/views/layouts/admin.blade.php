@@ -141,7 +141,7 @@
                     </div>
 
                     <div class="space-y-16">
-                        <a class="flex items-center px-3 py-2 text-slate-200 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 hover:bg-main-500"
+                        <a class="flex items-center px-3 py-2 text-slate-200 transition-colors duration-300 transform rounded-lg hover:bg-main-500"
                             href="{{ route('home') }}">
                             <svg class="fill-slate-200 h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                 data-name="Layer 1" viewBox="0 0 100 100" x="0px" y="0px">
@@ -156,55 +156,6 @@
                             <span class="mx-2 text-sm font-medium">Voltar</span>
                         </a>
                     </div>
-
-                    <x-dropdown width="48" class="">
-                        <x-slot name="trigger" class="space-y-3 px-3 mx-0">
-                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-
-                                </button>
-                            @else
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                        {{ Auth::user()->name }}
-
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            @endif
-                        </x-slot>
-
-                        <x-slot name="content">
-                            <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __(Auth::user()->nickname) }}
-                            </div>
-
-                            <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Perfil') }}
-                            </x-dropdown-link>
-
-                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                                <x-dropdown-link href="{{ route('api-tokens.index') }}">
-                                    {{ __('API Tokens') }}
-                                </x-dropdown-link>
-                            @endif
-
-                            <div class="border-t border-gray-200"></div>
-
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}" x-data>
-                                @csrf
-
-                                <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
-                                    {{ __('Sair') }}
-                                </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-dropdown>
                 </nav>
             </div>
         </aside>

@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\Developer;
+use App\Models\RequerimentsMinimum;
+use App\Models\RequerimentsRecommended;
 use App\Http\Controllers\User\DeveloperController;
+
 
 class ShopController extends Controller
 {
@@ -21,7 +24,9 @@ class ShopController extends Controller
     {
         $game = Game::findOrFail($id);
         $developer = Developer::find($game->developer_id);
+        $rm = RequerimentsMinimum::find($game->id);
+        $rr = RequerimentsRecommended::find($game->id);
 
-        return view('shop.game-page', compact(['game', 'developer']));
+        return view('shop.game-page', compact(['game', 'developer', 'rm', 'rr']));
     }
 }

@@ -1,9 +1,9 @@
 <x-admin-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="w-full py-12">
+        <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
-                    <h1 class="font-heading text-white text-xl uppercase mb-7">Adicionar Jogo</h1>
+                    <h1 class="font-heading text-white text-xl mb-7">Adicionar Jogo</h1>
                     <div class="card-body">
                         <form method="POST" action="{{ route('game.store') }}" enctype="multipart/form-data"
                             onsubmit="desformatarPreco()" class="text-white">

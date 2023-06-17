@@ -18,6 +18,10 @@ class Game extends Model
         static::creating(function ($model){
             $model->final_price = $model->price - $model->discount;
         });
+
+        static::updating(function ($model){
+            $model->final_price = $model->price - $model->discount;
+        });
     }
 
     public function developer()
