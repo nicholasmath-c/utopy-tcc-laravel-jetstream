@@ -95,10 +95,10 @@
 
                 <div class=" flex flex-col justify-end items-end pr-6 pb-2 h-full min-w-fit max-w-xs ">
 
-                    @if ($games->discount != 0.00)
-                    <div class="">
-                        <h1 class=" text-gray-500 text-lg line-through ">R${{ $games->price }}</h1>
-                    </div>
+                    @if ($games->discount != 0.0)
+                        <div class="">
+                            <h1 class=" text-gray-500 text-lg line-through ">R${{ $games->price }}</h1>
+                        </div>
                     @endif
 
                     <div class="">
