@@ -24,10 +24,11 @@
                         <!--First item-->
                         <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{url("storage/img/games_img/SilkSongBanner.jpg")}}"
-                                class="block w-full" alt="..." />
+                            <img src="{{ url('storage/img/games_img/SilkSongBanner.jpg') }}" class="block w-full"
+                                alt="..." />
                             <div class="absolute left-[35%] bottom-5 hidden py-5 text-center text-white md:block ">
-                                <h5 class="text-xl w-96 align-center">Hornet, princesa protetora de Hallownest, encontra-se sozinha em um
+                                <h5 class="text-xl w-96 align-center">Hornet, princesa protetora de Hallownest,
+                                    encontra-se sozinha em um
                                     mundo vasto e desconhecido.</h5>
                             </div>
 
@@ -35,8 +36,8 @@
                         <!--Second item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{url("storage/img/games_img/OriBanner.jpg")}}"
-                                class="block w-full" alt="..." />
+                            <img src="{{ url('storage/img/games_img/OriBanner.jpg') }}" class="block w-full"
+                                alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
                                 <h5 class="text-xl">Ori and the Blind Forest conta a história de um jovem órfão
                                     destinado ao heroísmo</h5>
@@ -45,10 +46,11 @@
                         <!--Third item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{url("storage/img/games_img/CelesteBanner.jpeg")}}"
-                                class="block w-full" alt="..." />
+                            <img src="{{ url('storage/img/games_img/CelesteBanner.jpeg') }}" class="block w-full"
+                                alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-                                <h5 class="text-xl">Ajude Madeline a sobreviver à sua jornada para o topo da Montanha Celeste</h5>
+                                <h5 class="text-xl">Ajude Madeline a sobreviver à sua jornada para o topo da Montanha
+                                    Celeste</h5>
                             </div>
                         </div>
                     </div>
@@ -88,24 +90,51 @@
             <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
                 <h2 class=" mb-6 text-3xl font-heading tracking-tight text-white">Ultimos lançamentos</h2>
 
-              <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                @foreach ($game as $games)
-                    <a href="{{route('game-page', ['id' => $games->id, 'title' => $games->title])}}" class="group">
-                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                        <img src="{{ asset("storage/games/$games->title/$games->cover") }}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
-                        </div>
-                        <h2 class="mt-2 text-base text-gray-400">{{ $games->genreGame->name }}</h2>
-                        <h3 class="mt-3 text-lg text-white">{{ $games->title }}</h3>
-                        <p class="mt-1 text-lg font-medium text-white">{{ $games->final_price }}</p>
-                    </a>
-                @endforeach
+                <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                    @foreach ($game as $games)
+                        <article
+                            class="mx-auto hover:cursor-pointer rounded-xl bg-slate-900 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
+                            <a href="{{ route('game-page', ['id' => $games->id, 'title' => $games->title]) }}"
+                                target="_blank">
+                                <div class="relative flex items-center overflow-hidden rounded-xl">
+                                    <img src="{{ url("storage/games/$games->title/$games->cover") }}"
+                                        alt="{{ $games->title }}" class="object-cover h-54 mx-auto" />
+                                </div>
 
-                <!-- More products... -->
-              </div>
+                                <div class="mt-1 p-2">
+                                    <h2 class="text-white">{{ $games->title }}</h2>
+                                    <p class="mt-1 text-sm text-slate-400">{{ $games->genreGame->name }}</p>
+
+                                    <div class="mt-3 flex items-end justify-between">
+                                        <p class="text-lg font-bold text-white">R${{ $games->final_price }}</p>
+                                        <div
+                                            class="flex items-center justify-center space-x-1.5 rounded-lg bg-slate-700 px-6 py-3 text-white duration-100 hover:bg-main-500">
+                                            Ver mais
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    @endforeach
+                    <!--
+                        <a href="{{ route('game-page', ['id' => $games->id, 'title' => $games->title]) }}"
+                            class="group">
+                            <div
+                                class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                                <img src="{{ asset("storage/games/$games->title/$games->cover") }}"
+                                    alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                                    class="h-full w-full object-cover object-center group-hover:opacity-75">
+                            </div>
+                            <h2 class="mt-2 text-base text-gray-400">{{ $games->genreGame->name }}</h2>
+                            <h3 class="mt-3 text-lg text-white">{{ $games->title }}</h3>
+                            <p class="mt-1 text-lg font-medium text-white">{{ $games->final_price }}</p>
+                        </a>->
+
+
+                    <!-- More products... -->
+                </div>
             </div>
-          </div>
-
-
+        </div>
     </div>
 </x-app-layout>
 
