@@ -19,16 +19,9 @@ class AdminGameController extends Controller
      */
     public function index()
     {
-        $game = Game::paginate(5);
+        $game = Game::paginate(8);
 
-        $user = Auth::user();
-
-        if($user->user_type == 2){
-            return "<h1>Você não possui permissão para acessar a área administrativa do sistema.</h1>";
-        }
-        else{
-            return view('admin.game.index', compact('game'));
-        }
+        return view('admin.game.index', compact('game'));
     }
 
     /**
@@ -47,12 +40,12 @@ class AdminGameController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('thumb'))
+        if($request->hasFile('cover'))
         {
             $destination_path = "public/games/$request->title";
-            $thumb = $request->file('thumb');
-            $thumb_name = $thumb->getClientOriginalName();
-            $path = $request->file('thumb')->storeAs($destination_path, $thumb_name);
+            $cover = $request->file('cover');
+            $cover_name = $cover->getClientOriginalName();
+            $path = $request->file('cover')->storeAs($destination_path, $cover_name);
         }
 
         if($request->hasFile('banner'))
@@ -77,7 +70,7 @@ class AdminGameController extends Controller
             'title' => $request->title,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
-            'thumb' => $thumb_name,
+            'cover' => $cover_name,
             'banner' => $banner_name,
             'price' => $request->price,
             'discount' => $request->discount,
@@ -137,26 +130,53 @@ class AdminGameController extends Controller
     {
         $game = Game::where(['id'=>$id])->first();
 
-        if($request->hasFile('image'))
+        if($request->hasFile('cover'))
         {
-            $destination_path = 'public/img/games_img';
-            $image = $request->file('image');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($destination_path, $image_name);
+            $destination_path = "public/games/$request->title";
+            $cover = $request->file('cover');
+            $cover_name = $cover->getClientOriginalName();
+            $path = $request->file('cover')->storeAs($destination_path, $cover_name);
         }
         else{
-            $image_name = $game->image;
+            $cover_name = $game->cover;
         }
+
+        if($request->hasFile('banner'))
+        {
+            $destination_path = "public/games/$request->title";
+            $banner = $request->file('banner');
+            $banner_name = $banner->getClientOriginalName();
+            $path = $request->file('banner')->storeAs($destination_path, $banner_name);
+        }
+        else{
+            $banner_name = $game->banner;
+        }
+
+        if($request->hasFile('game_file_path'))
+        {
+            $destination_path = "public/games/$request->title";
+            $game_file_path = $request->file('game_file_path');
+            $game_file_path_name = $game_file_path->getClientOriginalName();
+            $path = $request->file('game_file_path')->storeAs($destination_path, $game_file_path_name);
+        }
+        else{
+            $game_file_path_name = $game->game_file_path;
+        }
+
 
         $game->update([
             'developer_id' => $request->developer_id,
             'genre_game_id' => $request->genre_game_id,
             'title' => $request->title,
-            'description' => $request->description,
-            'image' => $image_name,
+            'short_description' => $request->short_description,
+            'long_description' => $request->long_description,
+            'cover' => $cover_name,
+            'banner' => $banner_name,
             'price' => $request->price,
+            'discount' => $request->discount,
             'release_date' => $request->release_date,
-            'age_rating' => $request->age_rating
+            'age_rating' => $request->age_rating,
+            'game_file_path' => $game_file_path_name
         ]);
 
         $rm = RequerimentsMinimum::where('game_id', $game->id)->update([

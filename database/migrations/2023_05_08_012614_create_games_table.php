@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('short_description', 255);
             $table->text('long_description');
-            $table->string('thumb', 100);
+            $table->string('cover', 100);
             $table->string('banner', 100);
             $table->double('price', 5, 2);
             $table->double('discount', 5, 2)->nullable()->default(0.00);

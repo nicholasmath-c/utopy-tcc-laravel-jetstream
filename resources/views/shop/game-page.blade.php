@@ -6,11 +6,11 @@
 
                 <div class="max-w-4xl pr-4">
                     <h1 class=" text-white text-4xl">{{ $game->title }}</h1>
-                    <img class=" rounded-md mr-64" width=630 src="{{ url("storage/img/games_img/{$game->image}") }}">
+                    <img class=" rounded-md mr-64" width=630 src="{{ url("storage/games/{$game->title}/{$game->banner}") }}">
                 </div>
 
                 <div class="items-center pt-20">
-                    <img class="max-w-xs rounded-md " src="{{ url("storage/img/games_img/{$game->image}") }}">
+                    <img class="max-w-xs rounded-md " src="{{ url("storage/games/{$game->title}/{$game->cover}") }}">
                     <div class="pt-4">
                         <p class="flex flex-row text-white text-lg"> <span class=" text-gray-500">Desenvolvedor -</span>
                             <span class=" pl-6"> {{$developer->user->firstname}} {{$developer->user->lastname}} - {{$developer->user->nickname}} </span>
@@ -41,10 +41,6 @@
                     </div>
 
                 </div>
-
-
-
-
             </div>
 
 

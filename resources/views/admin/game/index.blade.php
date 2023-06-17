@@ -26,18 +26,17 @@
                     </div>
                 </div>
                 <section class="py-10">
+                    @if ($game->isEmpty())
+                            <div class="text-center text-slate-400">Nenhum jogo encontrado... ☹️</div>
+                    @endif
                     <div class="mx-auto grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                        @if ($game->isEmpty())
-                            <div class="">Nenhum jogo encontrado</div>
-                        @endif
-
                         @foreach ($game as $games)
                             <article
                                 class="mx-auto rounded-xl bg-slate-900 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
                                 <a href="{{ route('game-page', ['id' => $games->id, 'title' => $games->title]) }}"
                                     target="_blank">
                                     <div class="relative flex items-center overflow-hidden rounded-xl">
-                                        <img src="{{ asset("storage/games/$games->title/$games->banner") }}"
+                                        <img src="{{ url("storage/games/$games->title/$games->banner") }}"
                                             alt="{{ $games->title }}" class="object-cover h-48 mx-auto" />
                                     </div>
 
@@ -52,7 +51,7 @@
                                                     target="_blank">
                                                     <div
                                                         class="flex items-center justify-center space-x-1.5 rounded-lg bg-slate-700 px-6 py-3 text-white duration-100 hover:bg-slate-300">
-                                                        <svg class="h-5 w-5 fill-white"
+                                                        <svg class="h-4 w-4 fill-white"
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                                                             x="0px" y="0px" viewBox="0 0 24 30"
@@ -70,7 +69,7 @@
                                                 <a href="{{ route('game.edit', $games->id) }}">
                                                     <div
                                                         class="flex items-center justify-center space-x-1.5 rounded-lg bg-slate-700 px-6 py-3 text-white duration-100 hover:bg-slate-300">
-                                                        <svg class="h-5 w-5 fill-white"
+                                                        <svg class="h-4 w-4 fill-white"
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                                                             x="0px" y="0px" viewBox="0 0 32 36"
@@ -96,7 +95,7 @@
                                                     @method('DELETE')
                                                     <button type="submit"
                                                         class="flex items-center justify-center space-x-1.5 rounded-lg bg-red-500 px-6 py-3 text-white duration-100 hover:bg-slate-300">
-                                                        <svg class="h-5 w-5 fill-white"
+                                                        <svg class="h-4 w-4 fill-white"
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                                                             x="0px" y="0px" viewBox="0 0 100 125"
@@ -114,7 +113,7 @@
                         @endforeach
                 </section>
 
-                <div class="my-4">
+                <div class="my-4 text-white">
                     {{ $game->links() }}
                 </div>
             </div>

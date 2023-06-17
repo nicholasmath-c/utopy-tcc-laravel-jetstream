@@ -51,9 +51,9 @@
                                 <x-input type="text" name="long_description" id="long_description" />
                             </div>
                             <div class="mb-4">
-                                <label for="thumb">Capa</label>
-                                <img src="{{asset("storage/img/games_img/$game->thumb")}}" alt="" width=200>
-                                <input type="file" name="thumb" id="thumb"
+                                <label for="cover">Capa</label>
+                                <img src="{{asset("storage/img/games_img/$game->cover")}}" alt="" width=200>
+                                <input type="file" name="cover" id="cover"
                                     class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
                             </div>
                             <div class="mb-4">

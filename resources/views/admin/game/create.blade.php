@@ -52,8 +52,8 @@
                                 <x-input type="text" name="long_description" id="long_description" />
                             </div>
                             <div class="mb-4">
-                                <label for="thumb">Capa</label>
-                                <input type="file" name="thumb" id="thumb"
+                                <label for="cover">Capa</label>
+                                <input type="file" name="cover" id="cover"
                                     class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
                                     required />
                             </div>
