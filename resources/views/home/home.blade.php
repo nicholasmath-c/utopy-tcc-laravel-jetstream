@@ -86,17 +86,17 @@
 
         <div class="bg-slate">
             <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
-                <h2 class=" mb-4 text-2xl font-bold tracking-tight text-white">Ultimos lançamentos</h2>
+                <h2 class=" mb-6 text-3xl font-heading tracking-tight text-white">Ultimos lançamentos</h2>
 
               <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 @foreach ($game as $games)
                     <a href="{{route('game-page', ['id' => $games->id, 'title' => $games->title])}}" class="group">
                         <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                        <img src="{{ asset("storage/img/games_img/$games->image") }}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                        <img src="{{ asset("storage/games/$games->title/$games->cover") }}" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
                         </div>
                         <h2 class="mt-2 text-base text-gray-400">{{ $games->genreGame->name }}</h2>
                         <h3 class="mt-3 text-lg text-white">{{ $games->title }}</h3>
-                        <p class="mt-1 text-lg font-medium text-white">$20</p>
+                        <p class="mt-1 text-lg font-medium text-white">{{ $games->final_price }}</p>
                     </a>
                 @endforeach
 
