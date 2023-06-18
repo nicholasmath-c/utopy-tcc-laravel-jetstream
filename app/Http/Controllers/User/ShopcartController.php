@@ -112,8 +112,7 @@ class ShopcartController extends Controller
                     $produto->name,
                     1, 
                     number_format($produto->price, 2, '.', "")
-
-                )
+                );
             }
 
             $user = Auth::user();
@@ -133,7 +132,7 @@ class ShopcartController extends Controller
                 'AC',
                 'BRA',
                 'Dino'  
-            )
+            );
             $credCard->setBilling->setAddress()->withParameters(
                 'Av 3',
                 '1234',
