@@ -82,6 +82,12 @@ class ShopController extends Controller
     public function processCheckout(Request $request) { 
         $data = [];
 
+        $carrinho = Shopcart::
+            join('games', 'games.id', '=', 'shopcarts.game_id')
+                ->select('shopcarts.*', 'games.*')
+                ->get();
+        $data['shopcart'] = $carrinho;                
+
         $sessionCode = \Pagseguro\Services\Servico::create(
             $this->getCredential()
         );

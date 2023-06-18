@@ -8,33 +8,34 @@
 
             <div class=" flex h-96 items-end ">
                 <div class=" flex flex-col h-72 w-full overflow-auto scrollbar-hide">
-
-                    @php
+                    @php 
                         $total = 0;
                     @endphp
-                    @foreach ($shopcart as $item)
-                    <div class=" mb-2 pl-10 pb-3 pr-28">
-                        <div class=" rounded-md border-2 border-slate-900 hover:border-red-500 ease-in-out duration-150 pl-2 flex flex-row pt-2">
-                            <img class=" max-h-20 rounded-sm mb-2 " src="{{ url('img/games_img/' . $item->image) }}" alt="">
+                    @if (isset($shopcart) && count($shopcart) > 0)                     
+                        @foreach ($shopcart as $item)
+                        <div class=" mb-2 pl-10 pb-3 pr-28">
+                            <div class=" rounded-md border-2 border-slate-900 hover:border-red-500 ease-in-out duration-150 pl-2 flex flex-row pt-2">
+                                <img class=" max-h-20 rounded-sm mb-2 " src="{{ url('img/games_img/' . $item->image) }}" alt="">
 
-                            <div class="self-center w-96">
-                                <h1 class=" ml-2" >R$ {{ $item->price }}</h1>
-                                <h1> <span class=" ml-2 text-gray-400" >{{ $item->title }}</h1>
+                                <div class="self-center w-96">
+                                    <h1 class=" ml-2" >R$ {{ $item->price }}</h1>
+                                    <h1> <span class=" ml-2 text-gray-400" >{{ $item->title }}</h1>
+                                </div>
+
+                                <div class="flex flex-col self-end pb-2 ">
+                                <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="{{ route('shopcart.destroy', $item->id) }}">
+                                        Remover
+                                    </a>
+                                </div>
                             </div>
 
-                            <div class="flex flex-col self-end pb-2 ">
-                               <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="{{ route('shopcart.destroy', $item->id) }}">
-                                    Remover
-                                </a>
-                            </div>
+                            <hr class=" mt-2">
                         </div>
-
-                        <hr class=" mt-2">
-                    </div>
-                    @php
-                        $total += $item->price;
-                    @endphp
-                    @endforeach
+                        @php
+                            $total += $item->price;
+                        @endphp
+                        @endforeach
+                    @endif  
                 </div>
             </div>
 
