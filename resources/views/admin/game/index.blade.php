@@ -27,9 +27,10 @@
                 </div>
                 <section class="py-10">
                     @if ($game->isEmpty())
-                            <div class="text-center text-slate-400">Nenhum jogo encontrado... ☹️</div>
+                        <div class="text-center font-heading text-slate-400">Nenhum jogo encontrado... ☹️</div>
                     @endif
-                    <div id='results' class="mx-auto grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    <div id=''
+                        class="alldata mx-auto grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         @foreach ($game as $games)
                             <article
                                 class="mx-auto rounded-xl bg-slate-900 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
@@ -62,7 +63,6 @@
                                                                 <path fill="#ffffff"
                                                                     d="M20.8,2.8h-6.7c-0.2,0-0.4,0.2-0.4,0.4s0.2,0.4,0.4,0.4h5.7L8.3,15.1c-0.2,0.2-0.2,0.4,0,0.6   c0.1,0.1,0.2,0.1,0.3,0.1s0.2,0,0.3-0.1L20.4,4.3V10c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4V3.3C21.2,3,21,2.8,20.8,2.8z" />
                                                             </g>
-
                                                         </svg>
                                                     </div>
                                                 </a>
@@ -77,14 +77,6 @@
                                                             xml:space="preserve">
                                                             <path
                                                                 d="M15.9868164,25.2851562l12.953125-12.953125C29.6235352,11.6484375,30,10.7397461,30,9.7734375  c0-0.9667969-0.3764648-1.8754883-1.0600586-2.5585938l-4.1542969-4.1547852c-1.4111328-1.4111328-3.706543-1.4121094-5.1176758,0  l-12.953125,12.953125c-1.0883789,1.0883789-1.8774414,2.4477539-2.2817383,3.9316406l-2.3979492,8.7919922  C1.8586705,29.3444157,2.3612406,30.0179615,3,30h26c0.5522461,0,1-0.4477539,1-1s-0.4477539-1-1-1H10.4672241l1.5879517-0.4331055  C13.5390625,27.1625977,14.8989258,26.3735352,15.9868164,25.2851562z M11.5288086,25.637207l-7.1035156,1.9375l1.9375-7.1040039  c0.3129883-1.1484375,0.9238281-2.2006836,1.7661133-3.043457l8.8837891-8.8837891l6.4438477,6.4438477l-8.8837891,8.8837891  c-0.8427734,0.8422852-1.8950195,1.453125-3.043457,1.7661133C11.5288086,25.637207,11.5288086,25.637207,11.5288086,25.637207z   M23.371582,4.4741211l4.1542969,4.1547852C27.831543,8.9345703,28,9.3413086,28,9.7734375s-0.168457,0.8383789-0.4741211,1.1445312  l-2.6552734,2.6552734l-6.4438477-6.4438477l2.6552734-2.6552734c0.315918-0.3154297,0.7299805-0.4731445,1.1450195-0.4731445  C22.6411133,4.0009766,23.0561523,4.1586914,23.371582,4.4741211z" />
-                                                            <text x="0" y="47" fill="#000000"
-                                                                font-size="5px" font-weight="bold"
-                                                                font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created
-                                                                by Riyan Resdian</text><text x="0"
-                                                                y="52" fill="#000000" font-size="5px"
-                                                                font-weight="bold"
-                                                                font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from
-                                                                the Noun Project</text>
                                                         </svg>
                                                     </div>
                                                 </a>
@@ -111,11 +103,16 @@
                                 </a>
                             </article>
                         @endforeach
-                </section>
 
-                <div class="my-4 text-white">
-                    {{ $game->links() }}
-                </div>
+                        <div class="my-4 text-white flex-grow col-span-4">
+                            {{ $game->links() }}
+                        </div>
+                    </div>
+                    <div id='content_search'
+                        class="searchdata mx-auto grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -145,25 +142,32 @@
         popup.classList.add("hidden");
     };
 
-    $(document).ready(function(){
-        fetch_customer_data();
+    $('#search').on('keyup', function() {
+        $value = $(this).val();
 
-        function fetch_customer_data(query = ''){
-            $.ajax({
-                url:"{{ route('game.search') }}",
-                method: 'GET',
-                data: {query:query},
-                dataType: 'json',
-                success:function(data){
-                    $('#results').html(data.table_data);
-                    $('#total_records').text(data.total_data);
-                }
-            })
+        if ($value) {
+            $('.alldata').hide();
+            $('.searchdata').show();
+        } else {
+            $('.alldata').show();
+            $('.searchdata').hide();
         }
 
-        $(document).on('keyup', '#search', function(){
-            var query = $(this).val();
-            fetch_customer_data(query);
+        $.ajax({
+            type: 'get',
+            url: '{{ route('game.search') }}',
+            data: {
+                'search': $value
+            },
+            success: function(data) {
+                console.log(data);
+                $('#content_search').html(data);
+            }
         });
+    });
+
+    $('input[type=search]').on('search', function() {
+        $('.alldata').show();
+        $('.searchdata').hide();
     });
 </script>
