@@ -35,7 +35,7 @@
     <div class=" flex flex-col-2 min-h-screen bg-slate-900">
         <aside
             class="flex flex-col w-60 h-screen px-5 py-8 overflow-y-auto bg-slate-800 border-r border-main-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 sticky top-0 ">
-            <a href="{{ route('admin') }}" class="mx-auto">
+            <a href="{{ route('home') }}" class="mx-auto">
                 <x-application-mark class="block h-9 w-auto" />
             </a>
 
@@ -65,13 +65,13 @@
 
                         <a class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:bg-main-500 hover:text-white {{ request()->routeIs('game.index') ? 'text-white' : 'text-slate-400' }}"
                             href="{{ route('game.index') }}">
-                            <svg class="h-5 w-5 items-center stroke-slate-200 text-slate-200 fill-slate-200 decoration-slate-200 hover:stroke-white hover:text-white hover:fill-white hover:decoration-white {{ request()->routeIs('game.index') ? 'stroke-white text-white fill-white decoration-white' : 'stroke-slate-400 text-slate-400 fill-slate-400 decoration-slate-400' }}" xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                xmlns:cc="http://creativecommons.org/ns#"
+                            <svg class="h-6 w-6 items-center stroke-slate-200 text-slate-200 fill-slate-200 decoration-slate-200 hover:stroke-white hover:text-white hover:fill-white hover:decoration-white {{ request()->routeIs('game.index') ? 'stroke-white text-white fill-white decoration-white' : 'stroke-slate-400 text-slate-400 fill-slate-400 decoration-slate-400' }}"
+                                xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
                                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                 xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                                viewBox="0 0 16 16" version="1.1" x="0px" y="0px">
+                                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 16 16"
+                                version="1.1" x="0px" y="0px">
                                 <g transform="translate(0,-280.06665) " class="">
                                     <path
                                         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-opacity:1;vector-effect:none;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.52916664;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
@@ -91,15 +91,21 @@
                             <span class="mx-2 text-sm font-medium">Todos os Jogos</span>
                         </a>
 
-                        <a class="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                            href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+                        <a class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:bg-main-500 hover:text-white {{ request()->routeIs('game.create') ? 'text-white' : 'text-slate-400' }} hover:fill-white"
+                            href="{{ route('game.create') }}">
+                            <svg class="ml-1 h-5 w-5 items-center stroke-slate-200 text-slate-200 fill-slate-200 decoration-slate-200 hover:stroke-white hover:text-white hover:fill-white hover:decoration-white {{ request()->routeIs('game.create') ? 'stroke-white text-white fill-white decoration-white' : 'stroke-slate-400 text-slate-400 fill-slate-400 decoration-slate-400' }}"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                version="1.1" x="0px" y="0px" viewBox="0 0 100 100"
+                                style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                                <path
+                                    d="M50,97.5c-26.1915855,0-47.5-21.30793-47.5-47.5S23.8084145,2.5,50,2.5S97.5,23.8079319,97.5,50S76.1915817,97.5,50,97.5z   M50,8.4375c-22.9174557,0-41.5625,18.6445618-41.5625,41.5625S27.0825443,91.5625,50,91.5625S91.5625,72.9179382,91.5625,50  S72.9174576,8.4375,50,8.4375z" />
+                                <path
+                                    d="M50,79.6875c-1.6394806,0-2.96875-1.3287888-2.96875-2.96875v-53.4375c0-1.6399632,1.3292694-2.96875,2.96875-2.96875  s2.96875,1.3287868,2.96875,2.96875v53.4375C52.96875,78.3587112,51.6394806,79.6875,50,79.6875z" />
+                                <path
+                                    d="M76.71875,52.96875h-53.4375c-1.6394806,0-2.96875-1.3287849-2.96875-2.96875s1.3292694-2.96875,2.96875-2.96875h53.4375  c1.6394806,0,2.96875,1.3287849,2.96875,2.96875S78.3582306,52.96875,76.71875,52.96875z" />
                             </svg>
 
-                            <span class="mx-2 text-sm font-medium">Preformance</span>
+                            <span class="mx-2 text-sm font-medium">Adicionar Jogo</span>
                         </a>
                     </div>
 

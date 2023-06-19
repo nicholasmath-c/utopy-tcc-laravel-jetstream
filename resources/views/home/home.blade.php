@@ -1,7 +1,6 @@
 <x-app-layout>
-
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="mx-auto sm:px-6 lg:px-8 mb-10">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div id="carouselExampleCaptions" class="relative" data-te-carousel-init data-te-carousel-slide>
                     <!--Carousel indicators-->
@@ -85,38 +84,35 @@
             </div>
         </div>
 
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
+            <h2 class="mb-6 text-2xl font-heading tracking-tight text-white">Ultimos lançamentos</h2>
 
-        <div class="bg-slate">
-            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-8">
-                <h2 class=" mb-6 text-3xl font-heading tracking-tight text-white">Ultimos lançamentos</h2>
+            <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                @foreach ($game as $games)
+                    <article
+                        class="mx-auto hover:cursor-pointer rounded-xl bg-slate-900 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
+                        <a href="{{ route('game-page', ['id' => $games->id, 'title' => $games->title]) }}">
+                            <div class="relative flex items-center overflow-hidden rounded-xl">
+                                <img src="{{ url("storage/games/$games->title/$games->cover") }}"
+                                    alt="{{ $games->title }}" class="object-cover h-54 mx-auto" />
+                            </div>
 
-                <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    @foreach ($game as $games)
-                        <article
-                            class="mx-auto hover:cursor-pointer rounded-xl bg-slate-900 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
-                            <a href="{{ route('game-page', ['id' => $games->id, 'title' => $games->title]) }}"
-                                target="_blank">
-                                <div class="relative flex items-center overflow-hidden rounded-xl">
-                                    <img src="{{ url("storage/games/$games->title/$games->cover") }}"
-                                        alt="{{ $games->title }}" class="object-cover h-54 mx-auto" />
-                                </div>
+                            <div class="mt-1 p-2">
+                                <h2 class="text-white">{{ $games->title }}</h2>
+                                <p class="mt-1 text-sm text-slate-400">{{ $games->genreGame->name }}</p>
 
-                                <div class="mt-1 p-2">
-                                    <h2 class="text-white">{{ $games->title }}</h2>
-                                    <p class="mt-1 text-sm text-slate-400">{{ $games->genreGame->name }}</p>
-
-                                    <div class="mt-3 flex items-end justify-between">
-                                        <p class="text-lg font-bold text-white">R${{ $games->final_price }}</p>
-                                        <div
-                                            class="flex items-center justify-center space-x-1.5 rounded-lg bg-slate-700 px-6 py-3 text-white duration-100 hover:bg-main-500">
-                                            Ver mais
-                                        </div>
+                                <div class="mt-3 flex items-end justify-between">
+                                    <p class="text-lg font-bold text-white">R${{ $games->final_price }}</p>
+                                    <div
+                                        class="flex items-center justify-center space-x-1.5 rounded-lg bg-slate-700 px-6 py-3 text-white duration-100 hover:bg-main-500">
+                                        Ver mais
                                     </div>
                                 </div>
-                            </a>
-                        </article>
-                    @endforeach
-                    <!--
+                            </div>
+                        </a>
+                    </article>
+                @endforeach
+                <!--
                         <a href="{{ route('game-page', ['id' => $games->id, 'title' => $games->title]) }}"
                             class="group">
                             <div
@@ -132,7 +128,6 @@
 
 
                     <!-- More products... -->
-                </div>
             </div>
         </div>
     </div>

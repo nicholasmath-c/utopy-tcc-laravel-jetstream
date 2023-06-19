@@ -29,10 +29,10 @@ class AdminGameController extends Controller
      */
     public function create()
     {
-        $dev = Developer::where('is_admitted', true)->get();
+        $developer = Developer::where('is_admitted', true)->get();
         $genreGame = GenreGame::all();
 
-        return view('admin.game.create')->with(compact('genreGame', 'dev'));
+        return view('admin.game.create')->with(compact('genreGame', 'developer'));
     }
 
     /**
