@@ -19,7 +19,7 @@
                 <div class=" flex flex-col h-96 w-50 overflow-auto scrollbar-hide  ">
 
 
-                    <div class="  mb-10 pl-10 pb-3 pr-28">
+                    <div class="  mb-15 pl-10 pb-3 pr-28">
                         <div class="rounded-md border-2 p-2 bg-gray-900 border-slate-600 hover:border-red-500 ease-in-out duration-150  flex flex-row ">
 
                             <div class="flex flex-col justify-center  h-32 w-32">
@@ -224,14 +224,14 @@
                 <h1 class="self-center text-xl mt-10">Recomendado para você</h1>
                 <div
                     class="p-1 rounded-md border-2 border-slate-800 hover:border-red-500 ease-in-out duration-150 mb-4">
-                    <img class="rounded-sm" src="{{ url('img/games_img/OriBanner.jpg') }}" alt="">
+                    <img class="rounded-sm" src="{{ url('storage/games/Ori and the Blind Forest/Ori-Banner.jpg') }}" alt="">
                     <div class="bg-opacity-20 rounded-sm bg-slate-900">
                         <h1 class="text-lg">R$20,00 <span class="text-sm line-through text-gray-500">R$50,00</span></h1>
                     </div>
                 </div>
                 <div
                     class="p-1 rounded-md border-2 border-slate-800 hover:border-red-500 ease-in-out duration-150 mb-4">
-                    <img class="rounded-sm" src="{{ url('img/games_img/CelesteBanner.jpeg') }}" alt="">
+                    <img class="rounded-sm" src="{{ url('storage/games/Celeste/Celeste-Banner.jpeg') }}" alt="">
                     <div class="bg-opacity-20 rounded-sm bg-slate-900">
                         <h1 class="text-lg">R$20,00 <span class="text-sm line-through text-gray-500">R$50,00</span></h1>
                     </div>
