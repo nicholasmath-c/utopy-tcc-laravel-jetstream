@@ -90,8 +90,7 @@
                                         qualquer outro aspecto relevante.</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <x-input type="text" name="long_description" id="long_description"
-                                        class="w-full" />
+                                    <textarea name="long_description" id="long_description" class="text-black" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
 
@@ -206,6 +205,45 @@
                                 </div>
                             </div>
 
+                            <div class="mt-4 mb-4">
+                                <div class="mb-4">
+                                    <h4 class="mb-2">Requisitos Minimos</h4>
+
+                                    <label for="">GPU:</label>
+                                    <x-input type="text" class="mb-4" name="rm_gpu" id="" required />
+
+                                    <label for="">CPU:</label>
+                                    <x-input type="text" class="mb-4" name="rm_cpu" id="" required />
+
+                                    <label for="">RAM:</label>
+                                    <x-input type="text" class="mb-4" name="rm_ram" id="" required />
+
+                                    <label for="">Armazenamento:</label>
+                                    <x-input type="text" class="mb-4" name="rm_storage" id="" required />
+
+                                    <label for="">Sistema Operacional:</label>
+                                    <x-input type="text" class="mb-4" name="rm_os" id="" required />
+                                </div>
+                                <hr class="">
+                                <div class=" mt-4 mb-4">
+                                    <h4 class="mb-4">Requisitos Recomendados</h4>
+                                    <label for="">GPU:</label>
+                                    <x-input type="text" class="mb-4" name="rr_gpu" id="" required />
+
+                                    <label for="">CPU:</label>
+                                    <x-input type="text" class="mb-4" name="rr_cpu" id="" required />
+
+                                    <label for="">RAM:</label>
+                                    <x-input type="text" class="mb-4" name="rr_ram" id="" required />
+
+                                    <label for="">Armazenamento:</label>
+                                    <x-input type="text" class="mb-4" name="rr_storage" id="" required />
+
+                                    <label for="">Sistema Operacional:</label>
+                                    <x-input type="text" class="mb-4" name="rr_os" id="" required />
+                                </div>
+                            </div>
+
                             <div class="flex flex-row gap-4 w-full justify-end">
                                 <a href="{{ route('game.index') }}">
                                     <x-secondary-button>Voltar</x-secondary-button>
@@ -217,45 +255,7 @@
                 </div>
             </div>
 
-            <div class="mt-4 mb-4">
-                <div class="mb-4">
-                    <h4 class="mb-2">Requisitos Minimos</h4>
 
-                    <label for="">GPU:</label>
-                    <x-input type="text" class="mb-4" name="rm_gpu" id="" required />
-
-                    <label for="">CPU:</label>
-                    <x-input type="text" class="mb-4" name="rm_cpu" id="" required />
-
-                    <label for="">RAM:</label>
-                    <x-input type="text" class="mb-4" name="rm_ram" id="" required />
-
-                    <label for="">Armazenamento:</label>
-                    <x-input type="text" class="mb-4" name="rm_storage" id="" required />
-
-                    <label for="">Sistema Operacional:</label>
-                    <x-input type="text" class="mb-4" name="rm_os" id="" required />
-                </div>
-                <hr class="">
-                <div class=" mt-4 mb-4">
-                    <h4 class="mb-4">Requisitos Recomendados</h4>
-                    <label for="">GPU:</label>
-                    <x-input type="text" class="mb-4" name="rr_gpu" id="" required />
-
-                    <label for="">CPU:</label>
-                    <x-input type="text" class="mb-4" name="rr_cpu" id="" required />
-
-                    <label for="">RAM:</label>
-                    <x-input type="text" class="mb-4" name="rr_ram" id="" required />
-
-                    <label for="">Armazenamento:</label>
-                    <x-input type="text" class="mb-4" name="rr_storage" id="" required />
-
-                    <label for="">Sistema Operacional:</label>
-                    <x-input type="text" class="mb-4" name="rr_os" id="" required />
-                </div>
-            </div>
-            </form>
         </div>
     </div>
     </div>
@@ -266,47 +266,5 @@
 </x-admin-layout>
 
 <script>
-    $("#price").on("keyup", function() {
-        var valor = $(this).val().replace(/\D/g, ""); // Remove todos os caracteres não numéricos
-        var valorFormatado = "";
 
-        if (valor.length > 2) {
-            valorFormatado = "R$ " + Number(valor.substr(0, valor.length - 2)).toLocaleString("pt-BR") + "," +
-                valor.substr(-2);
-        } else if (valor.length === 2) {
-            valorFormatado = "R$ 0," + valor;
-        } else if (valor.length === 1) {
-            valorFormatado = "R$ 0,0" + valor;
-        } else {
-            valorFormatado = "R$ 0,00";
-        }
-
-        $(this).val(valorFormatado);
-    });
-
-    $("#discount").on("keyup", function() {
-        var valor = $(this).val().replace(/\D/g, ""); // Remove todos os caracteres não numéricos
-        var valorFormatado = "";
-
-        if (valor.length > 2) {
-            valorFormatado = "R$ " + Number(valor.substr(0, valor.length - 2)).toLocaleString("pt-BR") + "," +
-                valor.substr(-2);
-        } else if (valor.length === 2) {
-            valorFormatado = "R$ 0," + valor;
-        } else if (valor.length === 1) {
-            valorFormatado = "R$ 0,0" + valor;
-        } else {
-            valorFormatado = "R$ 0,00";
-        }
-
-        $(this).val(valorFormatado);
-    });
-
-    $('#form').on('submit', function() {
-        $input = $('#price').val().replace(/[^\d,]/g, "").replace(",", ".");
-        $input = $('#discount').val().replace(/[^\d,]/g, "").replace(",", ".");
-
-        $("#price").val($input);
-        $("#discount").val($input);
-    });
 </script>

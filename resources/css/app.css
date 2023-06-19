@@ -8,6 +8,14 @@
   animation: float 3s linear infinite;
 }
 
+.ck-editor__editable[role="textbox"] {
+    /* editing area */
+    min-height: 300px;
+    max-height: 300px;
+    color: black;
+    background-color: #303030;
+}
+
 @keyframes float{
   0%, 100%{
     transform: translateY(0rem);

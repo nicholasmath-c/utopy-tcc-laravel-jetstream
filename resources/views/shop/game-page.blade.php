@@ -15,7 +15,7 @@
                         <div class="">
                             <div class=" max-w-3xl ">
                                 <p class=" text-lg ">
-                                    {{ $game->long_description }}
+                                    {!! $game->long_description !!}
                                 </p>
                             </div>
                         </div>
