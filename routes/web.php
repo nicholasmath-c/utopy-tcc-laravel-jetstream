@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LiveSearchController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminGenreGameController;
@@ -45,6 +46,7 @@ Route::middleware([
         Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
         Route::resource('genre-game', AdminGenreGameController::class);
         Route::resource('game', AdminGameController::class);
+        Route::get('/game_search', [LiveSearchController::class, 'gameSearch'])->name('game.search');
     });
 });
 
