@@ -6,9 +6,9 @@
                     <div class="mb-16">
                         <h1 class="font-heading text-white text-xl mb-5">Adicionar Jogo</h1>
 
-                        @if (isset($errors) && (count($errors) > 0))
+                        @if (isset($errors) && count($errors) > 0)
                             <div class="text-rose-500 text-sm">
-                                @foreach ($errors as $error)
+                                @foreach ($errors->all() as $error)
                                     {{ $error }}<br>
                                 @endforeach
                             </div>
@@ -111,7 +111,8 @@
                                     <div name="title" class="text-lg font-medium mb-2">Capa</div>
                                     <div name="description" class="text-sm text-slate-400">Faça o upload de uma imagem
                                         que represente visualmente o jogo. Geralmente, a capa é a imagem principal que
-                                        será exibida nas listagens e na página do jogo.</div>
+                                        será exibida nas listagens e na página do jogo. Utilize o tamanho 1:1 (Exemplo:
+                                        1080x1080px)</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
                                     <input type="file" name="cover" id="cover"
@@ -126,7 +127,8 @@
                                     <div name="title" class="text-lg font-medium mb-2">Banner</div>
                                     <div name="description" class="text-sm text-slate-400">Adicione um banner
                                         personalizado para o jogo. O banner pode ser uma imagem mais ampla e chamativa
-                                        que será usada em destaque, como em sliders ou banners promocionais.</div>
+                                        que será usada em destaque, como em sliders ou banners promocionais. Utilize o
+                                        tamanho 16:9 (Exemplo: 1920x1080px, 1280x720px)</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
                                     <input type="file" name="banner" id="banner"
@@ -157,7 +159,7 @@
                                         especial aplicado ao jogo, informe o valor do desconto.</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <x-input type="text" name="discount" id="discount" class="w-full" required
+                                    <x-input type="text" name="discount" id="discount" class="w-full"
                                         placeholder="R$0,00" maxlength="12" />
                                 </div>
                             </div>

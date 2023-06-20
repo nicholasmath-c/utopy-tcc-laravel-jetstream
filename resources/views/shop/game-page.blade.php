@@ -19,77 +19,75 @@
         <div class="border-l-4 border-main-500 rounded-sm pl-7">
             <img class="max-w-xs rounded-md " src="{{ url("storage/games/{$game->title}/{$game->cover}") }}">
             <div class="pt-4">
-                <p class="flex flex-row text-white text-lg max-w-[100px] "> <span
-                        class=" text-gray-500">Desenvolvedor-</span>
-                    <span class=" pl-6"> {{ $developer->user->firstname }} {{ $developer->user->lastname }}-
-                        {{ $developer->user->nickname }} </span>
-                </p>
-                <hr class=" rounded-md">
-                <p class="text-white text-lg"> <span class=" text-gray-500">Categoria -</span> <span class=" pl-6">
-                        {{ $game->genreGame->name }} </span> </p>
-                <hr class=" rounded-md">
-
-                <div class=" mt-10">
-                    <x-button class=" w-64 h-16"> Adicionar ao Carrinho </x-button>
-                    <x-button class=" mt-4 w-64 h-16"> Comprar Jogo </x-button>
+                <div class="flex flex-col-2 text-lg">
+                    <p class="text-gray-500 w-full">Desenvolvedor</p>
+                    <p class="w-full"> {{ $developer->user->firstname }} {{ $developer->user->lastname }} ({{ $developer->user->nickname }})</p>
+                </div>
+                <hr class="my-4">
+                <div class="flex flex-col-2 text-lg">
+                    <p class="text-gray-500 w-full">Categoria</p>
+                    <p class="w-full"> {{ $game->genreGame->name }} </p>
+                </div>
+                <div class="mt-10">
+                    <x-button class="w-full h-16"> Adicionar ao Carrinho </x-button>
                 </div>
             </div>
 
             <div class=" w-full mt-10">
                 <div class=" max-w-fit ">
                     <div class=" max-w-full ">
-                        <p class=" text-2xl font-heading mb-2">
+                        <p class=" text-xl font-heading mb-4">
                             Requisitos minimos
                         </p>
 
-                        <div class=" text-slate-400 text-lg">
+                        <div class="flex flex-col gap-2 text-slate-400 text-lg">
                             <p>
-                                Sistema operacional - <span class="text-white">INFO AQUI</span>
+                                Sistema operacional - <span class="text-white">{{ $rm->os }}</span>
                             </p>
 
                             <p>
-                                CPU - <span class="text-white">INFO AQUI</span>
+                                CPU - <span class="text-white">{{ $rm->cpu }}</span>
                             </p>
 
                             <p>
-                                GPU - <span class="text-white">INFO AQUI</span>
+                                GPU - <span class="text-white">{{ $rm->gpu }}</span>
                             </p>
 
                             <p>
-                                RAM - <span class="text-white">INFO AQUI</span>
+                                RAM - <span class="text-white">{{ $rm->ram }}</span>
                             </p>
 
                             <p>
-                                Storage - <span class="text-white">INFO AQUI</span>
+                                Storage - <span class="text-white">{{ $rm->storage }}</span>
                             </p>
                         </div>
 
                     </div>
 
                     <div class="mt-7">
-                        <p class=" text-2xl font-heading mb-2 ">
+                        <p class=" text-xl font-heading mb-4 ">
                             Requisitos Recomendados
                         </p>
 
-                        <div class=" text-slate-400 text-lg">
+                        <div class="flex flex-col gap-2 text-slate-400 text-lg">
                             <p>
-                                Sistema operacional - <span class="text-white">INFO AQUI</span>
+                                Sistema operacional - <span class="text-white">{{ $rr->os }}</span>
                             </p>
 
                             <p>
-                                CPU - <span class="text-white">INFO AQUI</span>
+                                CPU - <span class="text-white">{{ $rr->cpu }}</span>
                             </p>
 
                             <p>
-                                GPU - <span class="text-white">INFO AQUI</span>
+                                GPU - <span class="text-white">{{ $rr->gpu }}</span>
                             </p>
 
                             <p>
-                                RAM - <span class="text-white">INFO AQUI</span>
+                                RAM - <span class="text-white">{{ $rr->ram }}</span>
                             </p>
 
                             <p>
-                                Storage - <span class="text-white">INFO AQUI</span>
+                                Storage - <span class="text-white">{{ $rr->storage }}</span>
                             </p>
                         </div>
                     </div>

@@ -39,7 +39,7 @@ class GameRequest extends FormRequest
     public function messages()
     {
         return [
-            'short_description.max:255'=>'O tamanho máximo da Descrição Curta é de 255 caracteres.'
+            'short_description.max'=>'O tamanho máximo da Descrição Curta é de 255 caracteres.'
         ];
     }
 }

@@ -98,8 +98,8 @@ class AdminGameController extends Controller
             'storage' => $request->rr_storage
         ]);
 
-        if($game)
-            return redirect()->route('game.index')->with('success', 'Jogo criado com sucesso!');
+        if($game && $rm && $rr)
+            return redirect()->route('game.index')->with('message', 'Jogo criado com sucesso!');
     }
 
     /**
@@ -116,12 +116,12 @@ class AdminGameController extends Controller
     public function edit(string $id)
     {
         $game = Game::findOrFail($id);
-        $dev = Developer::where('is_admitted', true)->get();
-        $genreGame = GenreGame::all();;
+        $developer = Developer::where('is_admitted', true)->get();
+        $genreGame = GenreGame::all();
         $rm = RequerimentsMinimum::where('game_id', $game->id)->first();
         $rr = RequerimentsRecommended::where('game_id', $game->id)->first();
 
-        return view('admin.game.edit', compact('game', 'dev', 'genreGame', 'rm', 'rr'));
+        return view('admin.game.edit', compact('game', 'developer', 'genreGame', 'rm', 'rr'));
     }
 
     /**
@@ -198,7 +198,8 @@ class AdminGameController extends Controller
             'storage' => $request->rr_storage
         ]);
 
-        return redirect()->route("game.index")->with('success', 'Jogo atualizado com sucesso!');
+        if($game && $rm && $rr)
+            return redirect()->route("game.index")->with('message', 'Jogo atualizado com sucesso!');
     }
 
     /**
@@ -208,6 +209,6 @@ class AdminGameController extends Controller
     {
         Game::destroy($id);
 
-        return redirect()->route('game.index')->with('success', 'Jogo excluído com sucesso!');
+        return redirect()->route('game.index')->with('message', 'Jogo excluído com sucesso!');
     }
 }
