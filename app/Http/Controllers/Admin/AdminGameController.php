@@ -11,6 +11,7 @@ use App\Models\RequerimentsMinimum;
 use App\Models\RequerimentsRecommended;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\GameRequest;
 
 class AdminGameController extends Controller
 {
@@ -38,7 +39,7 @@ class AdminGameController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(GameRequest $request)
     {
         if($request->hasFile('cover'))
         {

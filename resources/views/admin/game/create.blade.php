@@ -3,10 +3,21 @@
         <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
-                    <h1 class="font-heading text-white text-xl mb-16">Adicionar Jogo</h1>
+                    <div class="mb-16">
+                        <h1 class="font-heading text-white text-xl mb-5">Adicionar Jogo</h1>
+
+                        @if (isset($errors) & (count($errors) > 0))
+                            <div class="text-rose-500 text-sm">
+                                @foreach ($errors as $error)
+                                    {{ $error }}<br>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="card-body">
-                        <form id="form" method="POST" action="{{ route('game.store') }}" enctype="multipart/form-data"
-                            class="text-white">
+                        <form id="form" method="POST" action="{{ route('game.store') }}"
+                            enctype="multipart/form-data" class="text-white">
                             @csrf
                             <!--Título-->
                             <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
@@ -205,42 +216,65 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4 mb-4">
-                                <div class="mb-4">
-                                    <h4 class="mb-2">Requisitos Minimos</h4>
+                            <!--Requisitos-->
+                            <div class="md:flex md:flex-col-2 justify-between gap-20">
+                                <div class="w-full">
+                                    <div class="mb-10">
+                                        <h2 class="text-lg font-medium mb-2">Requisitos Mínimos</h2>
+                                        <div class="text-sm text-slate-400">Informe as especificações mínimas do
+                                            sistema necessárias para que o jogo seja executado corretamente.</div>
+                                    </div>
+                                    <div class="my-4">
+                                        <div class="mb-4">
+                                            <label for="">Placa de Vídeo (GPU):</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_gpu"
+                                                id="" required />
 
-                                    <label for="">GPU:</label>
-                                    <x-input type="text" class="mb-4" name="rm_gpu" id="" required />
+                                            <label for="">Processador (CPU):</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_cpu"
+                                                id="" required />
 
-                                    <label for="">CPU:</label>
-                                    <x-input type="text" class="mb-4" name="rm_cpu" id="" required />
+                                            <label for="">Memória RAM:</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_ram"
+                                                id="" required />
 
-                                    <label for="">RAM:</label>
-                                    <x-input type="text" class="mb-4" name="rm_ram" id="" required />
+                                            <label for="">Armazenamento:</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_storage"
+                                                id="" required />
 
-                                    <label for="">Armazenamento:</label>
-                                    <x-input type="text" class="mb-4" name="rm_storage" id="" required />
-
-                                    <label for="">Sistema Operacional:</label>
-                                    <x-input type="text" class="mb-4" name="rm_os" id="" required />
+                                            <label for="">Sistema Operacional:</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_os"
+                                                id="" required />
+                                        </div>
+                                    </div>
                                 </div>
-                                <hr class="">
-                                <div class=" mt-4 mb-4">
-                                    <h4 class="mb-4">Requisitos Recomendados</h4>
-                                    <label for="">GPU:</label>
-                                    <x-input type="text" class="mb-4" name="rr_gpu" id="" required />
+                                <div class="w-full">
+                                    <div class="mb-10">
+                                        <h2 class="text-lg font-medium mb-2">Requisitos Recomendados</h2>
+                                        <div class="text-sm text-slate-400">Forneça as especificações recomendadas do
+                                            sistema que garantirão uma experiência de jogo ideal.</div>
+                                    </div>
+                                    <div class="my-4">
+                                        <label for="">Placa de Vídeo (GPU):</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_gpu"
+                                            id="" required />
 
-                                    <label for="">CPU:</label>
-                                    <x-input type="text" class="mb-4" name="rr_cpu" id="" required />
+                                        <label for="">Processador (CPU):</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_cpu"
+                                            id="" required />
 
-                                    <label for="">RAM:</label>
-                                    <x-input type="text" class="mb-4" name="rr_ram" id="" required />
+                                        <label for="">Memória RAM:</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_ram"
+                                            id="" required />
 
-                                    <label for="">Armazenamento:</label>
-                                    <x-input type="text" class="mb-4" name="rr_storage" id="" required />
+                                        <label for="">Armazenamento:</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_storage"
+                                            id="" required />
 
-                                    <label for="">Sistema Operacional:</label>
-                                    <x-input type="text" class="mb-4" name="rr_os" id="" required />
+                                        <label for="">Sistema Operacional:</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_os"
+                                            id="" required />
+                                    </div>
                                 </div>
                             </div>
 
@@ -266,12 +300,11 @@
 </x-admin-layout>
 
 <script>
-    $('#form').on('submit', function () {
-    $inputPrice = $('#price').val().replace(/[^\d,]/g, "").replace(",", ".");
-    $inputDiscount = $('#discount').val().replace(/[^\d,]/g, "").replace(",", ".");
+    $('#form').on('submit', function() {
+        $inputPrice = $('#price').val().replace(/[^\d,]/g, "").replace(",", ".");
+        $inputDiscount = $('#discount').val().replace(/[^\d,]/g, "").replace(",", ".");
 
-    $("#price").val($inputPrice);
-    $("#discount").val($inputDiscount);
-});
-
+        $("#price").val($inputPrice);
+        $("#discount").val($inputDiscount);
+    });
 </script>

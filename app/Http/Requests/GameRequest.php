@@ -11,7 +11,7 @@ class GameRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,24 @@ class GameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'=>'required',
+            'developer_id'=>'required',
+            'genre_game_id'=>'required',
+            'short_description'=>'required|max:255',
+            'long_description'=>'required',
+            'cover'=>'required',
+            'banner'=>'required',
+            'price'=>'required|numeric',
+            'discount'=>'required|numeric',
+            'release_date'=>'required|date',
+            'age_rating'=>'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'short_description.max:255'=>'O tamanho máximo da Descrição Curta é de 255 caracteres.'
         ];
     }
 }
