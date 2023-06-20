@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shopcart;
+use App\Models\Game;
 use Illuminate\Support\Facades\Auth;
 
 class ShopcartController extends Controller
@@ -18,7 +19,8 @@ class ShopcartController extends Controller
      */
     public function index()
     {
-        $data = Shopcart::where('user_id', Auth::id())->get();
+        //$data = Shopcart::where('user_id', Auth::id())->get();
+        $data = Game::all();
 
         return view('client.shopcart',[
             'data' => $data

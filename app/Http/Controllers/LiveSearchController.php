@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Game;
+use App\Models\GenreGame;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -13,7 +14,11 @@ class LiveSearchController extends Controller
 {
     public function gameSearch(Request $request){
         $output = '';
-        $game = Game::where('title', 'like', '%'. $request->search .'%')->get();
+        $game = Game::where('title', 'like', '%'. $request->search .'%')
+                ->orWhereHas('genreGame', function ($query) use ($request) {
+                $query->where('name', 'like', '%'.$request->search.'%');
+                })
+                ->get();
 
         if($game->isEmpty()){
             $output = '<h1 class="text-center font-heading text-slate-400">Nenhum jogo encontrado... ☹️</h1>';

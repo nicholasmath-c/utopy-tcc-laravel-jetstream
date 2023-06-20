@@ -266,5 +266,12 @@
 </x-admin-layout>
 
 <script>
+    $('#form').on('submit', function () {
+    $inputPrice = $('#price').val().replace(/[^\d,]/g, "").replace(",", ".");
+    $inputDiscount = $('#discount').val().replace(/[^\d,]/g, "").replace(",", ".");
+
+    $("#price").val($inputPrice);
+    $("#discount").val($inputDiscount);
+});
 
 </script>

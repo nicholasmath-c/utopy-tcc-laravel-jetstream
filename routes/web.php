@@ -28,6 +28,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/contact', [HomeController::class, 'showContact'])->name('contact');
+    Route::get('/about', [HomeController::class, 'showAbout'])->name('about');
 
     Route::prefix('shop')->group(function () {
         Route::get('/', [ShopController::class, 'index'])->name('shop');
