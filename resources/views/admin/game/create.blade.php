@@ -6,7 +6,7 @@
                     <div class="mb-16">
                         <h1 class="font-heading text-white text-xl mb-5">Adicionar Jogo</h1>
 
-                        @if (isset($errors) & (count($errors) > 0))
+                        @if (isset($errors) && (count($errors) > 0))
                             <div class="text-rose-500 text-sm">
                                 @foreach ($errors as $error)
                                     {{ $error }}<br>
