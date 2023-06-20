@@ -7,6 +7,6 @@ Alpine.plugin(focus);
 Alpine.start();
 
 import { Carousel, initTE } from "tw-elements";
-initTE({ Carousel, Ripple, Input });
+initTE({ Carousel });
 
 
