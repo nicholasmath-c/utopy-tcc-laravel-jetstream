@@ -1,5 +1,4 @@
 <x-app-layout>
-    <div class="py-6">
         <div class="mx-auto sm:px-6 lg:px-8 mb-10">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div id="carouselExampleCaptions" class="relative" data-te-carousel-init data-te-carousel-slide>
@@ -23,7 +22,7 @@
                         <!--First item-->
                         <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{ url('storage/img/games_img/SilkSongBanner.jpg') }}" class="block w-full"
+                            <img src="{{ url('storage\games\Hollow Knight - SilkSong\SilkSong-Banner.jpg') }}" class="block w-full"
                                 alt="..." />
                             <div class="absolute left-[35%] bottom-5 hidden py-5 text-center text-white md:block ">
                                 <h5 class="text-xl w-96 align-center">Hornet, princesa protetora de Hallownest,
@@ -35,7 +34,7 @@
                         <!--Second item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{ url('storage/img/games_img/OriBanner.jpg') }}" class="block w-full"
+                            <img src="{{ url('storage\games\Ori and the Blind Forest\Ori-Banner.jpg') }}" class="block w-full"
                                 alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
                                 <h5 class="text-xl">Ori and the Blind Forest conta a história de um jovem órfão
@@ -45,7 +44,7 @@
                         <!--Third item-->
                         <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
                             data-te-carousel-item style="backface-visibility: hidden">
-                            <img src="{{ url('storage/img/games_img/CelesteBanner.jpeg') }}" class="block w-full"
+                            <img src="{{ url('storage\games\Celeste\Celeste-Banner.jpeg') }}" class="block w-full"
                                 alt="..." />
                             <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
                                 <h5 class="text-xl">Ajude Madeline a sobreviver à sua jornada para o topo da Montanha
@@ -90,7 +89,7 @@
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 @foreach ($game as $games)
                     <article
-                        class="mx-auto hover:cursor-pointer rounded-xl bg-slate-900 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
+                        class="mx-auto hover:cursor-pointer rounded-xl bg-slate-800 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
                         <a href="{{ route('game-page', ['id' => $games->id, 'title' => $games->title]) }}">
                             <div class="relative flex items-center overflow-hidden rounded-xl">
                                 <img src="{{ url("storage/games/$games->title/$games->cover") }}"
@@ -130,7 +129,6 @@
                     <!-- More products... -->
             </div>
         </div>
-    </div>
 </x-app-layout>
 
 

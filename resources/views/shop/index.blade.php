@@ -1,6 +1,4 @@
 <x-app-layout>
-    <div class="  flex flex-col p-6">
-
         <div class=" border-2 border-yellow-400 h-7">
 
         </div>
@@ -44,9 +42,10 @@
             </div>
         </div>
 
+        <div class="flex flex-col gap-4">
         @foreach ($game as $games)
             <div
-                class=" flex flex-row items-center shadow-lg rounded-md border-2 h-40 p-1 border-slate-800 hover:border-red-500 ease-in-out duration-150 hover:cursor-pointer ">
+                class="bg-slate-800 flex flex-row items-center shadow-lg rounded-md border-2 h-40 p-1 border-slate-800 hover:border-red-500 ease-in-out duration-150 hover:cursor-pointer ">
 
                 <div class=" h-36 w-44 ">
                     <img class=" h-36 w-44 rounded-md " src="{{ url("storage/games/$games->title/$games->cover") }}"
@@ -109,6 +108,8 @@
 
             </div>
         @endforeach
+
+    </div>
 
     </div>
 

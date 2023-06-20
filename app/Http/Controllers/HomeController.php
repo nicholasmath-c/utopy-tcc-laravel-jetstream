@@ -28,11 +28,11 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showAbout() {
-        return view('client.about');
+        return view('home.about');
     }
 
     public function showContact() {
-        return view('client.contact');
+        return view('home.contact');
     }
 
     public function showTerms() {
