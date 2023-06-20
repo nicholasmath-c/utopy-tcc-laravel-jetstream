@@ -21,7 +21,7 @@ class ShopcartController extends Controller
     public function index()
     {
         $data = Shopcart::join('games', 'games.id', '=', 'shopcarts.game_id')
-            ->select('shopcarts.*', 'games.*')
+            ->select('shopcarts.*', 'shopcarts.id as shopcart_id', 'games.*', 'games.id as game_game_id')
             ->get();
 
         return view('client.shopcart',[

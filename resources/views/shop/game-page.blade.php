@@ -2,8 +2,9 @@
 
     @include('components.messages')
 
+
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
-        <div class=" mt-16 ">
+        <div class="mt-16 ">
             <div class="flex flex-row">
 
                 <div class=" max-w-4xl pr-4">
@@ -23,6 +24,7 @@
                         <hr class=" rounded-md" >
 
                         <div class=" mt-10 ml-9">
+                            {{ App\Models\Shopcart::jogoNoCarrinho($game->id) }}
                            <form action="{{ route('shopcart.store', $game->id) }}" method="post">
                                 @csrf
 

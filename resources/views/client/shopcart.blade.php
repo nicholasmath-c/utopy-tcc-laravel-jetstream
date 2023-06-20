@@ -23,9 +23,13 @@
                                 </div>
 
                                 <div class="flex flex-col self-end pb-2 ">
-                                <a class=" text-sm underline text-gray-500 hover:text-red-500 " href="{{ route('shopcart.destroy', $item->id) }}">
-                                        Remover
-                                    </a>
+                                    <form action="{{ route('shopcart.destroy', $item->shopcart_id) }}" method="GET"
+                                        class="delete inline-block ml-2">
+                                        @csrf
+                                        <button type="submit" class="font-medium text-main-500 hover:underline">
+                                            Excluir
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
 
