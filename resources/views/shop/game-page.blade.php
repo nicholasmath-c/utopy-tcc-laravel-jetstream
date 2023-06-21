@@ -24,8 +24,8 @@
                         <hr class=" rounded-md" >
 
                         <div class=" mt-10 ml-9">
-                            {{ App\Models\Shopcart::jogoNoCarrinho($game->id) }}
-                           <form action="{{ route('shopcart.store', $game->id) }}" method="post">
+                           @if (App\Models\Shopcart::jogoNoCarrinho($game->id))
+                            <form action="{{ route('shopcart.store', $game->id) }}" method="post">
                                 @csrf
 
                                 <x-input
@@ -47,7 +47,11 @@
                                     <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 </x-button>
                             </form>
-                            <x-button class=" mt-4 w-64 h-16"> Comprar Jogo </x-button>
+
+                            <x-button class="mt-4 w-64 h-16 text-white text-lg"> Comprar Jogo </x-button>
+                           @else
+                                <a class="mt-4 w-64 h-16 text-white text-lg" href="{{ route('shopcart.index') }}">Carrinho</a>
+                           @endif
                         </div>
                     </div>
                 </div>

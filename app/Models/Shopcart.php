@@ -10,7 +10,10 @@ class Shopcart extends Model
     protected $table = 'shopcarts';
 
     public static function jogoNoCarrinho($game_id) {
-        $esta_no_carrinho = Shopcart::where('game_id', $game_id) ? 1 : 0;
+        $esta_no_carrinho = Shopcart::
+            where('game_id', $game_id)
+                ->count();
+
         return $esta_no_carrinho;
     }
 }   

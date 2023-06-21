@@ -46,7 +46,8 @@ Route::prefix('user')->group(function () {
             Route::post('/store/{id}','store')->name('store');
             Route::post('/update/{id}','update')->name('update');
             Route::get('/destroy/{id}','destroy')->name('destroy');
-            Route::get('/checkout', 'checkout')->name('checkout');
+            Route::post('/checkout', 'checkout')->name('checkout');
+            Route::get('/pay', 'pay')->name('pay');
     });
 });
 

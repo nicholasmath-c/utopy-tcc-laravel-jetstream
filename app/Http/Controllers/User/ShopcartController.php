@@ -92,82 +92,50 @@ class ShopcartController extends Controller
             ->with('success', 'Carrinho atualizado com sucesso!');
     }
 
+    public function pay(Request $request) {
+        $Data["email"] = env('PAGSEGURO_EMAIL');
+        $Data["token"] = env('PAGSEGURO_TOKEN');
+        $Data["currency"]="BRL";
+        $Data["itemId1"]="1";
+        $Data["itemDescription1"]="Website desenvolvido pela WEF.";
+        $Data["itemAmount1"]="1000.00";
+        $Data["itemQuantity1"]="1";
+        $Data["itemWeight1"]="1000";
+        $Data["reference"]="83783783737";
+        $Data["senderName"]="João da Silva";
+        $Data["senderAreaCode"]="37";
+        $Data["senderPhone"]="99999999";
+        $Data["senderEmail"]="c51994292615446022931@sandbox.pagseguro.com.br";
+        $Data["shippingType"]="1";
+        $Data["shippingAddressStreet"]="Rua Antonieta";
+        $Data["shippingAddressNumber"]="10";
+        $Data["shippingAddressComplement"]="Casa";
+        $Data["shippingAddressDistrict"]="Jardim Paulistano";
+        $Data["shippingAddressPostalCode"]="30690090";
+        $Data["shippingAddressCity"]="Belo Horizonte";
+        $Data["shippingAddressState"]="MG";
+        $Data["shippingAddressCountry"]="BRA";
+
+        $BuildQuery=http_build_query($Data);
+        $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/checkout";
+
+        $Curl=curl_init($Url);
+        curl_setopt($Curl,CURLOPT_HTTPHEADER, Array("Content-Type: application/x-www-form-urlencoded; charset=UTF-8"));
+        curl_setopt($Curl,CURLOPT_POST,true);
+        curl_setopt($Curl,CURLOPT_SSL_VERIFYPEER,false);
+        curl_setopt($Curl,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($Curl,CURLOPT_POSTFIELDS,$BuildQuery);
+        $Retorno=curl_exec($Curl);
+        curl_close($Curl);
+
+        $Xml = $Retorno;
+        $code = simplexml_load_string($Xml);
+
+        return view('shop.checkout', [ 'code' =>  $code, 'data' => $Data ]); 
+    }
+
     public function checkout(Request $request) {
-        $produtos = Shopcart::
-            join('games', 'games.id', '=', 'shopcarts.game_id')
-                ->select('shopcarts.*', 'games.*')
-                ->get();
-
-        $vendaService = new VendaService();
-        $result = $vendaService->finalizarVenda($produtos, Auth::user());
-
-        if ($result['status'] == 'ok') {
-            $credCard = new PagSeguro\Domains\Requests\DirectPayment\CreditCard();
-            $credCard->setReference("PED_" . $result['idpedido']);
-            $credCard->setCurrency("BRL");
-            
-            foreach($produtos as $produto) {
-                $credCard->addItems()->with(
-                    $produto->id,
-                    $produto->name,
-                    1, 
-                    number_format($produto->price, 2, '.', "")
-                );
-            }
-
-            $user = Auth::user();
-
-            $credCard->setSender()->setName($user->firstname . " " . $user->lastname);    
-            $credCard->setSender()->setEmail($user->firstname . "@sandbox.pagseguro.com.br");
-            $credCard->setSender()->setHash($request->input('hashSeller'));
-            $credCard->setSender()->setPhone()->withParameters(21, 87645532);
-            $credCard->setSender()->setDocument()->withParameters('cpf', $user->cpf);  
-
-            $credCard->setShipping->setAddress()->withParameters(
-                'Av 3',
-                '1234',
-                'Jardim',
-                '22248884',
-                'Acre',
-                'AC',
-                'BRA',
-                'Dino'  
-            );
-            $credCard->setBilling->setAddress()->withParameters(
-                'Av 3',
-                '1234',
-                'Jardim',
-                '22248884',
-                'Acre',
-                'AC',
-                'BRA',
-                'Dino'  
-            );
-            
-            $credCard->setToken($request->input('cardToken')); 
-            $nparcela = $request->input('nparcela');  
-            $totalParcela = $request->input('totalApagar');  
-            $totalParcela = $request->input('totalParcela');  
-
-            // Dados titular cartão
-            $credCard->setHolder->setName($user->firstname . " " . $user->lastname);   
-            $credCard->setHolder->setDocument()->withParameters("cpf", $user->cpf);            $credCard->setHolder->setBirthdate("01/01/1980");
-            $credCard->setHolder->setPhone()->withParameters(21, 87645532); 
-
-            $credCard->setMode('DEFAULT');
-            $result = $credCard->register($this->getCredential());
-
-            echo "Compra finalizada com sucesso!";  
-         } else {
-            echo "Compra não finalizada!";  
-         } 
-         
-         if ($result['status'] === 'success') { 
-            Shopcart::where('user_id', Auth::id())->delete();
-        }
-
-        $request->session()->flash($result['status'], $result['message']);
-        return redirect()->route('shop.historic'); 
+        
     }
 
     /**
