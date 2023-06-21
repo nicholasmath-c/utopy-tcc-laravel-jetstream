@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Facades\Auth;
+@endphp
 <nav x-data="{ open: false }" class="bg-slate-800 border-b-2 border-main-500">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,14 +18,17 @@
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Início') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('shop') }}" :active="request()->routeIs('shop')">
-                        {{ __('Loja') }}
-                    </x-nav-link>
                     <x-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
                         {{ __('Contato') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
                         {{ __('Sobre') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('shop.historic') }}">
+                        <i class="fas fa-history"></i>
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('shopcart.index') }}" :active="request()->routeIs('shopcart.index')">
+                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                     </x-nav-link>
                 </div>
             </div>
@@ -165,6 +171,18 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                 {{ __('Início') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
+                {{ __('Contato') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
+                {{ __('Sobre') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('shop.historic') }}">
+                <i class="fas fa-history"></i>
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('shopcart.index') }}" :active="request()->routeIs('shopcart.index')">
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             </x-responsive-nav-link>
         </div>
 

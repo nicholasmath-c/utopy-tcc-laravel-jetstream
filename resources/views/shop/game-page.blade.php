@@ -1,5 +1,5 @@
 <x-app-layout>
-
+    @include('components.messages')
 
     <h1 class=" text-white text-4xl font-heading font-bold">{{ $game->title }}</h1>
 
@@ -32,7 +32,39 @@
                     @if(isset($admission))
                         <a href="{{route("developer.admissions.game-download", $game->id)}}"><x-button class="w-full h-16"> Baixar Jogo </x-button></a>
                     @else
-                        <x-button class="w-full h-16"> Adicionar ao Carrinho </x-button>
+                    @if (App\Models\Shopcart::jogoNoCarrinho($game->id))
+                    <form action="{{ route('shopcart.store', $game->id) }}" method="post">
+                        @csrf
+
+                        <x-input
+                            type="hidden"
+                            name="game_id"
+                            value="{{ $game->id }}" />
+
+                        <x-label class="text-white text-lg">
+                            Quantidade:
+                        </x-label>
+                        <x-input
+                            type="hidden"
+                            name="quantity"
+                            value="1"
+                            required
+                        />
+
+                        <x-button class="w-full h-16">
+                            <i class="fa fa-cart-plus" aria-label="Adicionar ao Carrinho" aria-hidden="true">
+                            </i>
+                        </x-button>
+                    </form>
+                    <x-button class="mt-4 w-64 h-16 text-white text-lg">
+                        Comprar Jogo
+                    </x-button>
+                @else
+                    <a class="mt-4 w-64 h-16 text-white text-lg" href="{{ route('shopcart.index') }}">
+                        Carrinho
+                    </a>
+                    @endif
+
                     @endif
                 </div>
             </div>

@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
 
 
             //------- Comuns
-            $table->decimal('total_amount', 10, 2);
+            $table->dateTime('data_pedido');
             $table->string('status');
             $table->timestamps();
 

@@ -38,7 +38,17 @@ Route::middleware([
     });
 
     Route::prefix('user')->group(function () {
-        Route::resource('/shopcarts', ShopcartController::class);
+         #---- Routes Shopcarts
+        Route::prefix('/shopcart')
+            ->name('shopcart.')
+            ->controller(ShopcartController::class)->group(function (){
+                Route::get('/','index')->name('index');
+                Route::post('/store/{id}','store')->name('store');
+                Route::post('/update/{id}','update')->name('update');
+                Route::get('/destroy/{id}','destroy')->name('destroy');
+                Route::post('/checkout', 'checkout')->name('checkout');
+                Route::get('/pay', 'pay')->name('pay');
+        });
 
         Route::get('/library', function () {
             return view('client.library');
@@ -57,12 +67,19 @@ Route::middleware([
             Route::get('/admissions/download-game/{id}', [AdminDeveloperController::class, 'gameDownload'])->name('developer.admissions.game-download');
         });
     });
+
+    Route::match(
+        ['get', 'post'],
+        'compras/historico',
+        [ShopController::class, 'historic']
+    )->name('shop.historic');
+    Route::post(
+        'compras/detalhes',
+        [ShopController::class, 'details']
+    )->name('shop.details');
+    Route::match(
+        ['get', 'post'],
+        'compras/checkout',
+        [ShopController::class, 'processCheckout']
+    )->name('shop.checkout');
 });
-
-
-
-
-
-
-
-
