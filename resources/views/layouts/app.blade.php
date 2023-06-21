@@ -54,16 +54,16 @@
                 <a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
                     <x-application-mark class="block h-9 w-auto" />
                 </a>
-                <p class="mt-3 text-sm text-main-500">Siga-nos nas redes sociais</p>
+                <p class="mt-3 text-sm text-main-100">Siga-nos nas redes sociais</p>
                 <div class="mt-4">
                     <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                        <a class="text-main-500 cursor-pointer hover:text-gray-700">
+                        <a class="text-main-100 cursor-pointer hover:text-gray-700">
                             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 class="w-5 h-5" viewBox="0 0 24 24">
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                             </svg>
                         </a>
-                        <a class="ml-3 text-main-500 cursor-pointer hover:text-gray-700">
+                        <a class="ml-3 text-blue-500 cursor-pointer hover:text-gray-700">
                             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 class="w-5 h-5" viewBox="0 0 24 24">
                                 <path
@@ -78,7 +78,7 @@
                                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
                             </svg>
                         </a>
-                        <a class="ml-3 text-main-500 cursor-pointer hover:text-gray-700">
+                        <a class="ml-3 text-blue-800 cursor-pointer hover:text-gray-700">
                             <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
                                 <path stroke="none"
@@ -121,7 +121,7 @@
                 </div>
 
                 <div class="w-full px-4 lg:w-1/4 md:w-1/2">
-                    <h2 class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">Contact</h2>
+                    <h2 class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">Contato</h2>
                     <nav class="mb-10 list-none">
                         <li class="mt-3">
                             <a class="text-gray-500 cursor-pointer hover:text-white">Mande sua mensagem</a>
@@ -135,9 +135,9 @@
                 </div>
             </div>
         </div>
-        <div class="bg-main-500">
+        <div class="bg-slate-800">
             <div class="container px-5 py-4 mx-auto">
-                <p class="text-sm text-gray-700 capitalize xl:text-center">© 2023 Utopy Games </p>
+                <p class="text-sm text-gray-200 capitalize xl:text-center">© 2023 Utopy Games </p>
             </div>
         </div>
     </footer>
