@@ -1,33 +1,45 @@
 <x-app-layout>
-    <div class="mx-auto sm:px-6 lg:px-8 mt-10  mb-10">
 
-        <div class=" bg-slate-200 mt-6 lg:mx-6 lg:w-1/2">
-            <div class="mx-auto w-full overflow-hidden rounded-xl bg-white px-8 py-10 shadow-2xl dark:bg-gray-900 lg:max-w-xl">
-            <h1 class="text-2xl font-medium text-gray-700 dark:text-gray-200">Contate-nos</h1>
-
-            <form class="mt-6">
-                <div class="flex-1">
-                <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Nome completo</label>
-                <input type="text" placeholder="Digite seu nome" class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300" />
-                </div>
-
-                <div class="mt-6 flex-1">
-                <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Email de contato</label>
-                <input type="email" placeholder="Endereço de email" class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300" />
-                </div>
-
-                <div class="mt-6 w-full">
-                <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Mensagem</label>
-                <textarea class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300 md:h-48" placeholder="Digite uma mensagem"></textarea>
-                </div>
-
-                <button class="mt-6 w-full transform rounded-md bg-main-500 px-6 py-3 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">Enviar</button>
-            </form>
+    <div class="flex min-h-screen items-center justify-start bg-slate-800">
+        <div class="mx-auto w-full max-w-4xl">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="col-span-1 mt-52">
+              <h1 class="text-4xl font-medium mb-4">Contate-nos</h1>
+              <p>Envie-nos um e-mail para help@utopy.com ou envie-nos uma mensagem aqui:</p>
             </div>
+            <div class="col-span-1 ">
+              <div class="bg-white p-8 rounded-lg">
+                <form action="https://api.web3forms.com/submit" class="space-y-4">
+                  <!-- This is a working contact form.
+                       Get your free access key from: https://web3forms.com/  -->
+
+                  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+
+                  <div>
+                    <h1 class="text-black text-4xl font-medium mb-4">Envie-nos uma mensagem</h1>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Seu nome</label>
+                    <input type="text" name="name" id="name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md text-black" placeholder="Digite seu nome" required>
+                  </div>
+
+                  <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Seu e-mail</label>
+                    <input type="email" name="email" id="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md text-black" placeholder="Digite seu e-mail" required>
+                  </div>
+
+                  <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700">Sua mensagem</label>
+                    <textarea name="message" id="message" rows="8" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md text-black" placeholder="Digite sua mensagem" required></textarea>
+                  </div>
+
+                  <div class="flex justify-end">
+                    <button type="submit" class="px-4 py-2 bg-main-500 text-white rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Enviar mensagem</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-
-
+      </div>
 
 
 
