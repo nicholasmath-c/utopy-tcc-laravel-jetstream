@@ -13,10 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-        /*
-        TODO:
-        1. Criar a migration
-        */
         Schema::create('requeriments_minimum', function (Blueprint $table) {
             //------- PK & FK
             $table->id();
