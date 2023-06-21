@@ -43,7 +43,6 @@
                             class=" w-full py-[1px]  border-slate-600 rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
                             <p class="text-center">Aventura</p>
                         </div>
-
                     </div>
 
                     <div class=" mt-10">

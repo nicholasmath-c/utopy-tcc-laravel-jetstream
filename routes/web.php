@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminGenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
+use App\Http\Controllers\Admin\AdminDeveloperController;
 use App\Http\Controllers\User\ShopcartController;
 use App\Http\Controllers\Shop\ShopController;
 use App\Models\Game;
@@ -50,6 +51,7 @@ Route::middleware([
         Route::resource('game', AdminGameController::class);
         Route::get('/game_search', [LiveSearchController::class, 'gameSearch'])->name('game.search');
         Route::get('/genre_game_search', [LiveSearchController::class, 'genreGameSearch'])->name('genre-game.search');
+        Route::get('/developer', [AdminDeveloperController::class, 'index'])->name('developer.index');
     });
 });
 
