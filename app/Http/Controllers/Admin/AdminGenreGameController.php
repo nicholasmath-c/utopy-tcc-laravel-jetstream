@@ -7,7 +7,7 @@ use App\Models\GenreGame;
 use Illuminate\Http\Request;
 use App\Http\Requests\GenreGameRequest;
 
-class GenreGameController extends Controller
+class AdminGenreGameController extends Controller
 {
     /**
      * Display a listing of the resource.

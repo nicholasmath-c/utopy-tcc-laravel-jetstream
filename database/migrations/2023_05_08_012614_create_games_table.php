@@ -32,12 +32,17 @@ return new class extends Migration
 
             //------- Comuns
             $table->string('title');
-            $table->text('description');
-            $table->string('image', 100);
+            $table->string('short_description', 255);
+            $table->text('long_description');
+            $table->string('cover', 100);
+            $table->string('banner', 100);
             $table->double('price', 5, 2);
+            $table->double('discount', 5, 2)->nullable()->default(0.00);
+            $table->double('final_price', 5, 2)->nullable()->default(0.00);
             $table->date('release_date');
             $table->string('age_rating', 3);
-            $table->boolean('status_game')->default(true);
+            $table->string('status')->default('Active');
+            $table->string('game_file_path', 100);
             $table->timestamps();
         });
     }

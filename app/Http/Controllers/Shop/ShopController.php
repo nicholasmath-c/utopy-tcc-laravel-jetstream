@@ -6,20 +6,25 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Developer;
 use App\Models\Game;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\RequerimentsMinimum;
+use App\Models\RequerimentsRecommended;
+use App\Http\Controllers\User\DeveloperController;
+
 
 use PagSeguro\Configuration\Configure;
 
 class ShopController extends Controller
 {
     private $_configs;
-     
+
     public function _construct() {
         # --- Configurações do PagSeguro
         $this->_configs = new Configure();
-        
+
         $this->_configs->setCharset('UTF-8');
         $this->_configs->setAccountCredentials(
             env('PAGSEGURO_EMAIL'),
@@ -34,23 +39,21 @@ class ShopController extends Controller
         return $this->_configs->getAccountCredentials();
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $game = Game::all();
 
-        return view('home.home', compact('game'));
+        return view('shop.index', compact('game'));
     }
-    /**
-     * Display the specified resource.
-     */
+
     public function product($id)
     {
         $game = Game::findOrFail($id);
+        $developer = Developer::find($game->developer_id);
+        $rm = RequerimentsMinimum::find($game->id);
+        $rr = RequerimentsRecommended::find($game->id);
 
-        return view('shop.game-page', compact('game'));
+        return view('shop.game-page', compact(['game', 'developer', 'rm', 'rr']));
     }
 
     public function historic() {
@@ -79,14 +82,14 @@ class ShopController extends Controller
         );
     }
 
-    public function processCheckout(Request $request) { 
+    public function processCheckout(Request $request) {
         $data = [];
 
         $carrinho = Shopcart::
             join('games', 'games.id', '=', 'shopcarts.game_id')
                 ->select('shopcarts.*', 'games.*')
                 ->get();
-        $data['shopcart'] = $carrinho;                
+        $data['shopcart'] = $carrinho;
 
         $sessionCode = \Pagseguro\Services\Servico::create(
             $this->getCredential()

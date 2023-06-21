@@ -1,160 +1,342 @@
 <x-admin-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="w-full py-12">
+        <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
-                    <h1 class="font-heading text-white text-xl uppercase mb-7">Adicionar Jogo</h1>
+                    <div class="mb-16">
+                        <h1 class="font-heading text-white text-xl mb-5">Editar Jogo: {{ $game->title }}</h1>
+
+                        @if (isset($errors) && count($errors) > 0)
+                            <div class="text-rose-500 text-sm">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}<br>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="card-body">
-                        <form method="POST" action="{{ route('game.update', $game->id) }}" enctype="multipart/form-data"
-                            onsubmit="desformatarValor()" class="text-white">
+                        <form id="form" method="POST" action="{{ route('game.update', $game->id) }}"
+                            enctype="multipart/form-data" class="text-white">
                             @csrf
                             @method('PUT')
-
-                            <div class="mb-4">
-                                <label for="nome">Titulo</label>
-                                <x-input type="text" name="title" id="title" class="form-control"
-                                    value="{{$game->title}}" required/>
-                            </div>
-                            <div class="mb-4">
-                                <label for="nome">Desenvolvedor</label>
-                                <select name="developer_id" id="developer"
-                                    class=" flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
-                                    required>
-
-                                    @foreach ($dev as $devs)
-                                        <option value="{{ $devs->id }}" {{$game->developer_id == $devs->id ? 'selected' : ''}}>
-                                            {{ $devs->firstname }} {{ $devs->lastname }} ({{ $devs->nickname }})
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label for="nome">Gênero</label>
-                                <select name="genre_game_id" id="genre_game"
-                                    class=" flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
-                                    required>
-
-                                    @foreach ($genreGame as $genreGames)
-                                        <option value="{{ $genreGames->id }}" {{$game->genre_game_id == $genreGames->id ? 'selected' : ''}}>
-                                            {{ $genreGames->name }}
-                                        </option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label for="nome">Descrição</label>
-                                <x-input type="text" name="description" id="description" value="{{$game->description}}"/>
-                            </div>
-                            <div class="mb-4">
-                                <label for="image">Imagem</label>
-                                <img src="{{asset("storage/img/games_img/$game->image")}}" alt="" width=200>
-                                <input type="file" name="image" id="image"
-                                    class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
-                            </div>
-                            <div class="mb-4">
-                                <label for="price">Valor</label>
-                                <x-input type="text" name="price" id="price" class="form-control" required
-                                    placeholder="R$0,00" onkeyup="formatarValor()" maxlength="12" value="{{$game->price}}" />
-                            </div>
-                            <div class="mb-4">
-                                <label for="nome">Data de Lançamento</label>
-                                <input type="date" name="release_date" id="release_date" value="{{$game->release_date}}"
-                                    class="flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white"
-                                    required />
-                            </div>
-                            <div class="mb-4">
-                                <label for="age_rating">Classificação Indicativa</label>
-                                <select
-                                    class="flex flex-row form-control p-3 w-52  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
-                                    id="age_rating" name="age_rating">
-                                    <option value="L" {{$game->age_rating == 'L' ? 'selected' : ''}}>Livre</option>
-                                    <option value="10+" {{$game->age_rating == '10+' ? 'selected' : ''}}>10+</option>
-                                    <option value="12+" {{$game->age_rating == '12+' ? 'selected' : ''}}>12+</option>
-                                    <option value="14+" {{$game->age_rating == '14+' ? 'selected' : ''}}>14+</option>
-                                    <option value="16+" {{$game->age_rating == '16+' ? 'selected' : ''}}>16+</option>
-                                    <option value="18+" {{$game->age_rating == '18+' ? 'selected' : ''}}>18+</option>
-                                </select>
-                            </div>
-
-                            <hr>
-
-                            <div class="mt-4 mb-4">
-                                <div class="mb-4">
-                                    <h4 class="mb-2">Requisitos Minimos</h4>
-
-                                    <label for="">GPU:</label>
-                                    <x-input type="text" class="mb-4" name="rm_gpu" id="" value='{{$rm->gpu}}'/>
-
-                                    <label for="">CPU:</label>
-                                    <x-input type="text" class="mb-4" name="rm_cpu" id="" value='{{$rm->cpu}}'/>
-
-                                    <label for="">RAM:</label>
-                                    <x-input type="text" class="mb-4" name="rm_ram" id="" value='{{$rm->ram}}'/>
-
-                                    <label for="">Armazenamento:</label>
-                                    <x-input type="text" class="mb-4" name="rm_storage" id="" value='{{$rm->storage}}'/>
-
-                                    <label for="">Sistema Operacional:</label>
-                                    <x-input type="text" class="mb-4" name="rm_os" id="" value='{{$rm->os}}'/>
+                            <!--Título-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Título</div>
+                                    <div name="description" class="text-sm text-slate-400">Insira o título do jogo, o
+                                        nome pelo qual ele será conhecido.</div>
                                 </div>
-                                <hr class="">
-                                <div class=" mt-4 mb-4">
-                                    <h4 class="mb-4">Requisitos Recomendados</h4>
-
-                                    <label for="">GPU:</label>
-                                    <x-input type="text" class="mb-4" name="rr_gpu" id="" value='{{$rr->gpu}}'/>
-
-                                    <label for="">CPU:</label>
-                                    <x-input type="text" class="mb-4" name="rr_cpu" id="" value='{{$rr->cpu}}'/>
-
-                                    <label for="">RAM:</label>
-                                    <x-input type="text" class="mb-4" name="rr_ram" id="" value='{{$rr->ram}}'/>
-
-                                    <label for="">Armazenamento:</label>
-                                    <x-input type="text" class="mb-4" name="rr_storage" id="" value='{{$rr->storage}}'/>
-
-                                    <label for="">Sistema Operacional:</label>
-                                    <x-input type="text" class="mb-4" name="rr_os" id="" value='{{$rr->os}}'/>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <x-input type="text" name="title" id="title" class="w-full" required
+                                        value="{{ $game->title }}" />
                                 </div>
                             </div>
 
-                            <x-button type="submit" class="btn btn-success"> Gravar </x-button>
+                            <!--Desenvolvedor-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Desenvolvedor</div>
+                                    <div name="description" class="text-sm text-slate-400">Informe o nome do estúdio ou
+                                        da pessoa responsável pelo desenvolvimento do jogo.</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <select name="developer_id" id="developer"
+                                        class="w-full flex flex-row form-control p-3 h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
+                                        required>
+                                        <option value="">
+                                            Selecione um Desenvolvedor
+                                        </option>
+                                        @foreach ($developer as $developers)
+                                            <option value="{{ $developers->id }}"
+                                                {{ $game->developer_id == $developers->id ? 'selected' : '' }}>
+                                                {{ $developers->user->firstname }} {{ $developers->user->lastname }}
+                                                ({{ $developers->user->nickname }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
+                            <!--Gênero-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Gênero</div>
+                                    <div name="description" class="text-sm text-slate-400">Escolha o gênero principal do
+                                        jogo, como ação, aventura, RPG, esportes, etc.</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <select name="genre_game_id" id="genre_game"
+                                        class="w-full flex flex-row form-control p-3 h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
+                                        required>
+                                        <option value="">
+                                            Selecione um Gênero
+                                        </option>
+                                        @foreach ($genreGame as $genreGames)
+                                            <option value="{{ $genreGames->id }}"
+                                                {{ $game->genreGame->id == $genreGames->id ? 'selected' : '' }}>
+                                                {{ $genreGames->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--Descrição Curta-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Descrição Curta</div>
+                                    <div name="description" class="text-sm text-slate-400">Forneça uma breve descrição
+                                        que resuma o jogo em poucas palavras. Destaque os principais recursos e
+                                        atrativos.</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <x-input type="text" name="short_description" id="short_description"
+                                        class="w-full" value="{{ $game->short_description }}" />
+                                </div>
+                            </div>
+
+                            <!--Descrição Longa-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Descrição Longa</div>
+                                    <div name="description" class="text-sm text-slate-400">Digite uma descrição mais
+                                        detalhada do jogo, incluindo informações sobre a história, mecânicas de jogo e
+                                        qualquer outro aspecto relevante.</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <textarea name="long_description" id="long_description" class="text-black" cols="30" rows="10">{!! $game->long_description !!}</textarea>
+                                </div>
+                            </div>
+
+                            <!--Capa-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Capa</div>
+                                    <div name="description" class="text-sm text-slate-400">Faça o upload de uma imagem
+                                        que represente visualmente o jogo. Geralmente, a capa é a imagem principal que
+                                        será exibida nas listagens e na página do jogo. Utilize o tamanho 1:1 (Exemplo:
+                                        1080x1080px)</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <img src="{{ asset("storage/games/$game->title/$game->cover") }}" alt=""
+                                        width=200 class="mb-4 border-2 border-main-500 rounded-lg">
+                                    <input type="file" name="cover" id="cover"
+                                        class="flex flex-row file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
+                                </div>
+                            </div>
+
+                            <!--Banner-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Banner</div>
+                                    <div name="description" class="text-sm text-slate-400">Adicione um banner
+                                        personalizado para o jogo. O banner pode ser uma imagem mais ampla e chamativa
+                                        que será usada em destaque, como em sliders ou banners promocionais. Utilize o
+                                        tamanho 16:9 (Exemplo: 1920x1080px, 1280x720px)</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <img src="{{ asset("storage/games/$game->title/$game->banner") }}" alt=""
+                                        width=300 class="mb-4 border-2 border-main-500 rounded-lg">
+                                    <input type="file" name="banner" id="banner"
+                                        class="flex flex-row file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
+                                </div>
+                            </div>
+
+                            <!--Preço-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Preço</div>
+                                    <div name="description" class="text-sm text-slate-400">Indique o valor de venda do
+                                        jogo.</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <x-input type="text" name="price" id="price" class="w-full" required
+                                        placeholder="R$0,00" maxlength="12" value />
+                                </div>
+                            </div>
+
+                            <!--Desconto-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Desconto <span
+                                            class="text-slate-400 font-medium text-sm">(Opcional)</span></div>
+                                    <div name="description" class="text-sm text-slate-400">Caso haja algum desconto
+                                        especial aplicado ao jogo, informe o valor do desconto.</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <x-input type="text" name="discount" id="discount" class="w-full"
+                                        placeholder="R$0,00" maxlength="12" />
+                                </div>
+                            </div>
+
+                            <!--Data de Lançamento-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Data de Lançamento</div>
+                                    <div name="description" class="text-sm text-slate-400">Insira a data em que o jogo
+                                        foi lançado ou será lançado.</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <input type="date" name="release_date" id="release_date"
+                                        class="flex flex-row form-control p-3 w-full  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white"
+                                        value={{ $game->release_date }} required />
+                                </div>
+                            </div>
+
+                            <!--Classificação Indicativa-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Classificação Indicativa
+                                    </div>
+                                    <div name="description" class="text-sm text-slate-400">Insira a classificação
+                                        etária (exemplo: livre, maiores de 18 anos, etc.).</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <select
+                                        class="flex flex-row form-control p-3 w-full  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
+                                        id="age_rating" name="age_rating" required>
+                                        <option value="">
+                                            Selecione uma opção
+                                        </option>
+                                        <option value="L" {{ $game->age_rating == 'L' ? 'selected' : '' }}>Livre
+                                        </option>
+                                        <option value="10+" {{ $game->age_rating == '10+' ? 'selected' : '' }}>10+
+                                        </option>
+                                        <option value="12+" {{ $game->age_rating == '12+' ? 'selected' : '' }}>12+
+                                        </option>
+                                        <option value="14+" {{ $game->age_rating == '14+' ? 'selected' : '' }}>14+
+                                        </option>
+                                        <option value="16+" {{ $game->age_rating == '16+' ? 'selected' : '' }}>16+
+                                        </option>
+                                        <option value="18+" {{ $game->age_rating == '18+' ? 'selected' : '' }}>18+
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--Arquivos do Jogo-->
+                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
+                                <div>
+                                    <div name="title" class="text-lg font-medium mb-2">Arquivos do Jogo</div>
+                                    <div name="description" class="text-sm text-slate-400">Faça o upload do arquivo do
+                                        jogo em si. Geralmente, é um arquivo compactado contendo os dados necessários
+                                        para executar o jogo: (.zip, .rar)</div>
+                                </div>
+                                <div class="mt-5 md:mt-0 md:col-span-2">
+                                    <p class="mb-4"><strong>Arquivo atual:</strong> {{ $game->game_file_path }}</p>
+                                    <input type="file" name="game_file_path" id="game_file_path"
+                                        class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
+                                </div>
+                            </div>
+
+                            <!--Requisitos-->
+                            <div class="md:flex md:flex-col-2 justify-between gap-20">
+                                <div class="w-full">
+                                    <div class="mb-10">
+                                        <h2 class="text-lg font-medium mb-2">Requisitos Mínimos</h2>
+                                        <div class="text-sm text-slate-400">Informe as especificações mínimas do
+                                            sistema necessárias para que o jogo seja executado corretamente.</div>
+                                    </div>
+                                    <div class="my-4">
+                                        <div class="mb-4">
+                                            <label for="">Placa de Vídeo (GPU):</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_gpu"
+                                                id="" required value="{{ $rm->gpu }}" />
+
+                                            <label for="">Processador (CPU):</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_cpu"
+                                                id="" required value="{{ $rm->cpu }}" />
+
+                                            <label for="">Memória RAM:</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_ram"
+                                                id="" required value="{{ $rm->ram }}" />
+
+                                            <label for="">Armazenamento:</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_storage"
+                                                id="" required value="{{ $rm->storage }}" />
+
+                                            <label for="">Sistema Operacional:</label>
+                                            <x-input type="text" class="mt-4 mb-8 w-full" name="rm_os"
+                                                id="" required value="{{ $rm->os }}" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class="mb-10">
+                                        <h2 class="text-lg font-medium mb-2">Requisitos Recomendados</h2>
+                                        <div class="text-sm text-slate-400">Forneça as especificações recomendadas do
+                                            sistema que garantirão uma experiência de jogo ideal.</div>
+                                    </div>
+                                    <div class="my-4">
+                                        <label for="">Placa de Vídeo (GPU):</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_gpu"
+                                            id="" required value="{{ $rr->gpu }}" />
+
+                                        <label for="">Processador (CPU):</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_cpu"
+                                            id="" required value="{{ $rr->cpu }}" />
+
+                                        <label for="">Memória RAM:</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_ram"
+                                            id="" required value="{{ $rr->ram }}" />
+
+                                        <label for="">Armazenamento:</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_storage"
+                                            id="" required value="{{ $rr->storage }}" />
+
+                                        <label for="">Sistema Operacional:</label>
+                                        <x-input type="text" class="mt-4 mb-8 w-full" name="rr_os"
+                                            id="" required value="{{ $rr->os }}" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-row gap-4 w-full justify-end">
+                                <a href="{{ route('game.index') }}">
+                                    <x-secondary-button>Voltar</x-secondary-button>
+                                </a>
+                                <x-button type="submit" class=""> Salvar alterações </x-button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
+
+
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 
 
 </x-admin-layout>
 
 <script>
-    function formatarValor() {
-        var input = document.getElementById("price");
-        var valor = input.value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
-        var valorFormatado = "";
+    $('document').ready(function() {
+        var price = {{ $game->price }};
+        var discount = {{ $game->discount }};
 
-        if (valor.length > 2) {
-            valorFormatado = "R$ " + Number(valor.substr(0, valor.length - 2)).toLocaleString("pt-BR") + "," + valor
-                .substr(-2);
-        } else if (valor.length === 2) {
-            valorFormatado = "R$ 0," + valor;
-        } else if (valor.length === 1) {
-            valorFormatado = "R$ 0,0" + valor;
-        } else {
-            valorFormatado = "R$ 0,00";
-        }
+        var formattedPrice = price.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        });
 
-        input.value = valorFormatado;
-    }
+        var formattedDiscount = discount.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        });
 
-    function desformatarValor() {
-        var input = document.getElementById("price");
-        var valor = input.value.replace(/[^\d,]/g, "").replace(",", ".") // Remove todos os caracteres não numéricos
+        $('#price').val(formattedPrice);
+        $('#discount').val(formattedDiscount);
+    });
 
-        input.value = valor;
-    }
+    $('#form').on('submit', function() {
+        $input = $('#price').val().replace(/[^\d,]/g, "").replace(",", ".");
+        $input = $('#discount').val().replace(/[^\d,]/g, "").replace(",", ".");
+
+        $("#price").val($input);
+        $("#discount").val($input);
+    });
 </script>

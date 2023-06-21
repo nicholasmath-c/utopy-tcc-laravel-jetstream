@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Game;
+use App\Models\Developer;
+use App\Http\Controllers\User\DeveloperController;
+use App\Http\Controllers\GameController;
 
-class Home extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a Home Page from Client
@@ -13,7 +18,9 @@ class Home extends Controller
      */
     public function index()
     {
-        return view('client.home');
+        $game = GameController::getFirstGame(8);
+
+        return view('home.home', compact('game'));
     }
 
     /**
@@ -22,11 +29,11 @@ class Home extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showAbout() {
-        return view('client.about');
+        return view('home.about');
     }
 
     public function showContact() {
-        return view('client.contact');
+        return view('home.contact');
     }
 
     public function showTerms() {

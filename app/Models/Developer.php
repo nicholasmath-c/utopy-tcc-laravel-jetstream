@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Developer extends Model
 {
-    use HasFactory;
+    protected $table = 'developers';
+    protected $fillable = [];
+
+    public function user(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function game(){
+        return $this->hasMany(Game::class, 'id');
+    }
 }

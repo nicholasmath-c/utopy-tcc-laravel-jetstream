@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Shopcart;
 use App\Service\VendaService;
+use App\Models\Game;
 use Illuminate\Support\Facades\Auth;
 
 class ShopcartController extends Controller
@@ -131,11 +132,11 @@ class ShopcartController extends Controller
         $Xml = $Retorno;
         $code = simplexml_load_string($Xml);
 
-        return view('shop.checkout', [ 'code' =>  $code, 'data' => $Data ]); 
+        return view('shop.checkout', [ 'code' =>  $code, 'data' => $Data ]);
     }
 
     public function checkout(Request $request) {
-        
+
     }
 
     /**

@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('developers', function (Blueprint $table) {
             //------- PK & FK
             $table->id();
-
             $table->unsignedBigInteger('user_id');
             $table
                 ->foreign('user_id')
@@ -24,9 +23,9 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-
             //------- Comuns
-            $table->char('cpf', 13)->unique()->default('text');
+            $table->char('cpf', 14)->unique();
+            $table->string('admission')->default("Not Requested");
             $table->json('followers')->nullable();
             $table->timestamps();
         });
