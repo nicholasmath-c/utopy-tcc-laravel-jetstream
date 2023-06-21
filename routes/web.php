@@ -49,6 +49,7 @@ Route::middleware([
         Route::resource('genre-game', AdminGenreGameController::class);
         Route::resource('game', AdminGameController::class);
         Route::get('/game_search', [LiveSearchController::class, 'gameSearch'])->name('game.search');
+        Route::get('/genre_game_search', [LiveSearchController::class, 'genreGameSearch'])->name('genre-game.search');
     });
 });
 
