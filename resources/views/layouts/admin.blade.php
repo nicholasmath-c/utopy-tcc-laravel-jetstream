@@ -165,9 +165,9 @@
                     <div class="space-y-3 ">
                         <label class="px-3 text-xs text-slate-300 uppercase">Desenvolvedores de Jogos</label>
 
-                        <a class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:bg-main-500 hover:text-white {{ request()->routeIs('developer.index') ? 'text-white' : 'text-slate-400' }}"
-                            href="{{ route('developer.index') }}">
-                            <svg class="h-6 w-6 items-center stroke-slate-200 text-slate-200 fill-slate-200 decoration-slate-200 hover:stroke-white hover:text-white hover:fill-white hover:decoration-white {{ request()->routeIs('developer.index') ? 'stroke-white text-white fill-white decoration-white' : 'stroke-slate-400 text-slate-400 fill-slate-400 decoration-slate-400' }}"
+                        <a class="flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:bg-main-500 hover:text-white {{ request()->routeIs('developer.admissions') ? 'text-white' : 'text-slate-400' }}"
+                            href="{{ route('developer.admissions') }}">
+                            <svg class="h-6 w-6 items-center stroke-slate-200 text-slate-200 fill-slate-200 decoration-slate-200 hover:stroke-white hover:text-white hover:fill-white hover:decoration-white {{ request()->routeIs('developer.admissions') ? 'stroke-white text-white fill-white decoration-white' : 'stroke-slate-400 text-slate-400 fill-slate-400 decoration-slate-400' }}"
                                 xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
                                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                                 xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"

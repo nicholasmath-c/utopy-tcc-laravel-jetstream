@@ -41,7 +41,7 @@ return new class extends Migration
             $table->double('final_price', 5, 2)->nullable()->default(0.00);
             $table->date('release_date');
             $table->string('age_rating', 3);
-            $table->boolean('status_game')->default(true);
+            $table->string('status')->default('Active');
             $table->string('game_file_path', 100);
             $table->timestamps();
         });

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Game;
 use App\Models\Developer;
 use App\Http\Controllers\User\DeveloperController;
+use App\Http\Controllers\GameController;
 
 class HomeController extends Controller
 {
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $game = Game::all();
+        $game = GameController::getFirstGame(8);
 
         return view('home.home', compact('game'));
     }

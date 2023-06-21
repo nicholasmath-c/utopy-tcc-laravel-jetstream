@@ -51,7 +51,10 @@ Route::middleware([
         Route::resource('game', AdminGameController::class);
         Route::get('/game_search', [LiveSearchController::class, 'gameSearch'])->name('game.search');
         Route::get('/genre_game_search', [LiveSearchController::class, 'genreGameSearch'])->name('genre-game.search');
-        Route::get('/developer', [AdminDeveloperController::class, 'index'])->name('developer.index');
+        Route::prefix('developer')->group(function(){
+            Route::get('/admissions', [AdminDeveloperController::class, 'allAdmission'])->name('developer.admissions');
+            Route::post('/admissions/{id}', [AdminDeveloperController::class, 'controlAdmission'])->name('developer.admissions.control');
+        });
     });
 });
 

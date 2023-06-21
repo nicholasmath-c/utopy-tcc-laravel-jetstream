@@ -184,7 +184,7 @@ class GameSeeder extends Seeder
             'developer_id' => 1,
             'genre_game_id' => 1,
             'title' => "Five Nights at Freddy's - Sister Location",
-            'short_description' => 'Em "Five Nights at Freddy\'s: Sister Location", mergulhe em uma experiência aterrorizante em uma nova localização dos famosos animatrônicos assustadores.',
+            'short_description' => 'Em "Five Nights at Freddys - Sister Location", mergulhe em uma experiência aterrorizante em uma nova localização dos famosos animatrônicos assustadores.',
             'long_description' => '
             "Five Nights at Freddy\'s: Sister Location" é um jogo de terror em primeira pessoa que se passa em uma nova localização dos famosos animatrônicos assustadores. Prepare-se para mergulhar em uma experiência aterrorizante repleta de sustos e tensão.
 
@@ -228,6 +228,75 @@ class GameSeeder extends Seeder
             'discount' => 0.00,
             'release_date' => '2023-01-10',
             'age_rating' => '12+'
+        ]);
+
+        Game::create([
+            'developer_id' => 1,
+            'genre_game_id' => 2,
+            'title' => 'WhatsApp Simulator',
+            'short_description' => 'Simule uma experiência realista do aplicativo de mensagens mais popular.',
+            'long_description' => '
+                O WhatsApp Simulator é um jogo que permite aos jogadores simular uma experiência autêntica do famoso aplicativo de mensagens. Com gráficos realistas e recursos interativos, você se sentirá como se estivesse usando o WhatsApp em seu dispositivo.
+
+                No jogo, você poderá criar um perfil, adicionar contatos, enviar mensagens, compartilhar mídia e participar de grupos. Explore todas as funcionalidades do WhatsApp, incluindo chamadas de voz e vídeo, emojis, adesivos e muito mais. Personalize seu perfil e escolha entre uma variedade de temas e papéis de parede.
+
+                Além disso, o WhatsApp Simulator também apresenta missões e desafios emocionantes. Desbloqueie conquistas, ganhe pontos e suba de nível à medida que você interage com seus contatos virtuais. Experimente conversas divertidas e intrigantes enquanto avança no jogo.
+
+                Prepare-se para uma experiência imersiva e envolvente enquanto você simula o uso do WhatsApp em seu próprio dispositivo virtual. Baixe o WhatsApp Simulator agora e mergulhe no mundo das mensagens instantâneas!',
+            'cover' => 'whatsapp-simulator-cover.png',
+            'banner' => 'whatsapp-simulator-banner.png',
+            'game_file_path' => 'whatsapp-simulator-game.zip',
+            'price' => 4.99,
+            'discount' => 0.00,
+            'release_date' => '2023-05-15',
+            'age_rating' => 'L',
+            'status' => 'Admission'
+        ]);
+
+        Game::create([
+            'developer_id' => 2,
+            'genre_game_id' => 2,
+            'title' => 'WhatsApp Simulator',
+            'short_description' => 'Simule uma experiência realista do aplicativo de mensagens mais popular.',
+            'long_description' => '
+                O WhatsApp Simulator é um jogo que permite aos jogadores simular uma experiência autêntica do famoso aplicativo de mensagens. Com gráficos realistas e recursos interativos, você se sentirá como se estivesse usando o WhatsApp em seu dispositivo.
+
+                No jogo, você poderá criar um perfil, adicionar contatos, enviar mensagens, compartilhar mídia e participar de grupos. Explore todas as funcionalidades do WhatsApp, incluindo chamadas de voz e vídeo, emojis, adesivos e muito mais. Personalize seu perfil e escolha entre uma variedade de temas e papéis de parede.
+
+                Além disso, o WhatsApp Simulator também apresenta missões e desafios emocionantes. Desbloqueie conquistas, ganhe pontos e suba de nível à medida que você interage com seus contatos virtuais. Experimente conversas divertidas e intrigantes enquanto avança no jogo.
+
+                Prepare-se para uma experiência imersiva e envolvente enquanto você simula o uso do WhatsApp em seu próprio dispositivo virtual. Baixe o WhatsApp Simulator agora e mergulhe no mundo das mensagens instantâneas!',
+            'cover' => 'whatsapp-simulator-cover.png',
+            'banner' => 'whatsapp-simulator-banner.png',
+            'game_file_path' => 'whatsapp-simulator-game.zip',
+            'price' => 4.99,
+            'discount' => 0.00,
+            'release_date' => '2023-05-15',
+            'age_rating' => 'L',
+            'status' => 'Admission'
+        ]);
+
+        Game::create([
+            'developer_id' => 3,
+            'genre_game_id' => 2,
+            'title' => 'WhatsApp Simulator',
+            'short_description' => 'Simule uma experiência realista do aplicativo de mensagens mais popular.',
+            'long_description' => '
+                O WhatsApp Simulator é um jogo que permite aos jogadores simular uma experiência autêntica do famoso aplicativo de mensagens. Com gráficos realistas e recursos interativos, você se sentirá como se estivesse usando o WhatsApp em seu dispositivo.
+
+                No jogo, você poderá criar um perfil, adicionar contatos, enviar mensagens, compartilhar mídia e participar de grupos. Explore todas as funcionalidades do WhatsApp, incluindo chamadas de voz e vídeo, emojis, adesivos e muito mais. Personalize seu perfil e escolha entre uma variedade de temas e papéis de parede.
+
+                Além disso, o WhatsApp Simulator também apresenta missões e desafios emocionantes. Desbloqueie conquistas, ganhe pontos e suba de nível à medida que você interage com seus contatos virtuais. Experimente conversas divertidas e intrigantes enquanto avança no jogo.
+
+                Prepare-se para uma experiência imersiva e envolvente enquanto você simula o uso do WhatsApp em seu próprio dispositivo virtual. Baixe o WhatsApp Simulator agora e mergulhe no mundo das mensagens instantâneas!',
+            'cover' => 'whatsapp-simulator-cover.png',
+            'banner' => 'whatsapp-simulator-banner.png',
+            'game_file_path' => 'whatsapp-simulator-game.zip',
+            'price' => 4.99,
+            'discount' => 0.00,
+            'release_date' => '2023-05-15',
+            'age_rating' => 'L',
+            'status' => 'Admission'
         ]);
     }
 }

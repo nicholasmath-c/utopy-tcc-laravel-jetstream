@@ -25,7 +25,7 @@ return new class extends Migration
 
             //------- Comuns
             $table->char('cpf', 14)->unique();
-            $table->boolean('is_admitted')->nullable();
+            $table->string('admission')->default("Not Requested");
             $table->json('followers')->nullable();
             $table->timestamps();
         });

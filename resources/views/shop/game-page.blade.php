@@ -58,7 +58,7 @@
                             </p>
 
                             <p>
-                                Storage - <span class="text-white">{{ $rm->storage }}</span>
+                                Armazenamento - <span class="text-white">{{ $rm->storage }}</span>
                             </p>
                         </div>
 
@@ -87,7 +87,7 @@
                             </p>
 
                             <p>
-                                Storage - <span class="text-white">{{ $rr->storage }}</span>
+                                Armazenamento - <span class="text-white">{{ $rr->storage }}</span>
                             </p>
                         </div>
                     </div>

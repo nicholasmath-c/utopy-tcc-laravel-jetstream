@@ -12,6 +12,7 @@ use App\Models\RequerimentsRecommended;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\GameRequest;
+use App\Http\Controllers\GameController;
 
 class AdminGameController extends Controller
 {
@@ -20,7 +21,7 @@ class AdminGameController extends Controller
      */
     public function index()
     {
-        $game = Game::paginate(8);
+        $game = GameController::getAllGamePaginate(8);
 
         return view('admin.game.index', compact('game'));
     }
@@ -30,7 +31,7 @@ class AdminGameController extends Controller
      */
     public function create()
     {
-        $developer = Developer::where('is_admitted', true)->get();
+        $developer = Developer::where('admission', "Approved")->get();
         $genreGame = GenreGame::all();
 
         return view('admin.game.create')->with(compact('genreGame', 'developer'));
@@ -116,7 +117,7 @@ class AdminGameController extends Controller
     public function edit(string $id)
     {
         $game = Game::findOrFail($id);
-        $developer = Developer::where('is_admitted', true)->get();
+        $developer = Developer::where('admission', "Approved")->get();
         $genreGame = GenreGame::all();
         $rm = RequerimentsMinimum::where('game_id', $game->id)->first();
         $rr = RequerimentsRecommended::where('game_id', $game->id)->first();

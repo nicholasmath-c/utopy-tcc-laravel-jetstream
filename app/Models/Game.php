@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     protected $table = 'games';
-    protected $fillable = ['developer_id', 'genre_game_id', 'title', 'short_description', 'long_description', 'cover', 'banner', 'price', 'discount', 'final_price','release_date', 'age_rating', 'game_file_path'];
+    protected $fillable = ['developer_id', 'genre_game_id', 'title', 'short_description', 'long_description', 'cover', 'banner', 'price', 'discount', 'final_price','release_date', 'age_rating', 'game_file_path', 'status'];
 
     //Aplicação do desconto no atributo final_price
     protected static function boot()
