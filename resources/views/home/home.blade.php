@@ -1,5 +1,5 @@
 <x-app-layout>
-        <div class="mx-auto sm:px-6 lg:px-8 mb-10">
+        <div class="">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div id="carouselExampleCaptions" class="relative" data-te-carousel-init data-te-carousel-slide>
                     <!--Carousel indicators-->

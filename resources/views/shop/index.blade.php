@@ -1,6 +1,5 @@
 <x-app-layout>
-    <div class="  relative ">
-
+    <div class="">
         <div class=" relative ">
             <div class=" ">
                 <img src="\games\Cuphead\Cuphead-Banner.png" alt="">
@@ -9,13 +8,13 @@
                 </div>
             </div>
 
-            <div class=" flex flex-col-3 items-center w-full absolute top-28   ">
+            <div class=" flex flex-col-3 items-center w-full absolute top-28  hover:scale-[105%] duration-200   ">
                 <div class=" w-[440px] ml-8">
                     <img class=" rounded-lg " src="\games\Cuphead\Cuphead-Cover.png" alt="">
                 </div>
 
-                <div class=" w-3/5 h-96 pl-5 pt-5 backdrop-blur-md bg-slate-800 bg-opacity-80">
-                    <div>
+                <div class=" rounded-r-xl w-3/5 h-96 pl-5 pt-5 backdrop-blur-md bg-slate-800 bg-opacity-80">
+                    <div class=" w-fit cursor-pointer hover:scale-105 ">
                         <h1 class=" font-heading text-4xl"> <span> Cuphead </span></h1>
                     </div>
                     <div class=" mt-3 grid grid-cols-3 gap-x-1 gap-y-1 p-1 w-80">
@@ -50,20 +49,18 @@
                         da década de 1930.
                     </div>
 
-                    <div class=" flex flex-row w-full h-36 justify-end items-end pr-6 pb-4  ">
+                    <div class=" flex flex-row w-full h-36 justify-between items-end pl-3 pr-6 pb-4  ">
+                        <div class=" w-16">
+                            <img class=" shadow-xl " src="{{ url('/img/classificacoes/classificacao-livre.png') }}" alt="">
+                        </div>
+
                         <div>
                             <x-button class="w-52 h-14 text-[18.5px]   "> Ver jogo </x-button>
                         </div>
                     </div>
-
                 </div>
-
-
-
             </div>
-
         </div>
-
     </div>
 
 
@@ -121,7 +118,7 @@
         @foreach ($game as $games)
         <a href="/shop/game/{{ $games->id }}/{{ $games->title }}">
             <div
-                class="border-2 border-main-500 bg-slate-800 flex flex-row items-center shadow-lg mx-16 rounded-md  h-40 p-1 border-slate-800 hover:border-red-500 ease-in-out hover:cursor-pointer hover:transform hover:scale-[102%] duration-300 ">
+                class="border-2 bg-slate-800 flex flex-row items-center shadow-lg mx-16 rounded-md  h-40 p-1 border-slate-800 hover:border-red-500 ease-in-out hover:cursor-pointer hover:transform hover:scale-[102%] duration-300 ">
 
 
                     <div class=" h-36 w-44 ">
