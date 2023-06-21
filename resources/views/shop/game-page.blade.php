@@ -29,7 +29,11 @@
                     <p class="w-full"> {{ $game->genreGame->name }} </p>
                 </div>
                 <div class="mt-10">
-                    <x-button class="w-full h-16"> Adicionar ao Carrinho </x-button>
+                    @if(isset($admission))
+                        <a href="{{route("developer.admissions.game-download", $game->id)}}"><x-button class="w-full h-16"> Baixar Jogo </x-button></a>
+                    @else
+                        <x-button class="w-full h-16"> Adicionar ao Carrinho </x-button>
+                    @endif
                 </div>
             </div>
 

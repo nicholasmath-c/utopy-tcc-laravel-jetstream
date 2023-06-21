@@ -72,14 +72,14 @@
                                                         @csrf
                                                         <input type="text" value="{{ $admissions->developer->id }}"
                                                             name="developer_id" hidden>
-                                                        <x-button name="approve" class="bg-emerald-600">Aprovar
+                                                        <x-button name="approve" class="bg-green-600 hover:bg-green-700 focus:bg-green-500 focus:ring-green-600">Aprovar
                                                         </x-button>
                                                         <x-button name="reject" class="">Reprovar</x-button>
                                                     </form>
                                                 @endif
                                                 <a
                                                     href="{{ route('game-page', ['id' => $admissions->id, 'title' => $admissions->title]) }}">
-                                                    <x-button class="bg-slate-500">Ver jogo</x-button>
+                                                    <x-button class="bg-slate-500 hover:bg-slate-600 focus:bg-slate-400 focus:ring-slate-500">Analisar Jogo</x-button>
                                                 </a>
                                             </td>
                                         </tr>
