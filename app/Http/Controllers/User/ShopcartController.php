@@ -158,7 +158,11 @@ class ShopcartController extends Controller
         $Xml = $Retorno;
         $code = simplexml_load_string($Xml);
 
-        return view('shop.checkout', [ 'code' =>  $code, 'data' => $Data, 'produtos' => $produtos ]);
+        return view('shop.checkout', [ 
+            'code' =>  $code, 
+            'data' => $Data, 
+            'produtos' => $produtos 
+        ]);
     }
 
     public function checkout(Request $request) {
