@@ -38,6 +38,7 @@ Route::middleware([
 
     Route::prefix('shop')->group(function () {
         Route::get('/', [ShopController::class, 'index'])->name('shop');
+        Route::get('/category/{id}', [ShopController::class, 'category'])->name('shop.category');
         Route::get('/game/{id}/{title}', [ShopController::class, 'product'])->name('game-page');
     });
 

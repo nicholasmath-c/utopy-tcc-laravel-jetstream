@@ -7,7 +7,7 @@
                 </div>
                 <div class="flex flex-row justify-between ">
                     <div>
-                        <x-button class="w-auto mb-10 align-center"><a href="{{ route('game.create') }}"
+                        <x-button class="w-auto mb-10 align-center"><a href="{{ route('genre-game.create') }}"
                                 class="">Adicionar</a>
                         </x-button>
                     </div>

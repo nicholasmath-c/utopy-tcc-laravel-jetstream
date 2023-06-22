@@ -104,7 +104,7 @@
                             </article>
                         @endforeach
 
-                        <div class="my-4 text-white flex-grow col-span-4">
+                        <div class="my-4 text-white w-full">
                             {{ $game->links() }}
                         </div>
                     </div>

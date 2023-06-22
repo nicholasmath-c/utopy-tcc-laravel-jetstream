@@ -47,6 +47,17 @@ class ShopController extends Controller
         }
     }
 
+    public function category($id){
+        $game = GameController::getAllGameCategoryPaginate(10, $id);
+        $genreGame = GenreGame::all();
+        $gameCarousel = GameController::takeGame(3);
+        $gameCarousel1 = $gameCarousel[0];
+        $gameCarousel2 = $gameCarousel[1];
+        $gameCarousel3 = $gameCarousel[2];
+
+        return view('shop.index')->with(compact('game', 'gameCarousel1', 'gameCarousel2', 'gameCarousel3', 'genreGame'));
+    }
+
     public function historic() {
         $lista_pedidos = [];
         $user_id       = Auth::user()->id;

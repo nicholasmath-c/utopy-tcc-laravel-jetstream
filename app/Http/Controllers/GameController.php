@@ -23,6 +23,17 @@ class GameController extends Controller
         return $game;
     }
 
+    public static function getAllGameCategoryPaginate($pagination, $id)
+    {
+        $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])
+        ->whereHas('genreGame', function ($query) use ($id) {
+            $query->where('id', $id);})
+        ->orderBy('id', 'desc')
+        ->paginate($pagination);
+
+        return $game;
+    }
+
     public static function takeGame($quantity)
     {
         $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])->orderBy('id', 'desc')->take($quantity)->get();

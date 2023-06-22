@@ -14,7 +14,7 @@ class AdminGenreGameController extends Controller
      */
     public function index()
     {
-        $genreGame = GenreGame::paginate(5);
+        $genreGame = GenreGame::paginate(6);
 
         return view('admin.genre-game.index', compact('genreGame'));
     }
@@ -34,7 +34,7 @@ class AdminGenreGameController extends Controller
     {
         // -- Salvar categoria
         $genreGame = GenreGame::create([
-            'name' => $request->nome
+            'name' => $request->name
         ]);
 
         if($genreGame)

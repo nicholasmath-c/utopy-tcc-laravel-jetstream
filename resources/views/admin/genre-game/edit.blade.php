@@ -16,9 +16,10 @@
                     </div>
 
                     <div class="card-body">
-                        <form id="form" method="POST" action="{{ route('genre-game.store') }}"
+                        <form id="form" method="POST" action="{{ route('genre-game.update', $genreGame->id) }}"
                             enctype="multipart/form-data" class="text-white">
                             @csrf
+                            @method("PUT")
                             <!--Título-->
                             <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
                                 <div>
@@ -26,7 +27,7 @@
                                     <div name="description" class="text-sm text-slate-400">Insira o nome do genêro, que estará em inúmeros jogos fantásticos.</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <x-input type="text" name="title" id="title" class="w-full" required value="{{ $genreGame->name }}"/>
+                                    <x-input type="text" name="name" id="name" class="w-full" required value="{{ $genreGame->name }}"/>
                                 </div>
                             </div>
 
@@ -34,7 +35,7 @@
                                 <a href="{{ route('genre-game.index') }}">
                                     <x-secondary-button>Voltar</x-secondary-button>
                                 </a>
-                                <x-button type="submit" class=""> Adicionar novo gênero </x-button>
+                                <x-button type="submit" class=""> Editar gênero </x-button>
                             </div>
                         </form>
                     </div>

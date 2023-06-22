@@ -26,7 +26,7 @@
                                     <div name="description" class="text-sm text-slate-400">Insira o nome do genêro, que estará em inúmeros jogos fantásticos.</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <x-input type="text" name="title" id="title" class="w-full" required />
+                                    <x-input type="text" name="name" id="name" class="w-full" required />
                                 </div>
                             </div>
 

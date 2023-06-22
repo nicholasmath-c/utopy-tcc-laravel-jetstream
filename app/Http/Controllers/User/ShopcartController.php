@@ -68,7 +68,7 @@ class ShopcartController extends Controller
         $data->save();
         return redirect()
             ->back()
-            ->with('success', 'Produto adicionado ao Carrinho');
+            ->with('message', 'Produto adicionado ao Carrinho');
     }
 
     /**
