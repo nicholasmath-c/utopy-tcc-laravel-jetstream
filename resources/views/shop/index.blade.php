@@ -10,7 +10,7 @@
                     <div class="">
                         <div class=" relative ">
                             <div class=" ">
-                                <img src="\games\Cuphead\Cuphead-Banner.png" alt="">
+                                <img src="storage\games\{{ $gameCarousel1->title}}\{{ $gameCarousel1->banner}}" alt="">
                                 <div class="absolute top-0 ">
                                     <img src="\img\utopy\background-shop.png" alt="">
                                 </div>
@@ -18,60 +18,52 @@
 
                             <div class=" flex flex-col-3 items-center w-full absolute top-28 hover:scale-[105%] duration-200   ">
                                 <div class=" w-[440px] ml-8">
-                                    <img class=" rounded-lg " src="\games\Cuphead\Cuphead-Cover.png" alt="">
+                                    <img class=" rounded-lg " src="storage\games\{{ $gameCarousel1->title}}\{{ $gameCarousel1->cover}}" alt="">
                                 </div>
 
                                 <div class=" rounded-r-xl w-3/5 h-96 pl-5 pt-5 bg-slate-800 bg-opacity-90">
                                     <div class=" w-fit cursor-pointer hover:scale-105 ">
-                                        <h1 class=" font-heading text-4xl"> <span> Cuphead </span></h1>
+                                        <a href="{{ route('game-page', ['id' => $gameCarousel1->id, 'title' => $gameCarousel1->title]) }}">
+                                            <h1 class=" font-heading text-3xl truncate"> <span> {{ $gameCarousel1->title }} </span></h1>
+                                        </a>
                                     </div>
                                     <div class=" mt-3 grid grid-cols-3 gap-x-1 gap-y-1 p-1 w-80">
                                         <div
                                             class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Plataforma</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Bullet Hell</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Bullet Hell</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
+                                            <p class="text-center">{{ $gameCarousel1->genreGame->name }}</p>
                                         </div>
                                     </div>
 
                                     <div class=" mt-10">
-                                        Em "Cuphead", embarque em uma aventura desafiadora e estilizada inspirada nos desenhos animados
-                                        da década de 1930.
+                                        {{ $gameCarousel1->short_description }}
                                     </div>
 
                                     <div class=" flex flex-row w-full h-36 justify-between items-end pl-3 pr-6 pb-4  ">
                                         <div class=" w-16">
-                                            <img class=" shadow-xl " src="{{ url('/img/classificacoes/classificacao-livre.png') }}" alt="">
+                                            @if ( $gameCarousel1->age_rating == "L" )
+                                                <img class=" shadow-xl " src="{{ url('/img/classificacoes/classificacao-livre.png') }}" alt="">
+                                            @elseif ( $gameCarousel1->age_rating == "10+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-10.png') }}" alt="">
+                                            @elseif ( $gameCarousel1->age_rating == "12+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-12.png') }}" alt="">
+                                            @elseif ( $gameCarousel1->age_rating == "14+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-14.png') }}" alt="">
+                                            @elseif ( $gameCarousel1->age_rating == "16+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-16.png') }}" alt="">
+                                            @elseif ( $gameCarousel1->age_rating == "18+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-18.png') }}" alt="">
+                                            @endif
                                         </div>
-
                                         <div>
-                                            <x-button class="w-52 h-14 text-[18.5px]   "> Ver jogo </x-button>
+                                            <a href="{{ route('game-page', ['id' => $gameCarousel1->id, 'title' => $gameCarousel1->title]) }}">
+                                                <x-button class="w-52 h-14 text-[18.5px]"> Ver jogo </x-button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <!--Second item-->
                 <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[550ms] ease-in motion-reduce:transition-none"
@@ -79,60 +71,55 @@
                     <div class="">
                         <div class=" relative ">
                             <div class=" ">
-                                <img src="\games\Five Nights at Freddy's - Sister Location\SisterLocation-Banner.png" alt="">
+                                <img src="storage\games\{{ $gameCarousel2->title }}\{{ $gameCarousel2->banner }}" alt="">
                                 <div class="absolute top-0 ">
                                     <img src="\img\utopy\background-shop.png" alt="">
                                 </div>
                             </div>
 
                             <div class=" flex flex-col-3 items-center w-full absolute top-28 hover:scale-[105%] duration-200   ">
-                                <div class=" w-[440px] ml-8">
-                                    <img class=" rounded-lg " src="\games\Five Nights at Freddy's - Sister Location\SisterLocation-Cover.png" alt="">
+                                <div class=" w-[440px] ml-8 ">
+                                    <img class=" rounded-lg " src="storage\games\{{ $gameCarousel2->title}}\{{ $gameCarousel2->cover}}" alt="">
                                 </div>
 
                                 <div class=" rounded-r-xl w-3/5 h-96 pl-5 pt-5 bg-slate-800 bg-opacity-90">
                                     <div class=" w-fit cursor-pointer hover:scale-105 ">
-                                        <h1 class=" font-heading text-4xl"> <span> Sister Location </span></h1>
+                                        <a href="{{ route('game-page', ['id' => $gameCarousel2->id, 'title' => $gameCarousel2->title]) }}">
+                                            <h1 class=" font-heading text-3xl truncate"> <span> {{ $gameCarousel2->title }} </span></h1>
+                                        </a>
                                     </div>
                                     <div class=" mt-3 grid grid-cols-3 gap-x-1 gap-y-1 p-1 w-80">
                                         <div
                                             class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Plataforma</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Bullet Hell</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Bullet Hell</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
+                                            <p class="text-center">{{ $gameCarousel2->genreGame->name }}</p>
                                         </div>
                                     </div>
 
                                     <div class=" mt-10">
-                                        Em "Cuphead", embarque em uma aventura desafiadora e estilizada inspirada nos desenhos animados
-                                        da década de 1930.
+                                        {{ $gameCarousel2->short_description }}
                                     </div>
 
                                     <div class=" flex flex-row w-full h-36 justify-between items-end pl-3 pr-6 pb-4  ">
                                         <div class=" w-16">
-                                            <img class=" shadow-xl " src="{{ url('/img/classificacoes/classificacao-livre.png') }}" alt="">
+                                            @if ( $gameCarousel2->age_rating == "L" )
+                                                <img class=" shadow-xl " src="{{ url('/img/classificacoes/classificacao-livre.png') }}" alt="">
+                                            @elseif ( $gameCarousel2->age_rating == "10+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-10.png') }}" alt="">
+                                            @elseif ( $gameCarousel2->age_rating == "12+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-12.png') }}" alt="">
+                                            @elseif ( $gameCarousel2->age_rating == "14+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-14.png') }}" alt="">
+                                            @elseif ( $gameCarousel2->age_rating == "16+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-16.png') }}" alt="">
+                                            @elseif ( $gameCarousel2->age_rating == "18+" )
+                                                <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-18.png') }}" alt="">
+                                            @endif
                                         </div>
 
                                         <div>
-                                            <x-button class="w-52 h-14 text-[18.5px]   "> Ver jogo </x-button>
+                                            <a href="{{ route('game-page', ['id' => $gameCarousel2->id, 'title' => $gameCarousel2->title]) }}">
+                                                <x-button class="w-52 h-14 text-[18.5px]"> Ver jogo </x-button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +133,7 @@
                     <div class="">
                         <div class=" relative ">
                             <div class=" ">
-                                <img src="\games\Undertale\Undertale-Banner.png" alt="">
+                                <img src="storage\games\{{ $gameCarousel3->title }}\{{ $gameCarousel3->banner }}" alt="">
                                 <div class="absolute top-0 ">
                                     <img src="\img\utopy\background-shop.png" alt="">
                                 </div>
@@ -154,37 +141,17 @@
 
                             <div class=" flex flex-col-3 items-center w-full absolute top-28 hover:scale-[105%] duration-200   ">
                                 <div class=" w-[440px] ml-8">
-                                    <img class=" rounded-lg " src="\games\Undertale\Undertale-Cover.png" alt="">
+                                    <img class=" rounded-lg " src="storage\games\{{ $gameCarousel3->title}}\{{ $gameCarousel3->cover}}" alt="">
                                 </div>
 
                                 <div class=" rounded-r-xl w-3/5 h-96 pl-5 pt-5 bg-slate-800 bg-opacity-90">
                                     <div class=" w-fit cursor-pointer hover:scale-105 ">
-                                        <h1 class=" font-heading text-4xl"> <span> Undertale </span></h1>
+                                        <h1 class=" font-heading text-3xl truncate"> <span> {{ $gameCarousel3->title }} </span></h1>
                                     </div>
                                     <div class=" mt-3 grid grid-cols-3 gap-x-1 gap-y-1 p-1 w-80">
                                         <div
                                             class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Plataforma</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Bullet Hell</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Bullet Hell</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
-                                        </div>
-                                        <div
-                                            class=" w-full py-[1px] rounded-xl bg-slate-800 bg-opacity-80 hover:bg-main-600 hover:cursor-pointer duration-200">
-                                            <p class="text-center">Aventura</p>
+                                            <p class="text-center">{{ $gameCarousel2->genreGame->name}}</p>
                                         </div>
                                     </div>
 
@@ -193,13 +160,27 @@
                                         da década de 1930.
                                     </div>
 
-                                    <div class=" flex flex-row w-full h-36 justify-between items-end pl-3 pr-6 pb-4  ">
+                                    <div class=" flex flex-row w-full h-36 justify-between items-end     pl-3 pr-6 pb-4  ">
                                         <div class=" w-16">
+                                            @if ( $gameCarousel3->age_rating == "L" )
                                             <img class=" shadow-xl " src="{{ url('/img/classificacoes/classificacao-livre.png') }}" alt="">
+                                        @elseif ( $gameCarousel3->age_rating == "10+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-10.png') }}" alt="">
+                                        @elseif ( $gameCarousel3->age_rating == "12+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-12.png') }}" alt="">
+                                        @elseif ( $gameCarousel3->age_rating == "14+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-14.png') }}" alt="">
+                                        @elseif ( $gameCarousel3->age_rating == "16+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-16.png') }}" alt="">
+                                        @elseif ( $gameCarousel3->age_rating == "18+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-18.png') }}" alt="">
+                                        @endif
                                         </div>
 
                                         <div>
-                                            <x-button class="w-52 h-14 text-[18.5px]   "> Ver jogo </x-button>
+                                            <a href="{{ route('game-page', ['id' => $gameCarousel3->id, 'title' => $gameCarousel3->title]) }}">
+                                                <x-button class="w-52 h-14 text-[18.5px]"> Ver jogo </x-button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -237,42 +218,15 @@
         </div>
     </div>
 
-    <div class=" sticky top-0 flex flex-row justify-center p-3">
-        <div class=" p-2 px-[25px] flex flex-row bg-slate-700 bg-opacity-20 rounded-full shadow-md ">
-            <div
-                class=" p-1 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
-                Ação
+    <div class="sticky top-0 flex flex-row justify-center p-3">
+        <div class=" p-2 px-[25px] flex flex-row bg-slate-700 bg-opacity-20 rounded-full shadow-md w-fit">
+            @foreach ($genreGame as $genreGames)
+                <div
+                class="p-1 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
+                    {{ $genreGames->name }}
             </div>
+            @endforeach
 
-            <div
-                class=" p-1 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
-                Gratuitos
-            </div>
-
-            <div
-                class=" p-1 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
-                FPS
-            </div>
-
-            <div
-                class=" p-1 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
-                Aventura
-            </div>
-
-            <div
-                class=" p-1 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
-                8-Bits
-            </div>
-
-            <div
-                class=" p-1 rounded-xl mx-1 my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
-                8-Bits
-            </div>
-
-            <div
-                class=" p-1 rounded-xl mx-1  my-[1px] px-3 bg-slate-500 bg-opacity-20 hover:bg-main-600 hover:cursor-pointer duration-200">
-                8-Bits
-            </div>
         </div>
     </div>
 
@@ -301,29 +255,25 @@
                                 <h1 class="  text-base ">{{ $games->genreGame->name }}</h1>
                             </div>
 
-                            <div
-                                class=" flex flex-row justify-center px-[4px] py-[4px]  mr-1 border-gray-500 rounded-xl bg-slate-600 bg-opacity-25 ">
-                                <h1 class="  text-base ">Plataforma</h1>
-                            </div>
-
-                            <div
-                                class=" flex flex-row justify-center px-[4px] py-[4px]  mr-1 border-gray-500 rounded-xl bg-slate-600 bg-opacity-25 ">
-                                <h1 class="  text-base ">8-Bits</h1>
-                            </div>
-
-                            <div
-                                class=" flex flex-row justify-center px-[4px] py-[4px]  mr-1 border-gray-500 rounded-xl bg-slate-600 bg-opacity-25 ">
-                                <h1 class="  text-base ">Aventura</h1>
-                            </div>
-
                         </div>
 
                         <div class=" flex items-center w-fill mb-1   ">
                             <h1 class="mr-5">Lançamento - <span class=" text-lg ">{{ $games->release_date }}</span>
                             </h1>
                             <div class="w-9 h-9  ">
-                                <img class=" shadow-xl " src="{{ url('/img/classificacoes/classificacao-livre.png') }}"
-                                    alt="">
+                                @if ( $games->age_rating == "L" )
+                                            <img class=" shadow-xl " src="{{ url('/img/classificacoes/classificacao-livre.png') }}" alt="">
+                                        @elseif ( $games->age_rating == "10+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-10.png') }}" alt="">
+                                        @elseif ( $games->age_rating == "12+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-12.png') }}" alt="">
+                                        @elseif ( $games->age_rating == "14+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-14.png') }}" alt="">
+                                        @elseif ( $games->age_rating == "16+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-16.png') }}" alt="">
+                                        @elseif ( $games->age_rating == "18+" )
+                                            <img class=" shadow-xa " src="{{ url('/img/classificacoes/classificacao-18.png') }}" alt="">
+                                        @endif
                             </div>
                         </div>
 

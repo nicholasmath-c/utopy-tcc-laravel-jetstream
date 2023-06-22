@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-
+use App\Http\Controllers\Shop\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Service\VendaService;
@@ -28,11 +28,14 @@ class ShopcartController extends Controller
     public function index()
     {
         $data = Shopcart::obterTodosProdutos();
+        $sumPrice = $data->sum('price');
+        $sumDiscount = $data->sum('discount');
+        $sumFinalPrice = $data->sum('price');
         $recommendedGame1 = Game::where('title', 'Ori and the Blind Forest')->first();
         $recommendedGame2 = Game::where('title', 'Celeste')->first();
 
         return view('client.shopcart', [
-            'shopcart' => $data, 'recommendedGame1' => $recommendedGame1, 'recommendedGame2' => $recommendedGame2
+            'shopcart' => $data, 'recommendedGame1' => $recommendedGame1, 'recommendedGame2' => $recommendedGame2, 'sumPrice' => $sumPrice, 'sumDiscount' => $sumDiscount, 'sumFinalPrice' => $sumFinalPrice
         ]);
     }
 
@@ -124,9 +127,9 @@ class ShopcartController extends Controller
         foreach($produtos as $item) {
          $total += $item['price'];
         }
-        $Data["itemAmount1"] = "29.00";
+        $Data["itemAmount1"] = "". $total ."";
         $Data["itemQuantity1"]="1";
-        $Data["itemWeight1"]="10";
+        $Data["itemWeight1"]="0";
 
         # Referência
         $Data["reference"] = "83783783737";

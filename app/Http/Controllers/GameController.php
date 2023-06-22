@@ -23,6 +23,13 @@ class GameController extends Controller
         return $game;
     }
 
+    public static function takeGame($quantity)
+    {
+        $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])->orderBy('id', 'desc')->take($quantity)->get();
+
+        return $game;
+    }
+
     public static function getAllGameDeveloper($developer_id)
     {
         $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])

@@ -68,15 +68,15 @@
                         <h1 class="pl-10 pt-0 font-heading text-2xl text-white mt-0 ">Resumo de Jogos e Aplicativos</h1>
                         <div class="flex justify-between mt-10 ">
                             <h1 class="text-lg mt-3">Preço</h1>
-                            <h1 class="text-lg mt-3"><span class="text-lg text-red-300">R$ 80,00</span></h1>
+                            <h1 class="text-lg mt-3"><span class="text-lg text-red-300">R${{ $sumPrice }}</span></h1>
                         </div>
                         <div class="flex justify-between ">
                             <h1 class="text-lg mt-3">Desconto</h1>
-                            <h1 class="text-lg mt-3"><span class="text-lg text-red-300">R$ 30,00</span></h1>
+                            <h1 class="text-lg mt-3"><span class="text-lg text-red-300">R${{ $sumDiscount }}</span></h1>
                         </div>
                         <div class="flex justify-between mt-4 border-t">
                             <h1 class="text-lg mt-4">Subtotal</h1>
-                            <h1 class="text-lg mt-4"><span class="text-lg text-red-300">R$ 80,00</span></h1>
+                            <h1 class="text-lg mt-4"><span class="text-lg text-red-300">R${{ $sumFinalPrice }}</span></h1>
                         </div>
                     </div>
                     <div class="flex flex-row mt-8 justify-center ">

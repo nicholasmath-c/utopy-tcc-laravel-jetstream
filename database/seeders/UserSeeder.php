@@ -15,16 +15,6 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'firstname' => 'Deivid',
-            'lastname' => 'Lima',
-            'nickname' => 'WaterCooler',
-            'email' => 'deividlima@utopy.com',
-            'cellphone' => '11999999996',
-            'password' => Hash::make('12345678'),
-            'is_adm' => false
-        ]);
-
-        User::create([
             'firstname' => 'Gustavo',
             'lastname' => 'Jesus',
             'nickname' => 'Punk',
@@ -35,11 +25,11 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'firstname' => 'Ronald',
-            'lastname' => 'Ribeiro',
-            'nickname' => 'Ronald0',
-            'email' => 'ronaldribeiro@utopy.com',
-            'cellphone' => '11999999994',
+            'firstname' => 'Deivid',
+            'lastname' => 'Lima',
+            'nickname' => 'WaterCooler',
+            'email' => 'deividlima@utopy.com',
+            'cellphone' => '11999999996',
             'password' => Hash::make('12345678'),
             'is_adm' => false
         ]);

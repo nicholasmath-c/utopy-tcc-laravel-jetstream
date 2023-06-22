@@ -93,14 +93,5 @@ class RequerimentsMinimumSeeder extends Seeder
             'gpu' => 'GeForce 9600 GT',
             'storage' => '3 GB disponíveis'
         ]);
-
-        RequerimentsMinimum::create([
-            'game_id' => 10,
-            'os' => 'Windows XP, Vista, 7',
-            'cpu' => '2 GHz',
-            'ram' => '1 GB',
-            'gpu' => 'DirectX 9.0c',
-            'storage' => '250 MB disponíveis'
-        ]);
     }
 }

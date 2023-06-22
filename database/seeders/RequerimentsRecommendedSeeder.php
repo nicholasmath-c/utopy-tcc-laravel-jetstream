@@ -93,14 +93,5 @@ class RequerimentsRecommendedSeeder extends Seeder
             'gpu' => 'GeForce GTX 560',
             'storage' => '3 GB disponíveis'
         ]);
-
-        RequerimentsRecommended::create([
-            'game_id' => 10,
-            'os' => 'Windows XP, Vista, 7',
-            'cpu' => '2 GHz',
-            'ram' => '2 GB',
-            'gpu' => 'DirectX 9.0c',
-            'storage' => '250 MB disponíveis'
-        ]);
     }
 }
