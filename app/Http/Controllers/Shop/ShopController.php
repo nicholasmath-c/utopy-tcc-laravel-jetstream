@@ -53,8 +53,7 @@ class ShopController extends Controller
                 ->get();
         
         $listaItens = OrderItem::
-            join('games', 'games.id', '=', 'order_items.game_id')
-                ->where('user_id', $user_id)
+            join('games', 'games.id', '=', 'order_items.game_id')                    
                 ->get([ 'order_items.*', 'order_items.valor as valorItem' ]);
 
         return view("shop.historic", [ 
