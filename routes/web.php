@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\LiveSearchController;
+use App\Http\Controllers\Admin\AdminLiveSearchController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminGenreGameController;
@@ -38,7 +38,17 @@ Route::middleware([
     });
 
     Route::prefix('user')->group(function () {
-        Route::resource('/shopcarts', ShopcartController::class);
+         #---- Routes Shopcarts
+        Route::prefix('/shopcart')
+            ->name('shopcart.')
+            ->controller(ShopcartController::class)->group(function (){
+                Route::get('/','index')->name('index');
+                Route::post('/store/{id}','store')->name('store');
+                Route::post('/update/{id}','update')->name('update');
+                Route::get('/destroy/{id}','destroy')->name('destroy');
+                Route::post('/checkout', 'checkout')->name('checkout');
+                Route::get('/pay', 'pay')->name('pay');
+        });
 
         Route::get('/library', function () {
             return view('client.library');
@@ -49,19 +59,28 @@ Route::middleware([
         Route::get('/', [AdminHomeController::class, 'index'])->name('admin');
         Route::resource('genre-game', AdminGenreGameController::class);
         Route::resource('game', AdminGameController::class);
-        Route::get('/game_search', [LiveSearchController::class, 'gameSearch'])->name('game.search');
-        Route::get('/genre_game_search', [LiveSearchController::class, 'genreGameSearch'])->name('genre-game.search');
+        Route::get('/game_search', [AdminLiveSearchController::class, 'gameSearch'])->name('game.search');
+        Route::get('/genre_game_search', [AdminLiveSearchController::class, 'genreGameSearch'])->name('genre-game.search');
         Route::prefix('developer')->group(function(){
             Route::get('/admissions', [AdminDeveloperController::class, 'allAdmission'])->name('developer.admissions');
             Route::post('/admissions/{id}', [AdminDeveloperController::class, 'controlAdmission'])->name('developer.admissions.control');
+            Route::get('/admissions/download-game/{id}', [AdminDeveloperController::class, 'gameDownload'])->name('developer.admissions.game-download');
+            Route::get('/admissions_search', [AdminLiveSearchController::class, 'admissionSearch'])->name('admission.search');
         });
     });
+
+    Route::match(
+        ['get', 'post'],
+        'compras/historico',
+        [ShopController::class, 'historic']
+    )->name('shop.historic');
+    Route::post(
+        'compras/detalhes',
+        [ShopController::class, 'details']
+    )->name('shop.details');
+    Route::match(
+        ['get', 'post'],
+        'compras/checkout',
+        [ShopController::class, 'processCheckout']
+    )->name('shop.checkout');
 });
-
-
-
-
-
-
-
-

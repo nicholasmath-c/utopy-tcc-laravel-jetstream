@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
+// TODO: FAZER COM QUE APENAS UM JOGO ENTRE PARA O CARRINHO
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\Shopcart;
+use App\Service\VendaService;
 use App\Models\Game;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,11 +21,10 @@ class ShopcartController extends Controller
      */
     public function index()
     {
-        //$data = Shopcart::where('user_id', Auth::id())->get();
-        $data = Game::all();
+        $data = Shopcart::obterTodosProdutos();
 
         return view('client.shopcart',[
-            'data' => $data
+            'shopcart' => $data
         ]);
     }
 
@@ -39,31 +40,25 @@ class ShopcartController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->id;
-        // checkar o produto por usuario
-        $data = Shopcart::where('game_id', $id)->where('user_id',  Auth::id())->first();
+        $data = Shopcart::
+            where('id', $request->id)
+                ->where('user_id', Auth::id())
+                ->first();
 
-        if ($data)
-        {
-            $data->quantity = $data->quantity + $request->input('quantity');
-        } else
-        {
-            $data = Shopcart::create([
-                'game_id' => $id,
-                'user_id' => Auth::id(),
-                'quantity' => $request->input('quantity')
-            ]);
+        if ($data) {
+            $data->quantity += $request->input('quantity');
+        } else {
+            $data = new Shopcart();
 
-            if($categoria) {
-                return redirect()
-                    ->route('home.client.shopcart')
-                    ->with('success', 'Produto adicionado com sucesso!');
-            }
+            $data->game_id  = $request->input('game_id');
+            $data->user_id  = Auth::id();
+            $data->quantity = $request->input('quantity');
         }
 
+        $data->save();
         return redirect()
             ->back()
-            ->with('success', 'Product Added to Shopcart');
+            ->with('success','Produto adicionado ao Carrinho');
     }
 
     /**
@@ -85,26 +80,89 @@ class ShopcartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Shopcart $shopcart, $id)
+    public function update(Request $request,Shopcart $shopcart,$id)
     {
         Shopcart::where([ 'id' => $id ])->update([
             'quantity' => $request->input('quantity')
         ]);
 
         return redirect()
-            ->route('home.client.shopcart')
+            ->route('shopcart.index')
             ->with('success', 'Carrinho atualizado com sucesso!');
+    }
+
+    public function pay(Request $request) {
+        # Cofigs Autenticação
+        $data["email"] = env('PAGSEGURO_EMAIL');
+        $data["token"] = env('PAGSEGURO_TOKEN');
+        $data["currency"]="BRL";
+
+        # Itens do Pedido
+        $data["items"] = [
+            [
+                'itemId' => '1',
+                'itemDescription' => 'Website desenvolvido pela WEF.',
+                'itemAmount' => '1000000.00',
+                'itemQuantity' => '1',
+                'itemWeight' => '1000'
+            ],
+
+            'itemId' => '1',
+            'itemDescription' => 'Website desenvolvido pela WEF.',
+            'itemAmount' => '1000000.00',
+            'itemQuantity' => '1',
+            'itemWeight' => '1000',
+        ];
+        $data["reference"]="83783783737";
+
+        # Dados do Recebedor
+        $data["senderName"]="João da Silva";
+        $data["senderAreaCode"]="37";
+        $data["senderPhone"]="99999999";
+        $data["senderEmail"]="c51994292615446022931@sandbox.pagseguro.com.br";
+
+        #
+        $data["shippingType"]="1";
+        $data["shippingAddressStreet"]="Rua Antonieta";
+        $data["shippingAddressNumber"]="10";
+        $data["shippingAddressComplement"]="Casa";
+        $data["shippingAddressDistrict"]="Jardim Paulistano";
+        $data["shippingAddressPostalCode"]="30690090";
+        $data["shippingAddressCity"]="Belo Horizonte";
+        $data["shippingAddressState"]="MG";
+        $data["shippingAddressCountry"]="BRA";
+
+        $BuildQuery=http_build_query($data);
+        $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/checkout";
+
+        $Curl=curl_init($Url);
+        curl_setopt($Curl,CURLOPT_HTTPHEADER, Array("Content-Type: application/x-www-form-urlencoded; charset=UTF-8"));
+        curl_setopt($Curl,CURLOPT_POST,true);
+        curl_setopt($Curl,CURLOPT_SSL_VERIFYPEER,false);
+        curl_setopt($Curl,CURLOPT_RETURNTRANSFER,true);
+        curl_setopt($Curl,CURLOPT_POSTFIELDS,$BuildQuery);
+        $Retorno=curl_exec($Curl);
+        curl_close($Curl);
+
+        $Xml = $Retorno;
+        $code = simplexml_load_string($Xml);
+
+        return view('shop.checkout', [ 'code' =>  $code, 'data' => $data ]);
+    }
+
+    public function checkout(Request $request) {
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        GenreGame::destroy($id);
+        Shopcart::destroy($id);
 
         return redirect()
-            ->route('genre-game.index')
+            ->route('shopcart.index')
             ->with('success', 'Produto retirado do carrinho! 😥');
     }
 }

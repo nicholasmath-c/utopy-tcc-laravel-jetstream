@@ -32,7 +32,7 @@
                                         <th class="px-4 py-3">Ações</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-700 bg-slate-800">
+                                <tbody class="alldata divide-y divide-slate-700 bg-slate-800">
                                     @foreach ($admission as $admissions)
                                         <tr class="bg-slate-700 text-slate-100">
                                             <td class="px-4 py-3 text-sm">{{ $admissions->id }}</td>
@@ -72,18 +72,21 @@
                                                         @csrf
                                                         <input type="text" value="{{ $admissions->developer->id }}"
                                                             name="developer_id" hidden>
-                                                        <x-button name="approve" class="bg-emerald-600">Aprovar
+                                                        <x-button name="approve" class="bg-green-600 hover:bg-green-700 focus:bg-green-500 focus:ring-green-600">Aprovar
                                                         </x-button>
                                                         <x-button name="reject" class="">Reprovar</x-button>
                                                     </form>
                                                 @endif
                                                 <a
                                                     href="{{ route('game-page', ['id' => $admissions->id, 'title' => $admissions->title]) }}">
-                                                    <x-button class="bg-slate-500">Ver jogo</x-button>
+                                                    <x-button class="bg-slate-500 hover:bg-slate-600 focus:bg-slate-400 focus:ring-slate-500">Analisar Jogo</x-button>
                                                 </a>
                                             </td>
                                         </tr>
                                     @endforeach
+                                </tbody>
+                                <tbody id="content_search" class="searchdata divide-y divide-slate-700 bg-slate-800">
+
                                 </tbody>
                             </table>
                         </div>
@@ -98,3 +101,34 @@
     </div>
     </div>
 </x-admin-layout>
+
+<script>
+    $('#search').on('keyup', function() {
+        $value = $(this).val();
+
+        if ($value) {
+            $('.alldata').hide();
+            $('.searchdata').show();
+        } else {
+            $('.alldata').show();
+            $('.searchdata').hide();
+        }
+
+        $.ajax({
+            type: 'get',
+            url: '{{ route('admission.search') }}',
+            data: {
+                'search': $value
+            },
+            success: function(data) {
+                console.log(data);
+                $('#content_search').html(data);
+            }
+        });
+    });
+
+    $('input[type=search]').on('search', function() {
+        $('.alldata').show();
+        $('.searchdata').hide();
+    });
+</script>
