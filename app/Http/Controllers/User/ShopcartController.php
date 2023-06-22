@@ -30,7 +30,7 @@ class ShopcartController extends Controller
         $data = Shopcart::obterTodosProdutos();
         $sumPrice = $data->sum('price');
         $sumDiscount = $data->sum('discount');
-        $sumFinalPrice = $data->sum('price');
+        $sumFinalPrice = $data->sum('final_price');
         $recommendedGame1 = Game::where('title', 'Ori and the Blind Forest')->first();
         $recommendedGame2 = Game::where('title', 'Celeste')->first();
 
