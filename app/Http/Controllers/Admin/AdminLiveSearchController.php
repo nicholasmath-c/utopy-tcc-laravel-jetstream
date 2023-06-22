@@ -19,6 +19,7 @@ class AdminLiveSearchController extends Controller
             ->orWhereHas('genreGame', function ($query) use ($request) {
                 $query->where('name', 'like', '%' . $request->search . '%');
             })
+            ->whereNotIn('status', ['Admission', 'Admission Rejected'])
             ->get();
 
         if ($game->isEmpty()) {

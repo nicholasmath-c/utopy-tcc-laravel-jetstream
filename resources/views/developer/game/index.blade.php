@@ -81,7 +81,7 @@
                                                     </div>
                                                 </a>
 
-                                                <form action="{{ route('game.destroy', $games->id) }}" method="POST"
+                                                <form action="{{ route('developer-game.destroy', $games->id) }}" method="POST"
                                                     class="delete inline-block">
                                                     @csrf
                                                     @method('DELETE')
@@ -155,7 +155,7 @@
 
         $.ajax({
             type: 'get',
-            url: '{{ route('game.search') }}',
+            url: '{{ route('developer-game.search') }}',
             data: {
                 'search': $value
             },

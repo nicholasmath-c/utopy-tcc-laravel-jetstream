@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Developer extends Model
 {
     protected $table = 'developers';
-    protected $fillable = [];
+    protected $fillable = ['user_id','cpf','admission'];
 
     public function user(){
         return $this->hasOne(User::class, 'id', 'user_id');

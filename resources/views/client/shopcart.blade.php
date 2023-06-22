@@ -96,21 +96,25 @@
                     </div>
                 </div>
                 <h1 class="self-center text-xl mt-10">Recomendado para você</h1>
-                <div
+                <a href="{{ route('game-page', ['id' => $recommendedGame1->id, 'title' => $recommendedGame1->title])}}">
+                    <div
                     class="p-1 rounded-md border-2 border-slate-800 hover:border-red-500 ease-in-out duration-150 mb-4">
-                    <img class="rounded-sm" src="{{ url('storage/games/Ori and the Blind Forest/Ori-Banner.jpg') }}"
+                    <img class="rounded-sm" src="{{ url("storage/games/$recommendedGame1->title/$recommendedGame1->banner") }}"
                         alt="">
                     <div class="bg-opacity-20 rounded-sm bg-slate-900">
-                        <h1 class="text-lg">R$20,00 <span class="text-sm line-through text-gray-500">R$50,00</span></h1>
+                        <h1 class="text-lg">R${{ $recommendedGame1->final_price }} <span class="text-sm line-through text-gray-500">R${{ $recommendedGame1->price }}</span></h1>
                     </div>
                 </div>
+                </a>
+                <a href="{{ route('game-page', ['id' => $recommendedGame2->id, 'title' => $recommendedGame2->title])}}">
                 <div
                     class="p-1 rounded-md border-2 border-slate-800 hover:border-red-500 ease-in-out duration-150 mb-4">
-                    <img class="rounded-sm" src="{{ url('storage/games/Celeste/Celeste-Banner.jpeg') }}" alt="">
+                    <img class="rounded-sm" src="{{ url("storage/games/$recommendedGame2->title/$recommendedGame2->banner") }}" alt="">
                     <div class="bg-opacity-20 rounded-sm bg-slate-900">
-                        <h1 class="text-lg">R$20,00 <span class="text-sm line-through text-gray-500">R$50,00</span></h1>
+                        <h1 class="text-lg">R${{ $recommendedGame2->final_price }} <span class="text-sm line-through text-gray-500">R${{ $recommendedGame2->price }}</span></h1>
                     </div>
                 </div>
+                </a>
             </div>
         </div>
     </div>

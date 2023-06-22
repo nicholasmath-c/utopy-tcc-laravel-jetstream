@@ -38,7 +38,9 @@
 
                 <div class="flex ml-10 items-center h-full">
                     @if (empty(auth()->user()->developer) && !auth()->user()->is_adm)
-                        <x-button class="h-10">Quero ser um desenvolvedor</x-button>
+                        <a href="{{ route('admission-developer') }}">
+                            <x-button class="h-10">Quero ser um desenvolvedor</x-button>
+                        </a>
                     @endif
                 </div>
 

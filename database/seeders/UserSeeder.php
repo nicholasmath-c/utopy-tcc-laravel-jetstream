@@ -35,16 +35,6 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'firstname' => 'Nicholas',
-            'lastname' => 'Costa',
-            'nickname' => 'Mus4ng',
-            'email' => 'nicholascosta@utopy.com',
-            'cellphone' => '11999999997',
-            'password' => Hash::make('12345678'),
-            'is_adm' => true
-        ]);
-
-        User::create([
             'firstname' => 'Ronald',
             'lastname' => 'Ribeiro',
             'nickname' => 'Ronald0',
@@ -52,6 +42,16 @@ class UserSeeder extends Seeder
             'cellphone' => '11999999994',
             'password' => Hash::make('12345678'),
             'is_adm' => false
+        ]);
+
+        User::create([
+            'firstname' => 'Nicholas',
+            'lastname' => 'Costa',
+            'nickname' => 'Mus4ng',
+            'email' => 'nicholascosta@utopy.com',
+            'cellphone' => '11999999997',
+            'password' => Hash::make('12345678'),
+            'is_adm' => true
         ]);
     }
 }

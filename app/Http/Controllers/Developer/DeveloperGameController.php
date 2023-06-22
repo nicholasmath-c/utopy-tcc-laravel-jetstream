@@ -205,6 +205,8 @@ class DeveloperGameController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Game::destroy($id);
+
+        return redirect()->route('developer-game.index')->with('message', 'Jogo excluído com sucesso!');
     }
 }

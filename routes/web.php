@@ -33,6 +33,8 @@ Route::middleware([
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/contact', [HomeController::class, 'showContact'])->name('contact');
     Route::get('/about', [HomeController::class, 'showAbout'])->name('about');
+    Route::get('/admission-developer', [HomeController::class, 'admissionDeveloper'])->name('admission-developer');
+    Route::post('/admission-developer/store', [HomeController::class, 'admissionDeveloperStore'])->name('admission-developer.store');
 
     Route::prefix('shop')->group(function () {
         Route::get('/', [ShopController::class, 'index'])->name('shop');
@@ -74,6 +76,7 @@ Route::middleware([
     Route::middleware('developer')->prefix('developer')->group(function(){
         Route::get('/', [DeveloperHomeController::class, 'index'])->name('developer');
         Route::resource('developer-game', DeveloperGameController::class);
+        Route::get('/developer-game_search', [AdminLiveSearchController::class, 'gameSearch'])->name('developer-game.search');
     });
 
     Route::match(

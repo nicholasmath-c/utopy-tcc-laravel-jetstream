@@ -15,9 +15,10 @@ use App\Models\Shopcart;
 class ShopcartController extends Controller
 {
     /**
-    * Conta os produtos no carrinho 
-    */
-    public function countShopcart() {
+     * Conta os produtos no carrinho
+     */
+    public static function countShopcart()
+    {
         return Shopcart::where('user_id', Auth::id())->count();
     }
 
@@ -27,9 +28,11 @@ class ShopcartController extends Controller
     public function index()
     {
         $data = Shopcart::obterTodosProdutos();
+        $recommendedGame1 = Game::where('title', 'Ori and the Blind Forest')->first();
+        $recommendedGame2 = Game::where('title', 'Celeste')->first();
 
-        return view('client.shopcart',[
-            'shopcart' => $data
+        return view('client.shopcart', [
+            'shopcart' => $data, 'recommendedGame1' => $recommendedGame1, 'recommendedGame2' => $recommendedGame2
         ]);
     }
 
@@ -45,10 +48,9 @@ class ShopcartController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Shopcart::
-            where('id', $request->id)
-                ->where('user_id', Auth::id())
-                ->first();
+        $data = Shopcart::where('id', $request->id)
+            ->where('user_id', Auth::id())
+            ->first();
 
         if ($data) {
             $data->quantity += $request->input('quantity');
@@ -63,7 +65,7 @@ class ShopcartController extends Controller
         $data->save();
         return redirect()
             ->back()
-            ->with('success','Produto adicionado ao Carrinho');
+            ->with('success', 'Produto adicionado ao Carrinho');
     }
 
     /**
@@ -85,9 +87,9 @@ class ShopcartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,Shopcart $shopcart,$id)
+    public function update(Request $request, Shopcart $shopcart, $id)
     {
-        Shopcart::where([ 'id' => $id ])->update([
+        Shopcart::where(['id' => $id])->update([
             'quantity' => $request->input('quantity')
         ]);
 
@@ -96,37 +98,38 @@ class ShopcartController extends Controller
             ->with('success', 'Carrinho atualizado com sucesso!');
     }
 
-    public function pay(Request $request) {
+    public function pay(Request $request)
+    {
         $produtos = Shopcart::join('games', 'games.id', '=', 'shopcarts.game_id')
             ->join('genre_games', 'genre_games.id', '=', 'games.genre_game_id')
-            ->where('user_id', $user_id) 
+            ->where('user_id', Auth::id())
             ->select(
-                    'shopcarts.id as shopcart_id',
-                    'genre_games.name as genre_game',
-                    'shopcarts.*',
-                    'games.*',
-                    'genre_games.*'
-                )
-                ->get();
+                'shopcarts.id as shopcart_id',
+                'genre_games.name as genre_game',
+                'shopcarts.*',
+                'games.*',
+                'genre_games.*'
+            )
+            ->get();
 
-        # Dados Autenticação 
+        # Dados Autenticação
         $Data["email"] = env('PAGSEGURO_EMAIL');
         $Data["token"] = env('PAGSEGURO_TOKEN');
-        $Data["currency"]="BRL";
+        $Data["currency"] = "BRL";
 
         # Items
         $Data["itemId1"]="1";
         $Data["itemDescription1"]="Jogos Eletrônicos";
-        $total = 0; 
+        $total = 0;
         foreach($produtos as $item) {
-         $total += $item['price'];                        
+         $total += $item['price'];
         }
         $Data["itemAmount1"] = "". $total ."";
         $Data["itemQuantity1"]="1 por unidade";
         $Data["itemWeight1"]="N/A";
 
-        # Referência 
-        $Data["reference"]="83783783737";
+        # Referência
+        $Data["reference"] = "83783783737";
 
         # Dados do Recebedor
         $Data["senderName"]="João da Silva";
@@ -143,30 +146,30 @@ class ShopcartController extends Controller
         $Data["shippingAddressState"]="MG";
         $Data["shippingAddressCountry"]="BRA";
 
-        $BuildQuery=http_build_query($Data);
-        $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/checkout";
+        $BuildQuery = http_build_query($Data);
+        $Url = "https://ws.sandbox.pagseguro.uol.com.br/v2/checkout";
 
-        $Curl=curl_init($Url);
-        curl_setopt($Curl,CURLOPT_HTTPHEADER, Array("Content-Type: application/x-www-form-urlencoded; charset=UTF-8"));
-        curl_setopt($Curl,CURLOPT_POST,true);
-        curl_setopt($Curl,CURLOPT_SSL_VERIFYPEER,false);
-        curl_setopt($Curl,CURLOPT_RETURNTRANSFER,true);
-        curl_setopt($Curl,CURLOPT_POSTFIELDS,$BuildQuery);
-        $Retorno=curl_exec($Curl);
+        $Curl = curl_init($Url);
+        curl_setopt($Curl, CURLOPT_HTTPHEADER, array("Content-Type: application/x-www-form-urlencoded; charset=UTF-8"));
+        curl_setopt($Curl, CURLOPT_POST, true);
+        curl_setopt($Curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($Curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($Curl, CURLOPT_POSTFIELDS, $BuildQuery);
+        $Retorno = curl_exec($Curl);
         curl_close($Curl);
 
         $Xml = $Retorno;
         $code = simplexml_load_string($Xml);
 
-        return view('shop.checkout', [ 
-            'code' =>  $code, 
-            'data' => $Data, 
-            'produtos' => $produtos 
+        return view('shop.checkout', [
+            'code' =>  $code,
+            'data' => $Data,
+            'produtos' => $produtos
         ]);
     }
 
-    public function checkout(Request $request) {
-
+    public function checkout(Request $request)
+    {
     }
 
     /**
