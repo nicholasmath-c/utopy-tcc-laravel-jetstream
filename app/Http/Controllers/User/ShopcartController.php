@@ -4,11 +4,13 @@ namespace App\Http\Controllers\User;
 // TODO: FAZER COM QUE APENAS UM JOGO ENTRE PARA O CARRINHO
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
-use App\Models\Shopcart;
-use App\Service\VendaService;
-use App\Models\Game;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Service\VendaService;
+
+use App\Models\Game;
+use App\Models\Shopcart;
+
 
 class ShopcartController extends Controller
 {
@@ -92,47 +94,39 @@ class ShopcartController extends Controller
     }
 
     public function pay(Request $request) {
-        # Cofigs Autenticação
-        $data["email"] = env('PAGSEGURO_EMAIL');
-        $data["token"] = env('PAGSEGURO_TOKEN');
-        $data["currency"]="BRL";
+        $produtos = Shopcart::obterTodosProdutos();
 
-        # Itens do Pedido
-        $data["items"] = [
-            [
-                'itemId' => '1',
-                'itemDescription' => 'Website desenvolvido pela WEF.',
-                'itemAmount' => '1000000.00',
-                'itemQuantity' => '1',
-                'itemWeight' => '1000'
-            ],
+        $Data["email"] = env('PAGSEGURO_EMAIL');
+        $Data["token"] = env('PAGSEGURO_TOKEN');
+        $Data["currency"]="BRL";
 
-            'itemId' => '1',
-            'itemDescription' => 'Website desenvolvido pela WEF.',
-            'itemAmount' => '1000000.00',
-            'itemQuantity' => '1',
-            'itemWeight' => '1000',
-        ];
-        $data["reference"]="83783783737";
+        # Items
+        $index = 0;
 
-        # Dados do Recebedor
-        $data["senderName"]="João da Silva";
-        $data["senderAreaCode"]="37";
-        $data["senderPhone"]="99999999";
-        $data["senderEmail"]="c51994292615446022931@sandbox.pagseguro.com.br";
+        $Data["itemId1"]="1";
+        $Data["itemDescription1"]="Website desenvolvido pela WEF.";
+        $Data["itemAmount1"]="1000.00";
+        $Data["itemQuantity1"]="1";
+        $Data["itemWeight1"]="1000";
 
-        #
-        $data["shippingType"]="1";
-        $data["shippingAddressStreet"]="Rua Antonieta";
-        $data["shippingAddressNumber"]="10";
-        $data["shippingAddressComplement"]="Casa";
-        $data["shippingAddressDistrict"]="Jardim Paulistano";
-        $data["shippingAddressPostalCode"]="30690090";
-        $data["shippingAddressCity"]="Belo Horizonte";
-        $data["shippingAddressState"]="MG";
-        $data["shippingAddressCountry"]="BRA";
 
-        $BuildQuery=http_build_query($data);
+        $Data["reference"]="83783783737";
+
+        $Data["senderName"]="João da Silva";
+        $Data["senderAreaCode"]="37";
+        $Data["senderPhone"]="99999999";
+        $Data["senderEmail"]="c51994292615446022931@sandbox.pagseguro.com.br";
+        $Data["shippingType"]="1";
+        $Data["shippingAddressStreet"]="Rua Antonieta";
+        $Data["shippingAddressNumber"]="10";
+        $Data["shippingAddressComplement"]="Casa";
+        $Data["shippingAddressDistrict"]="Jardim Paulistano";
+        $Data["shippingAddressPostalCode"]="30690090";
+        $Data["shippingAddressCity"]="Belo Horizonte";
+        $Data["shippingAddressState"]="MG";
+        $Data["shippingAddressCountry"]="BRA";
+
+        $BuildQuery=http_build_query($Data);
         $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/checkout";
 
         $Curl=curl_init($Url);
@@ -147,7 +141,7 @@ class ShopcartController extends Controller
         $Xml = $Retorno;
         $code = simplexml_load_string($Xml);
 
-        return view('shop.checkout', [ 'code' =>  $code, 'data' => $data ]);
+        return view('shop.checkout', [ 'code' =>  $code, 'data' => $Data, 'produtos' => $produtos ]);
     }
 
     public function checkout(Request $request) {
