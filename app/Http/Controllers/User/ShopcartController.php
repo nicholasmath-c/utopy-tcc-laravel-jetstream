@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
-// TODO: FAZER COM QUE APENAS UM JOGO ENTRE PARA O CARRINHO
+
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +14,9 @@ use App\Models\Shopcart;
 
 class ShopcartController extends Controller
 {
+    /**
+    * Conta os produtos no carrinho 
+    */
     public function countShopcart() {
         return Shopcart::where('user_id', Auth::id())->count();
     }
@@ -94,24 +97,38 @@ class ShopcartController extends Controller
     }
 
     public function pay(Request $request) {
-        $produtos = Shopcart::obterTodosProdutos();
+        $produtos = Shopcart::join('games', 'games.id', '=', 'shopcarts.game_id')
+            ->join('genre_games', 'genre_games.id', '=', 'games.genre_game_id')
+            ->where('user_id', $user_id) 
+            ->select(
+                    'shopcarts.id as shopcart_id',
+                    'genre_games.name as genre_game',
+                    'shopcarts.*',
+                    'games.*',
+                    'genre_games.*'
+                )
+                ->get();
 
+        # Dados Autenticação 
         $Data["email"] = env('PAGSEGURO_EMAIL');
         $Data["token"] = env('PAGSEGURO_TOKEN');
         $Data["currency"]="BRL";
 
         # Items
-        $index = 0;
-
         $Data["itemId1"]="1";
-        $Data["itemDescription1"]="Website desenvolvido pela WEF.";
-        $Data["itemAmount1"]="1000.00";
-        $Data["itemQuantity1"]="1";
-        $Data["itemWeight1"]="1000";
+        $Data["itemDescription1"]="Jogos Eletrônicos";
+        $total = 0; 
+        foreach($pedidos as $item) {
+         $total += $item['price'];    
+         $Data["itemAmount1"] = "". $total ."";           
+        }
+        $Data["itemQuantity1"]="1 por unidade";
+        $Data["itemWeight1"]="N/A";
 
-
+        # Referência 
         $Data["reference"]="83783783737";
 
+        # Dados do Recebedor
         $Data["senderName"]="João da Silva";
         $Data["senderAreaCode"]="37";
         $Data["senderPhone"]="99999999";
