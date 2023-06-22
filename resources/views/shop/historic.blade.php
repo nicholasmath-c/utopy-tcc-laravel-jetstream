@@ -23,6 +23,6 @@
             @endforeach
         @endif
 
-        Sem  Items
+        Sem  Itens
     </table>
 </x-app-layout>
