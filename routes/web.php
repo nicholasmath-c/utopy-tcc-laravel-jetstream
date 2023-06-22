@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\AdminLiveSearchController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\AdminLiveSearchController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminGenreGameController;
 use App\Http\Controllers\Admin\AdminGameController;
 use App\Http\Controllers\Admin\AdminDeveloperController;
+use App\Http\Controllers\Developer\DeveloperHomeController;
+use App\Http\Controllers\Developer\DeveloperGameController;
 use App\Http\Controllers\User\ShopcartController;
 use App\Http\Controllers\Shop\ShopController;
 use App\Models\Game;
@@ -67,6 +69,11 @@ Route::middleware([
             Route::get('/admissions/download-game/{id}', [AdminDeveloperController::class, 'gameDownload'])->name('developer.admissions.game-download');
             Route::get('/admissions_search', [AdminLiveSearchController::class, 'admissionSearch'])->name('admission.search');
         });
+    });
+
+    Route::middleware('developer')->prefix('developer')->group(function(){
+        Route::get('/', [DeveloperHomeController::class, 'index'])->name('developer');
+        Route::resource('developer-game', DeveloperGameController::class);
     });
 
     Route::match(

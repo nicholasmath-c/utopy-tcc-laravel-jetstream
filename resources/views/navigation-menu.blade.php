@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="flex ml-10 items-center h-full">
-                    @if (optional(auth()->user()->developer)->status == "Not Requested")
+                    @if (empty(auth()->user()->developer) && !auth()->user()->is_adm)
                         <x-button class="h-10">Quero ser um desenvolvedor</x-button>
                     @endif
                 </div>
@@ -140,8 +140,8 @@
                                 </x-dropdown-link>
                             @endif
 
-                            @if (auth()->user()->developer->admission == 'Approved')
-                                <x-dropdown-link href="{{ route('admin') }}">
+                            @if (!empty(auth()->user()->developer) && auth()->user()->developer->admission == 'Approved' && !auth()->user()->is_adm)
+                                <x-dropdown-link href="{{ route('developer') }}">
                                     {{ __('Painel de Desenvolvedor') }}
                                 </x-dropdown-link>
                             @endif

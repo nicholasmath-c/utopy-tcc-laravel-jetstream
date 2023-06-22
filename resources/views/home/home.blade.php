@@ -89,7 +89,7 @@
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 @foreach ($game as $games)
                     <article
-                        class="mx-auto hover:cursor-pointer rounded-xl bg-slate-800 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
+                        class="mx-auto hover:cursor-pointer rounded-xl bg-slate-800 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 min-w-full max-w-fit">
                         <a href="{{ route('game-page', ['id' => $games->id, 'title' => $games->title]) }}">
                             <div class="relative flex items-center overflow-hidden rounded-xl">
                                 <img src="{{ url("storage/games/$games->title/$games->cover") }}"

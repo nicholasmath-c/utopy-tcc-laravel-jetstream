@@ -11,21 +11,41 @@ class GameController extends Controller
 {
     public static function getAllGame()
     {
-        $game = Game::whereNotIn('status', ['Admission'])->get();
+        $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])->orderBy('id', 'desc')->get();
 
         return $game;
     }
 
     public static function getAllGamePaginate($pagination)
     {
-        $game = Game::whereNotIn('status', ['Admission'])->paginate($pagination);
+        $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])->orderBy('id', 'desc')->paginate($pagination);
+
+        return $game;
+    }
+
+    public static function getAllGameDeveloper($developer_id)
+    {
+        $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])
+            ->where('developer_id', $developer_id)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return $game;
+    }
+
+    public static function getAllGameDeveloperPaginate($developer_id, $pagination)
+    {
+        $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])
+            ->orderBy('id', 'desc')
+            ->where('developer_id', $developer_id)
+            ->paginate($pagination);
 
         return $game;
     }
 
     public static function getFirstGame($quantity)
     {
-        $game = Game::whereNotIn('status', ['Admission'])->orderBy('id', 'desc')->take($quantity)->get();
+        $game = Game::whereNotIn('status', ['Admission', 'Admission Rejected'])->orderBy('id', 'desc')->take($quantity)->get();
 
         return $game;
     }
@@ -39,7 +59,7 @@ class GameController extends Controller
 
     public static function getAllAdmissionGamePaginate($pagination)
     {
-        $game = Game::where('status', 'Admission')->paginate($pagination);
+        $game = Game::whereIn('status', ['Admission', 'Admission Active', 'Admission Rejected'])->paginate($pagination);
 
         return $game;
     }

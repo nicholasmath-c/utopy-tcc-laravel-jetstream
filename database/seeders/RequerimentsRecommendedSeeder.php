@@ -102,23 +102,5 @@ class RequerimentsRecommendedSeeder extends Seeder
             'gpu' => 'DirectX 9.0c',
             'storage' => '250 MB disponíveis'
         ]);
-
-        RequerimentsRecommended::create([
-            'game_id' => 11,
-            'os' => 'Windows XP, Vista, 7',
-            'cpu' => '2 GHz',
-            'ram' => '2 GB',
-            'gpu' => 'DirectX 9.0c',
-            'storage' => '250 MB disponíveis'
-        ]);
-
-        RequerimentsRecommended::create([
-            'game_id' => 12,
-            'os' => 'Windows XP, Vista, 7',
-            'cpu' => '2 GHz',
-            'ram' => '2 GB',
-            'gpu' => 'DirectX 9.0c',
-            'storage' => '250 MB disponíveis'
-        ]);
     }
 }

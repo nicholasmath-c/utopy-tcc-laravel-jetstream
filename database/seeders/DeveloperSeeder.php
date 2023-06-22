@@ -22,15 +22,8 @@ class DeveloperSeeder extends Seeder
         ]);
 
         Developer::create([
-            'user_id' => '3',
+            'user_id' => '2',
             'cpf' => '536.284.680-95',
-            'admission' => "Pending"
-        ]);
-
-        Developer::create([
-            'user_id' => '4',
-            'cpf' => '536.284.680-96',
-            'admission' => "Pending"
         ]);
     }
 }

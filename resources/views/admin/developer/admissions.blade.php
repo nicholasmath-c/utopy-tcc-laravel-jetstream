@@ -72,15 +72,28 @@
                                                         @csrf
                                                         <input type="text" value="{{ $admissions->developer->id }}"
                                                             name="developer_id" hidden>
-                                                        <x-button name="approve" class="bg-green-600 hover:bg-green-700 focus:bg-green-500 focus:ring-green-600">Aprovar
+                                                        <x-button id="approve" name="approve"
+                                                            class="bg-green-600 hover:bg-green-700 focus:bg-green-500 focus:ring-green-600">
+                                                            Aprovar
                                                         </x-button>
-                                                        <x-button name="reject" class="">Reprovar</x-button>
+                                                        <x-button id="reject" name="reject" class="">Reprovar</x-button>
                                                     </form>
                                                 @endif
-                                                <a
-                                                    href="{{ route('game-page', ['id' => $admissions->id, 'title' => $admissions->title]) }}">
-                                                    <x-button class="bg-slate-500 hover:bg-slate-600 focus:bg-slate-400 focus:ring-slate-500">Analisar Jogo</x-button>
-                                                </a>
+                                                @if ($admissions->developer->admission == 'Approved')
+                                                    <a href="{{ route('game-page', ['id' => $admissions->id, 'title' => $admissions->title]) }}"
+                                                        target="_blank">
+                                                        <x-button
+                                                            class="bg-slate-500 hover:bg-slate-600 focus:bg-slate-400 focus:ring-slate-500">
+                                                            Página do jogo na loja</x-button>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('game-page', ['id' => $admissions->id, 'title' => $admissions->title]) }}"
+                                                        target="_blank">
+                                                        <x-button
+                                                            class="bg-slate-500 hover:bg-slate-600 focus:bg-slate-400 focus:ring-slate-500">
+                                                            Analisar Jogo</x-button>
+                                                    </a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -103,6 +116,14 @@
 </x-admin-layout>
 
 <script>
+    $('#approve').click(function(){
+        return confirm("Deseja realmente aprovar este desenvolvedor?");
+    });
+
+    $('#reject').click(function(){
+        return confirm("Deseja realmente reprovar este desenvolvedor?");
+    });
+
     $('#search').on('keyup', function() {
         $value = $(this).val();
 

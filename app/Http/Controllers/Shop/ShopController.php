@@ -34,7 +34,7 @@ class ShopController extends Controller
         $rm = RequerimentsMinimum::find($game->id);
         $rr = RequerimentsRecommended::find($game->id);
 
-        if($game->status == "Admission"){
+        if($game->status == "Admission" || $game->status == "Admission Rejected"){
             $admission = true;
             return view('shop.game-page', compact(['game', 'developer', 'rm', 'rr', 'admission']));
         }

@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-developer-layout>
     <div class="w-full py-12">
         <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form id="form" method="POST" action="{{ route('game.update', $game->id) }}"
+                        <form id="form" method="POST" action="{{ route('developer-game.update', $game->id) }}"
                             enctype="multipart/form-data" class="text-white">
                             @csrf
                             @method('PUT')
@@ -34,29 +34,7 @@
                             </div>
 
                             <!--Desenvolvedor-->
-                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
-                                <div>
-                                    <div name="title" class="text-lg font-medium mb-2">Desenvolvedor</div>
-                                    <div name="description" class="text-sm text-slate-400">Informe o nome do estúdio ou
-                                        da pessoa responsável pelo desenvolvimento do jogo.</div>
-                                </div>
-                                <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <select name="developer_id" id="developer"
-                                        class="w-full flex flex-row form-control p-3 h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
-                                        required>
-                                        <option value="">
-                                            Selecione um Desenvolvedor
-                                        </option>
-                                        @foreach ($developer as $developers)
-                                            <option value="{{ $developers->id }}"
-                                                {{ $game->developer_id == $developers->id ? 'selected' : '' }}>
-                                                {{ $developers->user->firstname }} {{ $developers->user->lastname }}
-                                                ({{ $developers->user->nickname }})
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                            <input type="text" name="developer_id" value="{{ $developer->id }}" hidden>
 
                             <!--Gênero-->
                             <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
@@ -293,7 +271,7 @@
                             </div>
 
                             <div class="flex flex-row gap-4 w-full justify-end">
-                                <a href="{{ route('game.index') }}">
+                                <a href="{{ route('developer-game.index') }}">
                                     <x-secondary-button>Voltar</x-secondary-button>
                                 </a>
                                 <x-button type="submit" class=""> Salvar alterações </x-button>
@@ -311,7 +289,7 @@
     </div>
 
 
-</x-admin-layout>
+</x-developer-layout>
 
 <script>
     $('document').ready(function() {

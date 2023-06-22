@@ -1,10 +1,10 @@
-<x-admin-layout>
+<x-developer-layout>
     <div class="w-full py-12">
         <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-slate-800 p-10 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card-header">
                     <div class="mb-16">
-                        <h1 class="font-heading text-white text-xl mb-5">Editar Jogo: {{ $game->title }}</h1>
+                        <h1 class="font-heading text-white text-xl mb-5">Adicionar Jogo</h1>
 
                         @if (isset($errors) && count($errors) > 0)
                             <div class="text-rose-500 text-sm">
@@ -16,10 +16,9 @@
                     </div>
 
                     <div class="card-body">
-                        <form id="form" method="POST" action="{{ route('game.update', $game->id) }}"
+                        <form id="form" method="POST" action="{{ route('developer-game.store') }}"
                             enctype="multipart/form-data" class="text-white">
                             @csrf
-                            @method('PUT')
                             <!--Título-->
                             <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
                                 <div>
@@ -28,35 +27,12 @@
                                         nome pelo qual ele será conhecido.</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <x-input type="text" name="title" id="title" class="w-full" required
-                                        value="{{ $game->title }}" />
+                                    <x-input type="text" name="title" id="title" class="w-full" required />
                                 </div>
                             </div>
 
                             <!--Desenvolvedor-->
-                            <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
-                                <div>
-                                    <div name="title" class="text-lg font-medium mb-2">Desenvolvedor</div>
-                                    <div name="description" class="text-sm text-slate-400">Informe o nome do estúdio ou
-                                        da pessoa responsável pelo desenvolvimento do jogo.</div>
-                                </div>
-                                <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <select name="developer_id" id="developer"
-                                        class="w-full flex flex-row form-control p-3 h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white "
-                                        required>
-                                        <option value="">
-                                            Selecione um Desenvolvedor
-                                        </option>
-                                        @foreach ($developer as $developers)
-                                            <option value="{{ $developers->id }}"
-                                                {{ $game->developer_id == $developers->id ? 'selected' : '' }}>
-                                                {{ $developers->user->firstname }} {{ $developers->user->lastname }}
-                                                ({{ $developers->user->nickname }})
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                            <input name="developer_id" type="text" value="{{ $developer->id }}" hidden>
 
                             <!--Gênero-->
                             <div class='md:grid md:grid-cols-3 md:gap-6 mb-16'>
@@ -73,8 +49,7 @@
                                             Selecione um Gênero
                                         </option>
                                         @foreach ($genreGame as $genreGames)
-                                            <option value="{{ $genreGames->id }}"
-                                                {{ $game->genreGame->id == $genreGames->id ? 'selected' : '' }}>
+                                            <option value="{{ $genreGames->id }}">
                                                 {{ $genreGames->name }}
                                             </option>
                                         @endforeach
@@ -92,7 +67,7 @@
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
                                     <x-input type="text" name="short_description" id="short_description"
-                                        class="w-full" value="{{ $game->short_description }}" />
+                                        class="w-full" />
                                 </div>
                             </div>
 
@@ -105,7 +80,7 @@
                                         qualquer outro aspecto relevante.</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <textarea name="long_description" id="long_description" class="text-black" cols="30" rows="10">{!! $game->long_description !!}</textarea>
+                                    <textarea name="long_description" id="long_description" class="text-black" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
 
@@ -119,10 +94,9 @@
                                         1080x1080px)</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <img src="{{ asset("storage/games/$game->title/$game->cover") }}" alt=""
-                                        width=200 class="mb-4 border-2 border-main-500 rounded-lg">
                                     <input type="file" name="cover" id="cover"
-                                        class="flex flex-row file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
+                                        class="flex flex-row file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
+                                        required />
                                 </div>
                             </div>
 
@@ -136,10 +110,9 @@
                                         tamanho 16:9 (Exemplo: 1920x1080px, 1280x720px)</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <img src="{{ asset("storage/games/$game->title/$game->banner") }}" alt=""
-                                        width=300 class="mb-4 border-2 border-main-500 rounded-lg">
                                     <input type="file" name="banner" id="banner"
-                                        class="flex flex-row file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
+                                        class="flex flex-row file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
+                                        required />
                                 </div>
                             </div>
 
@@ -152,7 +125,7 @@
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
                                     <x-input type="text" name="price" id="price" class="w-full" required
-                                        placeholder="R$0,00" maxlength="12" value />
+                                        placeholder="R$0,00" maxlength="12" />
                                 </div>
                             </div>
 
@@ -180,7 +153,7 @@
                                 <div class="mt-5 md:mt-0 md:col-span-2">
                                     <input type="date" name="release_date" id="release_date"
                                         class="flex flex-row form-control p-3 w-full  h-12 bg-slate-900 border border-slate-400 shadow-md rounded-lg focus:ring-main-500 focus:border-main-500 focus:bg-slate-800 transition duration-300 ease-in-out text-white"
-                                        value={{ $game->release_date }} required />
+                                        required />
                                 </div>
                             </div>
 
@@ -199,18 +172,12 @@
                                         <option value="">
                                             Selecione uma opção
                                         </option>
-                                        <option value="L" {{ $game->age_rating == 'L' ? 'selected' : '' }}>Livre
-                                        </option>
-                                        <option value="10+" {{ $game->age_rating == '10+' ? 'selected' : '' }}>10+
-                                        </option>
-                                        <option value="12+" {{ $game->age_rating == '12+' ? 'selected' : '' }}>12+
-                                        </option>
-                                        <option value="14+" {{ $game->age_rating == '14+' ? 'selected' : '' }}>14+
-                                        </option>
-                                        <option value="16+" {{ $game->age_rating == '16+' ? 'selected' : '' }}>16+
-                                        </option>
-                                        <option value="18+" {{ $game->age_rating == '18+' ? 'selected' : '' }}>18+
-                                        </option>
+                                        <option value="L">Livre</option>
+                                        <option value="10+">10+</option>
+                                        <option value="12+">12+</option>
+                                        <option value="14+">14+</option>
+                                        <option value="16+">16+</option>
+                                        <option value="18+">18+</option>
                                     </select>
                                 </div>
                             </div>
@@ -224,9 +191,9 @@
                                         para executar o jogo: (.zip, .rar)</div>
                                 </div>
                                 <div class="mt-5 md:mt-0 md:col-span-2">
-                                    <p class="mb-4"><strong>Arquivo atual:</strong> {{ $game->game_file_path }}</p>
                                     <input type="file" name="game_file_path" id="game_file_path"
-                                        class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white" />
+                                        class="flex flex-row form-control file:p-3 file:w-52 file:h-512 file:bg-slate-900 file:border-slate-400 file:shadow-md file:rounded-xl file:text-white"
+                                        required />
                                 </div>
                             </div>
 
@@ -242,23 +209,23 @@
                                         <div class="mb-4">
                                             <label for="">Placa de Vídeo (GPU):</label>
                                             <x-input type="text" class="mt-4 mb-8 w-full" name="rm_gpu"
-                                                id="" required value="{{ $rm->gpu }}" />
+                                                id="" required />
 
                                             <label for="">Processador (CPU):</label>
                                             <x-input type="text" class="mt-4 mb-8 w-full" name="rm_cpu"
-                                                id="" required value="{{ $rm->cpu }}" />
+                                                id="" required />
 
                                             <label for="">Memória RAM:</label>
                                             <x-input type="text" class="mt-4 mb-8 w-full" name="rm_ram"
-                                                id="" required value="{{ $rm->ram }}" />
+                                                id="" required />
 
                                             <label for="">Armazenamento:</label>
                                             <x-input type="text" class="mt-4 mb-8 w-full" name="rm_storage"
-                                                id="" required value="{{ $rm->storage }}" />
+                                                id="" required />
 
                                             <label for="">Sistema Operacional:</label>
                                             <x-input type="text" class="mt-4 mb-8 w-full" name="rm_os"
-                                                id="" required value="{{ $rm->os }}" />
+                                                id="" required />
                                         </div>
                                     </div>
                                 </div>
@@ -271,32 +238,32 @@
                                     <div class="my-4">
                                         <label for="">Placa de Vídeo (GPU):</label>
                                         <x-input type="text" class="mt-4 mb-8 w-full" name="rr_gpu"
-                                            id="" required value="{{ $rr->gpu }}" />
+                                            id="" required />
 
                                         <label for="">Processador (CPU):</label>
                                         <x-input type="text" class="mt-4 mb-8 w-full" name="rr_cpu"
-                                            id="" required value="{{ $rr->cpu }}" />
+                                            id="" required />
 
                                         <label for="">Memória RAM:</label>
                                         <x-input type="text" class="mt-4 mb-8 w-full" name="rr_ram"
-                                            id="" required value="{{ $rr->ram }}" />
+                                            id="" required />
 
                                         <label for="">Armazenamento:</label>
                                         <x-input type="text" class="mt-4 mb-8 w-full" name="rr_storage"
-                                            id="" required value="{{ $rr->storage }}" />
+                                            id="" required />
 
                                         <label for="">Sistema Operacional:</label>
                                         <x-input type="text" class="mt-4 mb-8 w-full" name="rr_os"
-                                            id="" required value="{{ $rr->os }}" />
+                                            id="" required />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="flex flex-row gap-4 w-full justify-end">
-                                <a href="{{ route('game.index') }}">
+                                <a href="{{ route('developer-game.index') }}">
                                     <x-secondary-button>Voltar</x-secondary-button>
                                 </a>
-                                <x-button type="submit" class=""> Salvar alterações </x-button>
+                                <x-button type="submit" class=""> Adicionar novo jogo </x-button>
                             </div>
                         </form>
                     </div>
@@ -311,27 +278,9 @@
     </div>
 
 
-</x-admin-layout>
+</x-developer-layout>
 
 <script>
-    $('document').ready(function() {
-        var price = {{ $game->price }};
-        var discount = {{ $game->discount }};
-
-        var formattedPrice = price.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        });
-
-        var formattedDiscount = discount.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        });
-
-        $('#price').val(formattedPrice);
-        $('#discount').val(formattedDiscount);
-    });
-
     $('#form').on('submit', function() {
         $inputPrice = $('#price').val().replace(/[^\d,]/g, "").replace(",", ".");
         $inputDiscount = $('#discount').val().replace(/[^\d,]/g, "").replace(",", ".");
