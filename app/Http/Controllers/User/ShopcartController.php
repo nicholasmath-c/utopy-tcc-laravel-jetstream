@@ -21,9 +21,7 @@ class ShopcartController extends Controller
      */
     public function index()
     {
-        $data = Shopcart::join('games', 'games.id', '=', 'shopcarts.game_id')
-            ->select('shopcarts.*', 'shopcarts.id as shopcart_id', 'games.*', 'games.id as game_game_id')
-            ->get();
+        $data = Shopcart::obterTodosProdutos();
 
         return view('client.shopcart',[
             'shopcart' => $data
@@ -94,30 +92,47 @@ class ShopcartController extends Controller
     }
 
     public function pay(Request $request) {
-        $Data["email"] = env('PAGSEGURO_EMAIL');
-        $Data["token"] = env('PAGSEGURO_TOKEN');
-        $Data["currency"]="BRL";
-        $Data["itemId1"]="1";
-        $Data["itemDescription1"]="Website desenvolvido pela WEF.";
-        $Data["itemAmount1"]="1000.00";
-        $Data["itemQuantity1"]="1";
-        $Data["itemWeight1"]="1000";
-        $Data["reference"]="83783783737";
-        $Data["senderName"]="João da Silva";
-        $Data["senderAreaCode"]="37";
-        $Data["senderPhone"]="99999999";
-        $Data["senderEmail"]="c51994292615446022931@sandbox.pagseguro.com.br";
-        $Data["shippingType"]="1";
-        $Data["shippingAddressStreet"]="Rua Antonieta";
-        $Data["shippingAddressNumber"]="10";
-        $Data["shippingAddressComplement"]="Casa";
-        $Data["shippingAddressDistrict"]="Jardim Paulistano";
-        $Data["shippingAddressPostalCode"]="30690090";
-        $Data["shippingAddressCity"]="Belo Horizonte";
-        $Data["shippingAddressState"]="MG";
-        $Data["shippingAddressCountry"]="BRA";
+        # Cofigs Autenticação
+        $data["email"] = env('PAGSEGURO_EMAIL');
+        $data["token"] = env('PAGSEGURO_TOKEN');
+        $data["currency"]="BRL";
 
-        $BuildQuery=http_build_query($Data);
+        # Itens do Pedido
+        $data["items"] = [
+            [
+                'itemId' => '1',
+                'itemDescription' => 'Website desenvolvido pela WEF.',
+                'itemAmount' => '1000000.00',
+                'itemQuantity' => '1',
+                'itemWeight' => '1000'
+            ],
+
+            'itemId' => '1',
+            'itemDescription' => 'Website desenvolvido pela WEF.',
+            'itemAmount' => '1000000.00',
+            'itemQuantity' => '1',
+            'itemWeight' => '1000',
+        ];
+        $data["reference"]="83783783737";
+
+        # Dados do Recebedor
+        $data["senderName"]="João da Silva";
+        $data["senderAreaCode"]="37";
+        $data["senderPhone"]="99999999";
+        $data["senderEmail"]="c51994292615446022931@sandbox.pagseguro.com.br";
+
+        #
+        $data["shippingType"]="1";
+        $data["shippingAddressStreet"]="Rua Antonieta";
+        $data["shippingAddressNumber"]="10";
+        $data["shippingAddressComplement"]="Casa";
+        $data["shippingAddressDistrict"]="Jardim Paulistano";
+        $data["shippingAddressPostalCode"]="30690090";
+        $data["shippingAddressCity"]="Belo Horizonte";
+        $data["shippingAddressState"]="MG";
+        $data["shippingAddressCountry"]="BRA";
+
+        $BuildQuery=http_build_query($data);
         $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/checkout";
 
         $Curl=curl_init($Url);
@@ -132,7 +147,7 @@ class ShopcartController extends Controller
         $Xml = $Retorno;
         $code = simplexml_load_string($Xml);
 
-        return view('shop.checkout', [ 'code' =>  $code, 'data' => $Data ]);
+        return view('shop.checkout', [ 'code' =>  $code, 'data' => $data ]);
     }
 
     public function checkout(Request $request) {
