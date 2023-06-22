@@ -32,7 +32,6 @@
                     @if(isset($admission))
                         <a href="{{route("developer.admissions.game-download", $game->id)}}"><x-button class="w-full h-16"> Baixar Jogo </x-button></a>
                     @else
-                    @if (App\Models\Shopcart::jogoNoCarrinho($game->id))
                     <form action="{{ route('shopcart.store', $game->id) }}" method="post">
                         @csrf
 
@@ -53,14 +52,14 @@
 
                         <x-button class="w-full h-16">
                             Adicionar ao Carrinho
-                            <i class="fa fa-cart-plus" aria-label="Adicionar ao Carrinho" aria-hidden="true">
-                            </i>
                         </x-button>
                     </form>
 
-                    <x-button class="mt-4 w-full h-16 text-white text-lg">
-                        Comprar Jogo
-                    </x-button>
+                    <form action="{{ route('shopcart.pay') }}">
+                        <x-button class="mt-4 w-full h-16 text-white text-lg">
+                            Comprar Jogo
+                        </x-button>
+                    </form>
                     @endif
                 </div>
             </div>

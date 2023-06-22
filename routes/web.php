@@ -64,7 +64,6 @@ Route::middleware([
         Route::prefix('developer')->group(function(){
             Route::get('/admissions', [AdminDeveloperController::class, 'allAdmission'])->name('developer.admissions');
             Route::post('/admissions/{id}', [AdminDeveloperController::class, 'controlAdmission'])->name('developer.admissions.control');
-            Route::get('/admissions/download-game/{id}', [AdminDeveloperController::class, 'gameDownload'])->name('developer.admissions.game-download');
         });
     });
 
