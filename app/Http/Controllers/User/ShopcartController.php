@@ -119,9 +119,9 @@ class ShopcartController extends Controller
         $Data["itemDescription1"]="Jogos Eletrônicos";
         $total = 0; 
         foreach($produtos as $item) {
-         $total += $item['price'];    
-         $Data["itemAmount1"] = "". $total ."";           
+         $total += $item['price'];                        
         }
+        $Data["itemAmount1"] = "". $total ."";
         $Data["itemQuantity1"]="1 por unidade";
         $Data["itemWeight1"]="N/A";
 
@@ -132,7 +132,7 @@ class ShopcartController extends Controller
         $Data["senderName"]="João da Silva";
         $Data["senderAreaCode"]="37";
         $Data["senderPhone"]="99999999";
-        $Data["senderEmail"]="c51994292615446022931@sandbox.pagseguro.com.br";
+        $Data["senderEmail"]="c022931@sandbox.pagseguro.com.br";
         $Data["shippingType"]="1";
         $Data["shippingAddressStreet"]="Rua Antonieta";
         $Data["shippingAddressNumber"]="10";
