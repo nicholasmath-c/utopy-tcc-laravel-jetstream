@@ -30,7 +30,7 @@ class DeveloperSeeder extends Seeder
         Developer::create([
             'user_id' => '4',
             'cpf' => '536.284.680-96',
-            'admission' => "Rejected"
+            'admission' => "Pending"
         ]);
     }
 }

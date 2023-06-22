@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,41 +10,41 @@ use App\Models\GenreGame;
 
 use function PHPUnit\Framework\isEmpty;
 
-class LiveSearchController extends Controller
+class AdminLiveSearchController extends Controller
 {
-    public function gameSearch(Request $request){
+    public function gameSearch(Request $request)
+    {
         $output = '';
-        $game = Game::where('title', 'like', '%'. $request->search .'%')
-                ->orWhereHas('genreGame', function ($query) use ($request) {
-                $query->where('name', 'like', '%'.$request->search.'%');
-                })
-                ->get();
+        $game = Game::where('title', 'like', '%' . $request->search . '%')
+            ->orWhereHas('genreGame', function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->search . '%');
+            })
+            ->get();
 
-        if($game->isEmpty()){
+        if ($game->isEmpty()) {
             $output = '<h1 class="text-center font-heading text-slate-400">Nenhum jogo encontrado... ☹️</h1>';
-        }
-        else{
-            foreach($game as $games){
+        } else {
+            foreach ($game as $games) {
                 $image_url = url('storage/games/' . $games->title . '/' . $games->banner);
 
-                $output.=
-                '<article
+                $output .=
+                    '<article
                 class="mx-auto rounded-xl bg-slate-900 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-fit">
-                <a href="/shop/game/'. $games->id .'/'. $games->title .'"
+                <a href="/shop/game/' . $games->id . '/' . $games->title . '"
                     target="_blank">
                     <div class="relative flex items-center overflow-hidden rounded-xl">
-                        <img src="'. $image_url .'") }}"
-                            alt="'. $games->title .'" class="object-cover h-48 mx-auto" />
+                        <img src="' . $image_url . '") }}"
+                            alt="' . $games->title . '" class="object-cover h-48 mx-auto" />
                     </div>
 
                     <div class="mt-1 p-2">
-                        <h2 class="text-white">'. $games->title .'</h2>
-                        <p class="mt-1 text-sm text-slate-400">'. $games->genreGame->name .'</p>
+                        <h2 class="text-white">' . $games->title . '</h2>
+                        <p class="mt-1 text-sm text-slate-400">' . $games->genreGame->name . '</p>
 
                         <div class="mt-3 flex items-end justify-between">
-                            <p class="text-lg font-bold text-white">R$'. $games->final_price .'</p>
+                            <p class="text-lg font-bold text-white">R$' . $games->final_price . '</p>
                             <div class="flex flex-row gap-2">
-                                <a href="/shop/game/'. $games->id .'/'. $games->title .'"
+                                <a href="/shop/game/' . $games->id . '/' . $games->title . '"
                                     target="_blank">
                                     <div
                                         class="flex items-center justify-center space-x-1.5 rounded-lg bg-slate-700 px-6 py-3 text-white duration-100 hover:bg-slate-300">
@@ -62,7 +62,7 @@ class LiveSearchController extends Controller
                                         </svg>
                                     </div>
                                 </a>
-                                <a href="/admin/game/'. $games->id .'/edit">
+                                <a href="/admin/game/' . $games->id . '/edit">
                                     <div
                                         class="flex items-center justify-center space-x-1.5 rounded-lg bg-slate-700 px-6 py-3 text-white duration-100 hover:bg-slate-300">
                                         <svg class="h-4 w-4 fill-white"
@@ -77,10 +77,10 @@ class LiveSearchController extends Controller
                                     </div>
                                 </a>
 
-                                <form action="/admin/game/'. $games->id .'" method="POST"
+                                <form action="/admin/game/' . $games->id . '" method="POST"
                                     class="delete inline-block">
-                                    '. csrf_field() .'
-                                    '. method_field('DELETE') .'
+                                    ' . csrf_field() . '
+                                    ' . method_field('DELETE') . '
                                     <button type="submit"
                                         class="flex items-center justify-center space-x-1.5 rounded-lg bg-red-500 px-6 py-3 text-white duration-100 hover:bg-slate-300">
                                         <svg class="h-4 w-4 fill-white"
@@ -104,26 +104,26 @@ class LiveSearchController extends Controller
         return response($output);
     }
 
-    public function genreGameSearch(Request $request){
+    public function genreGameSearch(Request $request)
+    {
         $output = '';
-        $genreGame = GenreGame::where('name', 'like', '%'. $request->search .'%')
-                ->get();
+        $genreGame = GenreGame::where('name', 'like', '%' . $request->search . '%')
+            ->get();
 
-        if($genreGame->isEmpty()){
+        if ($genreGame->isEmpty()) {
             $output = '<h1 class="text-center font-heading text-slate-400">Nenhum jogo encontrado... ☹️</h1>';
-        }
-        else{
-            foreach($genreGame as $genreGames){
-                $output.=
-                '<article
+        } else {
+            foreach ($genreGame as $genreGames) {
+                $output .=
+                    '<article
                 class="mx-auto rounded-xl bg-slate-900 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 w-full">
-                <a href="/admin/genre-game/'. $genreGames->id .'/edit">
+                <a href="/admin/genre-game/' . $genreGames->id . '/edit">
                     <div class="mt-1 p-2">
-                        <h2 class="text-white text-lg text-center mb-8">'. $genreGames->name .'</h2>
+                        <h2 class="text-white text-lg text-center mb-8">' . $genreGames->name . '</h2>
 
 
                         <div class="flex flex-row justify-center gap-2">
-                            <a href="/admin/genre-game/'. $genreGames->id .'/edit" class="w-full">
+                            <a href="/admin/genre-game/' . $genreGames->id . '/edit" class="w-full">
                                 <div
                                     class="flex items-center w-full justify-center space-x-1.5 rounded-lg bg-slate-700 px-6 py-3 text-white duration-100 hover:bg-slate-300">
                                     <svg class="h-4 w-4 fill-white" xmlns="http://www.w3.org/2000/svg"
@@ -136,10 +136,10 @@ class LiveSearchController extends Controller
                                 </div>
                             </a>
 
-                            <form action="/admin/genre-game/'. $genreGames->id.'"
+                            <form action="/admin/genre-game/' . $genreGames->id . '"
                                 method="POST" class="delete inline-block w-full">
-                                '. csrf_field() .'
-                                '. method_field('DELETE') .'
+                                ' . csrf_field() . '
+                                ' . method_field('DELETE') . '
                                 <button type="submit"
                                     class="flex w-full items-center justify-center space-x-1.5 rounded-lg bg-red-500 px-6 py-3 text-white duration-100 hover:bg-slate-300">
                                     <svg class="h-4 w-4 fill-white" xmlns="http://www.w3.org/2000/svg"
@@ -156,6 +156,74 @@ class LiveSearchController extends Controller
                     </div>
                 </a>
             </article>';
+            }
+        }
+
+        return response($output);
+    }
+
+    public function admissionSearch(Request $request)
+    {
+        $output = '';
+        $admission = Game::whereNotIn('status', ['Admission'])
+            ->where('id', 'like', '%' . $request->search . '%')
+            ->get();
+
+        if ($admission->isEmpty()) {
+            $output = '<h1 class="text-center font-heading text-slate-400">Nenhuma admissão encontrada... ☹️</h1>';
+        } else {
+            foreach ($admission as $admissions) {
+                $output .=
+                    '<tr class="bg-slate-700 text-slate-100">
+                <td class="px-4 py-3 text-sm">' . $admissions->id . '}}</td>
+
+                <td class="px-4 py-3">
+                    <div class="flex items-center text-sm">
+                        <div>
+                            <p class="font-semibold">' .
+                    $admissions->developer->user->firstname .
+                    $admissions->developer->user->lastname . '</p>
+                            <p class="text-xs">{{ $admissions->developer->user->nickname }}
+                            </p>
+                        </div>
+                    </div>
+                </td>
+
+                <td class="px-4 py-3 text-xs">';
+                if ($admissions->developer->admission == 'Approved') {
+                    $output .= '
+                        <span
+                            class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                            Aprovado </span>';
+                } elseif ($admissions->developer->admission == 'Rejected') {
+                    $output .= '<span
+                            class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:text-gray-100 dark:bg-gray-700">
+                            Rejeitado </span>}';
+                } elseif ($admissions->developer->admission == 'Pending') {
+                    $output .= '<span
+                            class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full">
+                            Pendente </span>';
+                }
+                $output .= '</td>
+                <td class="px-4 py-3 text-sm flex flex-row gap-5">';
+                if ($admissions->developer->admission != 'Approved' && $admissions->developer->admission != 'Rejected') {
+                    $output .= '<form method="POST"
+                            action="/admin/developer/admissions/' . $admissions->id . '"
+                            class="flex flex-row gap-5">
+                            @csrf
+                            <input type="text" value="{{ $admissions->developer->id }}"
+                                name="developer_id" hidden>
+                            <x-button name="approve" class="bg-green-600 hover:bg-green-700 focus:bg-green-500 focus:ring-green-600">Aprovar
+                            </x-button>
+                            <x-button name="reject" class="">Reprovar</x-button>
+                        </form>';
+                }
+                $output .= '<a
+                        href="/shop/game/' . $admissions->id . '/' . $admissions->title . '">
+                        <x-button class="bg-slate-500 hover:bg-slate-600 focus:bg-slate-400 focus:ring-slate-500">Analisar Jogo</x-button>
+                    </a>
+                </td>
+            </tr>';
             }
         }
 
