@@ -124,9 +124,9 @@ class ShopcartController extends Controller
         foreach($produtos as $item) {
          $total += $item['price'];
         }
-        $Data["itemAmount1"] = "". $total ."";
+        $Data["itemAmount1"] = "29.00";
         $Data["itemQuantity1"]="1";
-        $Data["itemWeight1"]="0";
+        $Data["itemWeight1"]="10";
 
         # Referência
         $Data["reference"] = "83783783737";
