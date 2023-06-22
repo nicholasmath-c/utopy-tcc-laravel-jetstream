@@ -1,7 +1,7 @@
 <x-app-layout>
-    <section class="min-h-screen bg-gradient-to-r from-slate-800 via-slate-800 to-slate-800 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900"style="background-image: url('storage/games/Celeste/Celeste-Banner.jpeg');">
+    <section class="min-h-screen  bg-gradient-to-r from-slate-900 via-slate-900 to-slate-900 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900">
         <div class="container mx-auto flex min-h-screen flex-col px-6 py-12">
-            <div class="flex-1 lg:-mx-6 lg:flex lg:items-center">
+            <div class="flex-5 lg:-mx-6 lg:flex lg:items-center">
             <div class="text-white lg:mx-6 lg:w-1/2">
                 <h1 class="text-3xl font-semibold capitalize lg:text-5xl">Contate-nos</h1>
 
@@ -68,23 +68,25 @@
             </div>
 
             <div class="mt-8 lg:mx-6 lg:w-1/2">
-                <div class="mx-auto w-full overflow-hidden rounded-xl bg-white px-8 py-10 shadow-2xl dark:bg-gray-900 lg:max-w-xl">
-                <h1 class="text-2xl font-medium text-gray-700 dark:text-gray-200">Envie-nos uma mensagem</h1>
+                <div class="mx-auto w-full overflow-hidden rounded-xl bg-slate-800 px-8 py-10 shadow-2xl dark:bg-gray-900 lg:max-w-xl">
+                <h1 class="text-2xl font-medium text-white dark:text-gray-200">Envie-nos uma mensagem</h1>
 
                 <form class="mt-6">
                     <div class="flex-1">
-                    <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Nome completo</label>
-                    <input type="text" placeholder="Digite seu nome" class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300" />
+                    <label class="mb-2 block text-sm text-white dark:text-gray-200">Nome completo</label>
+                    <x-input type="text" placeholder="Digite seu nome " class="w-full"  />
                     </div>
 
                     <div class="mt-6 flex-1">
-                    <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Endereço de e-mail</label>
-                    <input type="email" placeholder="" class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300" />
+                    <label class="mb-2 block text-sm text-white dark:text-gray-200">Endereço de e-mail</label>
+                    <x-input type="email" placeholder="Digite um e-mail" class="w-full"  />
                     </div>
 
                     <div class="mt-6 w-full">
-                    <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Mensagem</label>
-                    <textarea class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300 md:h-48" placeholder="Digite sua mensagem"></textarea>
+                    <label class="mb-2 block text-sm text-white dark:text-gray-200">Mensagem</label>
+                    <x-input type="text" placeholder="Digite sua mensagem" class="w-full pb-44 pt-6 resize-none placeholder-top text-start " />
+
+
                     </div>
 
                     <button class="mt-6 w-full transform rounded-md bg-main-500 px-6 py-3 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-main-800 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">Enviar mensagem</button>

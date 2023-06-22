@@ -7,7 +7,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="flex items-center">
                     <a href="{{ route('home') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
@@ -34,6 +34,14 @@
                         <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                     </x-nav-link>
                 </div>
+
+                <div class="flex ml-10 items-center h-full">
+                    @if (optional(auth()->user()->developer)->status == "Not Requested")
+                        <x-button class="h-10">Quero ser um desenvolvedor</x-button>
+                    @endif
+                </div>
+
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -129,6 +137,12 @@
                             @if (Auth::user()->is_adm)
                                 <x-dropdown-link href="{{ route('admin') }}">
                                     {{ __('Painel Administrativo') }}
+                                </x-dropdown-link>
+                            @endif
+
+                            @if (auth()->user()->developer->admission == 'Approved')
+                                <x-dropdown-link href="{{ route('admin') }}">
+                                    {{ __('Painel de Desenvolvedor') }}
                                 </x-dropdown-link>
                             @endif
 

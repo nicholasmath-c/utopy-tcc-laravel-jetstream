@@ -9,7 +9,9 @@
     <title>{{ config('app.name', 'Utopy') }}</title>
 
     <!-- Fonts -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
@@ -17,8 +19,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js">
-        </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
@@ -55,9 +56,9 @@
     <!-- component -->
     <div class="flex items-end bg-white">
 
-        <footer class="w-full text-gray-700 bg-slate-800 body-font">
+        <footer class="w-full  text-gray-700 bg-slate-800 body-font">
             <div
-                class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
+                class="container flex flex-col flex-wrap px-22 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
                 <div class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
                     <a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
                         <x-application-mark class="block h-9 w-auto" />
@@ -166,6 +167,15 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    @if (session()->has('message'))
+        <script>
+            toastr.options = {
+                "positionClass": "toast-bottom-right"
+            };
+
+            toastr.success("{{ session()->get('message') }}");
+        </script>
+    @endif
 </body>
 
 </html>

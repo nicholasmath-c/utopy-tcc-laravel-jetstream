@@ -267,7 +267,7 @@
                 "positionClass": "toast-bottom-right"
             };
 
-            toastr.success("{{ Session::get('message') }}");
+            toastr.success("{{ session()->get('message') }}");
         </script>
     @endif
 

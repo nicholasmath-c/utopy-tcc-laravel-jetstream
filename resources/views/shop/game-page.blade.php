@@ -32,34 +32,30 @@
                     @if(isset($admission))
                         <a href="{{route("developer.admissions.game-download", $game->id)}}"><x-button class="w-full h-16"> Baixar Jogo </x-button></a>
                     @else
-                    <form action="{{ route('shopcart.store', $game->id) }}" method="post">
-                        @csrf
+                      @if (!App\Models\Shopcart::jogoNoCarrinho($game->id))
+                          <form action="{{ route('shopcart.store', $game->id) }}" method="post">
+                              @csrf
 
-                        <x-input
-                            type="hidden"
-                            name="game_id"
-                            value="{{ $game->id }}" />
+                              <x-input
+                                  type="hidden"
+                                  name="game_id"
+                                  value="{{ $game->id }}" />
 
-                        <x-label class="text-white text-lg" style="display: none;">
-                            Quantidade:
-                        </x-label>
-                        <x-input
-                            type="hidden"
-                            name="quantity"
-                            value="1"
-                            required
-                        />
+                              <x-label class="text-white text-lg" style="display: none;">
+                                  Quantidade:
+                              </x-label>
+                              <x-input
+                                  type="hidden"
+                                  name="quantity"
+                                  value="1"
+                                  required
+                              />
 
-                        <x-button class="w-full h-16">
-                            Adicionar ao Carrinho
-                        </x-button>
-                    </form>
-
-                    <form action="{{ route('shopcart.pay') }}">
-                        <x-button class="mt-4 w-full h-16 text-white text-lg">
-                            Comprar Jogo
-                        </x-button>
-                    </form>
+                              <x-button class="w-full h-16">
+                                  Adicionar ao Carrinho
+                              </x-button>
+                          </form>
+                      @endif
                     @endif
                 </div>
             </div>

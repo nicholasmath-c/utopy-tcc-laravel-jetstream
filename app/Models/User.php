@@ -63,6 +63,6 @@ class User extends Authenticatable
     ];
 
     public function developer(){
-        return $this->hasOne(Developer::class, 'id', 'user_id');
+        return $this->hasOne(Developer::class, 'id');
     }
 }

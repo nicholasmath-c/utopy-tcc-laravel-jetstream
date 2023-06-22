@@ -32,7 +32,7 @@
                                         <th class="px-4 py-3">Ações</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-700 bg-slate-800">
+                                <tbody class="alldata divide-y divide-slate-700 bg-slate-800">
                                     @foreach ($admission as $admissions)
                                         <tr class="bg-slate-700 text-slate-100">
                                             <td class="px-4 py-3 text-sm">{{ $admissions->id }}</td>
@@ -85,6 +85,9 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tbody id="content_search" class="searchdata divide-y divide-slate-700 bg-slate-800">
+
+                                </tbody>
                             </table>
                         </div>
 
@@ -98,3 +101,34 @@
     </div>
     </div>
 </x-admin-layout>
+
+<script>
+    $('#search').on('keyup', function() {
+        $value = $(this).val();
+
+        if ($value) {
+            $('.alldata').hide();
+            $('.searchdata').show();
+        } else {
+            $('.alldata').show();
+            $('.searchdata').hide();
+        }
+
+        $.ajax({
+            type: 'get',
+            url: '{{ route('admission.search') }}',
+            data: {
+                'search': $value
+            },
+            success: function(data) {
+                console.log(data);
+                $('#content_search').html(data);
+            }
+        });
+    });
+
+    $('input[type=search]').on('search', function() {
+        $('.alldata').show();
+        $('.searchdata').hide();
+    });
+</script>
