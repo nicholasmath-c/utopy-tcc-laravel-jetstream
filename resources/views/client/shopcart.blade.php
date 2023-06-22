@@ -81,7 +81,7 @@
                     </div>
                     <div class="flex flex-row mt-8 justify-center ">
                         <div>
-                            <form class="form-horizontal" method="POST" action="{{ route('shopcart.checkout') }}">
+                            <form class="form-horizontal" method="GET" action="{{ route('shopcart.pay') }}">
                                 @csrf
 
                                 <x-button class="h-55 w-55">Comprar</x-button>
