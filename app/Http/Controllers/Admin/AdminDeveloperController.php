@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Developer;
 use App\Http\Controllers\GameController;
 use App\Models\Game;
+use Illuminate\Support\Facades\Storage;
 
 class AdminDeveloperController extends Controller
 {
@@ -16,7 +17,7 @@ class AdminDeveloperController extends Controller
         return view("admin.developer.admissions", compact(['admission']));
     }
 
-    public function controlAdmission(Request $request, $id){
+    public function controlAdmission(Request $request){
         $developer = Developer::findOrFail($request->developer_id);
 
         if($request->has("approve")){
@@ -31,5 +32,9 @@ class AdminDeveloperController extends Controller
 
             return redirect()->route("developer.admissions")->with("message", "Desenvolvedor reprovado com sucesso!");
         }
+    }
+
+    public function gameDownload($id){
+        return GameController::gameDownload($id);
     }
 }

@@ -33,7 +33,13 @@ class ShopController extends Controller
         $rm = RequerimentsMinimum::find($game->id);
         $rr = RequerimentsRecommended::find($game->id);
 
-        return view('shop.game-page', compact(['game', 'developer', 'rm', 'rr']));
+        if($game->status == "Admission"){
+            $admission = true;
+            return view('shop.game-page', compact(['game', 'developer', 'rm', 'rr', 'admission']));
+        }
+        else{
+            return view('shop.game-page', compact(['game', 'developer', 'rm', 'rr']));
+        }
     }
 
     public function historic() {
