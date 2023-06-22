@@ -81,10 +81,6 @@ Route::middleware([
         'compras/historico',
         [ShopController::class, 'historic']
     )->name('shop.historic');
-    Route::post(
-        'compras/detalhes',
-        [ShopController::class, 'details']
-    )->name('shop.details');
     Route::match(
         ['get', 'post'],
         'compras/checkout',

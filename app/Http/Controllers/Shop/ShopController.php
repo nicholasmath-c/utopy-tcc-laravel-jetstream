@@ -46,26 +46,20 @@ class ShopController extends Controller
     public function historic() {
         $lista_pedidos = [];
         $user_id       = Auth::user()->id;
-
+        
         $lista_pedidos = Order::
             where('user_id', $user_id)
                 ->orderBy("data_pedido", "desc")
                 ->get();
-
-        return view("shop.historic", [ 'lista_pedidos' => $lista_pedidos ]);
-    }
-
-    public function details(Request $request) {
-        $pedido_id = $request->input('pedido_id');
-
+        
         $listaItens = OrderItem::
-            join('game', 'game.id', '=', 'order_items.game_id')
-                ->where('order_id', $pedido_id)
+            join('games', 'games.id', '=', 'order_items.game_id')
+                ->where('user_id', $user_id)
                 ->get([ 'order_items.*', 'order_items.valor as valorItem' ]);
 
-        return view(
-            "shop.compras.details",
-            [ 'lista_itens' => $listaItens ]
-        );
+        return view("shop.historic", [ 
+            'lista_pedidos' => $lista_pedidos,
+            'lista_itens' => $listaItens
+        ]);
     }
 }
