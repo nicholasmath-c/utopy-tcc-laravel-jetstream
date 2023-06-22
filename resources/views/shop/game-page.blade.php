@@ -52,12 +52,13 @@
                         />
 
                         <x-button class="w-full h-16">
+                            Adicionar ao Carrinho
                             <i class="fa fa-cart-plus" aria-label="Adicionar ao Carrinho" aria-hidden="true">
                             </i>
                         </x-button>
                     </form>
 
-                    <x-button class="mt-4 w-64 h-16 text-white text-lg">
+                    <x-button class="mt-4 w-full h-16 text-white text-lg">
                         Comprar Jogo
                     </x-button>
                     @endif
