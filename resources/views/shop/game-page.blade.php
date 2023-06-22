@@ -41,7 +41,7 @@
                             name="game_id"
                             value="{{ $game->id }}" />
 
-                        <x-label class="text-white text-lg">
+                        <x-label class="text-white text-lg" style="display: none;">
                             Quantidade:
                         </x-label>
                         <x-input
@@ -56,15 +56,10 @@
                             </i>
                         </x-button>
                     </form>
+
                     <x-button class="mt-4 w-64 h-16 text-white text-lg">
                         Comprar Jogo
                     </x-button>
-                @else
-                    <a class="mt-4 w-64 h-16 text-white text-lg" href="{{ route('shopcart.index') }}">
-                        Carrinho
-                    </a>
-                    @endif
-
                     @endif
                 </div>
             </div>

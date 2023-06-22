@@ -20,25 +20,24 @@
 
                                     <img
                                         class="object-contain  mt-2 rounded-sm"
-                                        src="{{ url("storage/games/$games->title/$games->cover") }}"
+                                        src="{{ url("storage/games/$item->title/$item->cover") }}"
                                         alt="{{ $item->title }}"
                                     />
 
                                 </div>
-
                                 <div class=" w-96">
                                     <div class=" pt-6 w-52">
                                         <x-button class="ml-5 h-6 w-15">
-                                            {{ $games->genreGame->name }}
+                                            {{ $item->genre_game }}
                                         </x-button>
-                                        <h1 class=" m-2 mb-15 ml-5 text-white-400 text-xl font-bold">{{ $games->title }}
+                                        <h1 class=" m-2 mb-15 ml-5 text-white-400 text-xl font-bold">{{ $item->title }}
                                         </h1>
                                     </div>
                                 </div>
 
                                 <div class="flex flex-col self-end items-center pt-6 pb-2 ">
                                     <h1 class=" mr-8 text-gray-500 text-lg line-through ">R${{ $item->price }}</h1>
-                                    <h1 class="  mr-8 ml-2 text-2xl ">R${{ $games->final_price }}</h1>
+                                    <h1 class="  mr-8 ml-2 text-2xl ">R${{ $item->final_price }}</h1>
                                     <form action="{{ route('shopcart.destroy', $item->shopcart_id) }}" method="GET"
                                         class="delete inline-block ml-2">
                                         @csrf
