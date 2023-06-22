@@ -125,8 +125,8 @@ class ShopcartController extends Controller
          $total += $item['price'];
         }
         $Data["itemAmount1"] = "". $total ."";
-        $Data["itemQuantity1"]="1 por unidade";
-        $Data["itemWeight1"]="N/A";
+        $Data["itemQuantity1"]="1";
+        $Data["itemWeight1"]="0";
 
         # Referência
         $Data["reference"] = "83783783737";
