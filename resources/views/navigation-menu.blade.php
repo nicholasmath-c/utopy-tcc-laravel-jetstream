@@ -32,6 +32,7 @@
                     </x-nav-link>
                     <x-nav-link href="{{ route('shopcart.index') }}" :active="request()->routeIs('shopcart.index')">
                         <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                        <sup>{{ App\Http\Controllers\User\ShopcartController::countShopcart() }}</sup>
                     </x-nav-link>
                 </div>
 
