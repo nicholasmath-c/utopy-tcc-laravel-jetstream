@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\RequerimentsMinimum;
 use App\Models\RequerimentsRecommended;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\User\DeveloperController;
 
 
@@ -21,7 +22,7 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $game = Game::all();
+        $game = GameController::getAllGamePaginate(10);
 
         return view('shop.index', compact('game'));
     }

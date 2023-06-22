@@ -25,7 +25,7 @@ return new class extends Migration
 
             //------- Comuns
             $table->char('cpf', 14)->unique();
-            $table->string('admission')->default("Not Requested");
+            $table->string('admission')->default("Pending");
             $table->json('followers')->nullable();
             $table->timestamps();
         });
