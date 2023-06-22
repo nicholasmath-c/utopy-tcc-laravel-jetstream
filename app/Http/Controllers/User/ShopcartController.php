@@ -118,7 +118,7 @@ class ShopcartController extends Controller
         $Data["itemId1"]="1";
         $Data["itemDescription1"]="Jogos Eletrônicos";
         $total = 0; 
-        foreach($pedidos as $item) {
+        foreach($produtos as $item) {
          $total += $item['price'];    
          $Data["itemAmount1"] = "". $total ."";           
         }
