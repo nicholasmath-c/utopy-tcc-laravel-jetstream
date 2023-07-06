@@ -51,19 +51,16 @@ class ShopcartController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Shopcart::where('id', $request->id)
+       $data = Shopcart::where('id', $request->id)
             ->where('user_id', Auth::id())
             ->first();
 
-        if ($data) {
-            $data->quantity += $request->input('quantity');
-        } else {
-            $data = new Shopcart();
+        $data = new Shopcart();
 
-            $data->game_id  = $request->input('game_id');
-            $data->user_id  = Auth::id();
-            $data->quantity = $request->input('quantity');
-        }
+        $data->game_id  = $request->input('game_id');
+        $data->user_id  = Auth::id();
+        $data->quantity = $request->input('quantity');
+        $data->quantity = $request->input('quantity');
 
         $data->save();
         return redirect()
