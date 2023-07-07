@@ -1,6 +1,48 @@
 @php
     use Illuminate\Support\Facades\Auth;
 @endphp
+
+<style>
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #FF3273 #0F172A;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 13px;
+  width: 13px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 1px;
+  background-color: #0F172A;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #0F172A;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #0F172A;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #FF3273;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #FF3273;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #FF3273;
+}
+
+</style>
+
+
 <nav x-data="{ open: false }" class="bg-slate-800 border-b-2 border-main-500">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

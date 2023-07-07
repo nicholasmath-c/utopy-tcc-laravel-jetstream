@@ -5,7 +5,7 @@
 
     <div class="mb-12 flex flex-col md:flex-row max-w-7xl mx-auto max-h-screen">
         <div class="flex flex-col md:w-7/12 w-full text-white">
-            <div class=" flex flex-col w-50 overflow-auto scrollbar-hide">
+            <div class=" flex flex-col w-50 overflow-auto">
                 @php
                     $total = 0;
                 @endphp
