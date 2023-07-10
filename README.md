@@ -1,4 +1,17 @@
-# Utopy
+# Utopy 🏝
+
+Utopy é uma plataforma web de jogos Indie dedicada a promover e apoiar o desenvolvimento de jogos independentes. Acreditamos no poder da criatividade e na diversidade presente nos jogos Indie, e nossa missão é fornecer um espaço para que desenvolvedores independentes possam compartilhar e destacar seus jogos.
+
+## Recursos e Funcionalidades
+
+- **Publicação de Jogos**: Os desenvolvedores podem publicar seus jogos na plataforma, fornecendo informações detalhadas e visuais atrativos para os usuários.
+
+- **Interatividade**: Os usuários podem interagir com os jogos publicados, deixando comentários, avaliações e compartilhando suas experiências com a comunidade.
+
+- **Descoberta de Jogos**: A plataforma oferece recursos de busca e filtragem para ajudar os usuários a descobrirem novos jogos Indie, permitindo que eles encontrem jogos de acordo com seus interesses e preferências.
+
+- **Comunidade Engajada**: A Utopy é um espaço para a comunidade Indie se conectar, trocar ideias e colaborar. Os desenvolvedores podem encontrar inspiração e apoio, enquanto os jogadores podem descobrir jogos únicos e se conectar com outros entusiastas.
+
 
 
 ## Configuração do .env
